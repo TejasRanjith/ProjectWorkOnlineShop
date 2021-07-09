@@ -1,0 +1,142 @@
+SHOP 
+|
+|- snacks (5)
+    |- Lays Chilli
+    |- Lays Salt
+    |- Lays Tomato Ketchup
+    |- Cheetos Flamming Hot
+    |- Cheetos Cheese
+    |- Dorittos
+    |- Sunbites
+    |- Pringles
+|- fruits (9)
+    |- Green Apple
+    |- Red Apple
+    |- Orange
+    |- Lemon
+    |- Mango
+    |- Pineapple
+    |- Banana
+    |- Kiwi
+    |- Dates
+    |- Watermelon
+|- veg (11)
+    |- Red Chilli
+    |- Green Chilli
+    |- Green Capsicum
+    |- Red Capsicum
+    |- Onion
+    |- Tomato
+    |- Potato
+    |- Cucumber
+    |- Cocunut
+    |- Garlic
+    |- Broccoli
+|- fish (4)
+    |- Sardines
+    |- Prawns
+    |- Salmon
+    |- Sheri
+|- bakery (6)
+    |- Veg/Chicken/Punjabi Samosa
+    |- Choco/Dark Choco/White Cream Cake
+    |- Veg/Chicken/Egg Puffs
+    |- Veg/Chicken/ Cutlet
+    |- Bread
+    |- Biscut
+    |- Cupcakes
+|- drinks            < ML importance for drinks >
+    |- Red Bull Energy Drink (355/250 ml)
+    |- Lancor Mango Juice (180ml)
+    |- Lancor Apple Juice (180ml)
+    |- Lancor Choclate Milk (180ml)
+    |- Bottled Drinking Water (500ml/1.5L)
+    |- Mountain Dew (155ml/)
+    |- Seven Up (155ml/)
+    |- Pepsi (155ml/)
+    |- Sprite (330ml/)
+    |- Al Rawabi Milk (500ml/1L/2L)
+    |- Almarai Milk (500ml/1L/2l)
+|- medicine
+    |- Hansaplast Plastic Bandage
+    |- Hansaplast Aqua Protector Bandage
+    |- Baby Ointment
+|- utensils
+    |- Insulated Plastic Flask
+    |- Measuring Cup
+    |- Iron Fry Pan
+    |- Stainless Steal Saucepan
+    |- Coffee Maker
+    |- Dinner Plate
+    |- Plastic Plates
+    |- Cutlery Wooden Block
+    |- Steel Spoons
+    |- Steel Turner
+    |- Apple Slicer
+    |- Melon Slicer
+|- computers
+    |- Apple Macbook Air 2020
+    |- Dell XPS
+    |- Acer Aspire
+    |- Asus Notebook
+    |- Lenovo Yoga
+    |- HP Envy
+    |- Microsoft Surface
+    |- Microsoft Surface Pro
+|- phones
+    |- Vivo
+    |- Apple Iphone 12
+    |- Apple Iphone 11
+    |- Apple Iphone X
+    |- Samsung Galaxy S21 Ultra
+    |- Samsung Galaxy S21 
+    |- Samsung Galaxy S20 Ultra
+    |- Samsung Galaxy S20
+    |- Samsung Galaxy Note 20 Ultra
+    |- Samsung Galaxy Note 20 
+    |- Samsung Galaxy Note 10 Ultra
+    |- Samsung Galaxy Note 10
+    |- Samsung Galaxy Note 8
+    |- Nokia 
+    |- Huawei
+    |- Motorola
+    |- Xiaomi
+    |- Oppo
+|- other devices
+    |- Sony Bluetooth Headset
+    |- Bose Wireless Earpiece
+    |- JBL Wireless Speaker
+    |- Samsung Galaxy Smart Tag
+    |- Apple Air Tag
+    |- Micro SD Card 32/64/128/256/1TB (GB)
+    |- Toshiba External Hard Disk
+    |- Dell Gaming Monitor
+    |- Toshiba Gaming Monitor
+    |- Benq Gaming Monitor
+    |- Logitech Webcam
+    |- Logitech Wireless Mouse and Keypad Small
+    |- Logitech Wireless Mouse and Keypad Big
+    |- Dell Laptop Back Pack
+|- tvs,speakers
+    |- LG Smart TV 8K
+    |- LG Smart TV 8K
+    |- Samsung Smart TV 8K QLED
+    |- Samsung Smart TV 4K SUHD
+    |- Samsung Smart TV 4K Curved
+    |- Samsung Smart TV 4K UHD
+    |- Sony TV 8K SUHD
+    |- Sony TV 4K UHD
+    |- Philips Smart TV 4K UHD
+|- toys
+    |- Engineering Truck Ser
+    |- Parking Garage Set
+    |- Nerf Alpha Battlion Set
+    |- RC Remote Controlled Car 
+    |- RC Remote Controlled Jeep
+    |- Lego Architecture Dubai
+    |- Lego Prison Building Set
+    |- Axis Gyro Quadcopter Small
+    |- UNO Game Card
+    |- Volley Ball
+    |- Marvel Action Figures Set
+    |- Monopoly Electronic Banking
