@@ -38,10 +38,17 @@ SHOP
     |- Salmon
     |- Sheri
 |- bakery (6)
-    |- Veg/Chicken/Punjabi Samosa
-    |- Choco/Dark Choco/White Cream Cake
-    |- Veg/Chicken/Egg Puffs
-    |- Veg/Chicken/ Cutlet
+    |- Veg Samosa
+    |- Chicken Samosa
+    |- Punjabi Samosa
+    |- Choco Cream Cake
+    |- Dark Choco Cream Cake
+    |- White Cream Cake
+    |- Veg Puffs
+    |- Chicken Puffs
+    |- Egg Puffs
+    |- Chicken Cutlet
+    |- Veg Cutlet
     |- Bread
     |- Biscut
     |- Cupcakes
