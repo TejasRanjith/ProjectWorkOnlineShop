@@ -155,13 +155,13 @@ use shop;
     ("UT05","Coffee Maker",0.0),
     ("UT06","Dinner Plate",0.0),
     ("UT07","Plastic Plates",0.0),
-    ("UT08","Cutlery Wooden Block",0.0),
+    ("UT08","Cutlery WoELen Block",0.0),
     ("UT09","Steel Spoons",0.0),
     ("UT10","Steel Turner",0.0),
     ("UT11","Apple Slicer",0.0),
     ("UT12","Melon Slicer",0.0);
 
---computers------------------------------------------------------;
+-- computers------------------------------------------------------;
 
     create table computers(
         ID char(4) primary key,
@@ -207,29 +207,29 @@ use shop;
     ("PH17","Xiaomi",0.0),
     ("PH18","Oppo",0.0);
 
--- other_devices--------------------------------------------------;
+-- electronic_accesories------------------------------------------;
 
-    create table other_devices(
+    create table electronic_accesories(
         ID char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
     );
 
-    insert into other_devices values
-    ("OD01","Sony Bluetooth Headset",0.0),
-    ("OD02","Bose Wireless Earpiece",0.0),
-    ("OD03","JBL Wireless Speaker",0.0),
-    ("OD04","Samsung Galaxy Smart Tag",0.0),
-    ("OD05","Apple Air Tag",0.0),
-    ("OD06","Micro SD Card 32/64/128/256/1TB (GB)",0.0),
-    ("OD07","Toshiba External Hard Disk",0.0),
-    ("OD08","Dell Gaming Monitor",0.0),
-    ("OD09","Toshiba Gaming Monitor",0.0),
-    ("OD10","Benq Gaming Monitor",0.0),
-    ("OD11","Logitech Webcam",0.0),
-    ("OD12","Logitech Wireless Mouse and Keypad Small",0.0),
-    ("OD13","Logitech Wireless Mouse and Keypad Big",0.0),
-    ("OD14","Dell Laptop Back Pack",0.0);
+    insert into electronic_accesories values
+    ("EL01","Sony Bluetooth Headset",0.0),
+    ("EL02","Bose Wireless Earpiece",0.0),
+    ("EL03","JBL Wireless Speaker",0.0),
+    ("EL04","Samsung Galaxy Smart Tag",0.0),
+    ("EL05","Apple Air Tag",0.0),
+    ("EL06","Micro SD Card 32/64/128/256/1TB (GB)",0.0),
+    ("EL07","Toshiba External Hard Disk",0.0),
+    ("EL08","Dell Gaming Monitor",0.0),
+    ("EL09","Toshiba Gaming Monitor",0.0),
+    ("EL10","Benq Gaming Monitor",0.0),
+    ("EL11","Logitech Webcam",0.0),
+    ("EL12","Logitech Wireless Mouse and Keypad Small",0.0),
+    ("EL13","Logitech Wireless Mouse and Keypad Big",0.0),
+    ("EL14","Dell Laptop Back Pack",0.0);
 
 -- tvs------------------------------------------------------------;
 
