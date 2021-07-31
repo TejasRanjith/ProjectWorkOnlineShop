@@ -2,6 +2,12 @@ drop database shop;
 create database shop;
 use shop;
 
+delimiter //
+create procedure cats ()
+begin
+    show tables;
+end//
+delimiter ;
 -- snacks---------------------------------------------------------;
 
     create table snacks(
@@ -272,7 +278,22 @@ use shop;
     ("TO11","Marvel Action Figures Set",0.0),
     ("TO12","Monopoly Electronic Banking",0.0);
 
-
 -- .r 
+-- accounts-------------------------------------------------------;
+    create table accounts(
+        Name varchar(25),
+        Email_ID varchar(50) primary key,
+        Password varchar(25)
+    );
 
-teh
+
+-- cart-----------------------------------------------------------;
+    create table cart(
+        Product_ID char(4),
+        Product_Name varchar(25),
+        Quantity int,
+        Price decimal(10,2),
+        Total_Price decimal(10,2)
+    );
+
+-- .y
