@@ -11,21 +11,21 @@ use shop;
     );
 
     insert into snacks values
-    ("SN01","Lays Chilli",0.0),
-    ("SN02","Lays Salted",0.0),
-    ("SN03","Lays Tomato Ketchup",0.0),
-    ("SN04","Cheetos Flamming Hot",0.0),
-    ("SN05","Cheetos Cheese",0.0),
-    ("SN06","Dorittos",0.0),
-    ("SN07","Sunbites",0.0),
-    ("SN08","Pringles",0.0)
-    ("SN09","Tiffany Finns Chips",0.0),
+    ("SN01","Lays Chilli",2.55),
+    ("SN02","Lays Salted",2.55),
+    ("SN03","Lays Tomato Ketchup",2.95),
+    ("SN04","Cheetos Flamming Hot",2.95),
+    ("SN05","Cheetos Cheese",2.95),
+    ("SN06","Dorittos",3.15),
+    ("SN07","Sunbites",3.25),
+    ("SN08","Pringles",5.25),
+    ("SN09","Tiffany Finns Chips",3.55),
     ("SN10","Tiffany Dlight Choc Chips",10.99),
     ("SN11","Britannia Marie Gold",10.99),
     ("SN12","Britannia Milk Rusk",9.99),
     ("SN13","Britannia Wheat Rusk",9.99),
     ("SN14","Britannia Bourbn Cream",9.99),
-    ("SN15","Tiffany Cookie Monsta Mini",8.99),;
+    ("SN15","Tiffany Cookie Monsta Mini",8.99);
 
 --| fruits |---------------------------------------------------------;
 
@@ -36,30 +36,30 @@ use shop;
     );
 
     insert into fruits values
-    ("FR01","Green Apple",0.0),
-    ("FR02","Red Apple",0.0),
-    ("FR03","Orange",0.0),
-    ("FR04","Lemon",0.0),
-    ("FR05","Mango",0.0),
-    ("FR06","Pineapple",0.0),
-    ("FR07","Banana",0.0),
-    ("FR08","Kiwi",0.0),
+    ("FR01","Green Apple per Kg",5.95),
+    ("FR02","Red Apple per Kg",5.95),
+    ("FR03","Orange per Kg",3.95),
+    ("FR04","Lemon per Kg",3.55),
+    ("FR05","Mango per Kg",4.0),
+    ("FR06","Pineapple",6.95),
+    ("FR07","Banana per Kg",4.55),
+    ("FR08","Kiwi per Kg",3.25),
     ("FR09","Dates",0.0),
-    ("FR10","Litchi",0.0),
-    ("FR11","Pomegranate",0.0),
-    ("FR12","Avocado",0.0),
-    ("FR13","strawberry",0.0),
-    ("FR14","Grapes",0.0),
-    ("FR15","Papaya",0.0),
-    ("FR16","Guava",0.0),
-    ("FR17","Coconut",0.0),
-    ("FR18","Watermelon",0.0),
-    ("FR19","Blackberry",0.0),
-    ("FR20","Blueberry",0.0),
-    ("FR21","Cherry",0.0),
-    ("FR22","Fig",0.0),
-    ("FR23","Jackfruit",0.0),
-    ("FR24","Raspberry",0.0),;
+    ("FR10","Litchi per Kg",3.25),
+    ("FR11","Pomegranate per Kg",4.55),
+    ("FR12","Avocado per Kg",5.55),
+    ("FR13","strawberry 500g",3.25),
+    ("FR14","Grapes per Kg",5.95),
+    ("FR15","Papaya per Kg",6.25),
+    ("FR16","Guava per Kg",3.55),
+    ("FR17","Coconut per Kg",6.95),
+    ("FR18","Watermelon per Kg",7.65),
+    ("FR19","Blackberry 500g",4.25),
+    ("FR20","Blueberry 500g",4.25),
+    ("FR21","Cherry 250g",2.35),
+    ("FR22","Fig 250g",3.15),
+    ("FR23","Jackfruit per Kg",8.95),
+    ("FR24","Raspberry 500g",3.95);
 
 --| veg |------------------------------------------------------------;
 
@@ -70,35 +70,36 @@ use shop;
     );
 
     insert into veg values
-    ("VE01","Red Chilli",0.0),
-    ("VE02","Green Chilli",0.0),
-    ("VE03","Green Capsicum",0.0),
-    ("VE04","Red Capsicum",0.0),
-    ("VE05","Onion",0.0),
-    ("VE06","Tomato",0.0),
-    ("VE07","Potato",0.0),
-    ("VE08","Cucumber",0.0),
-    ("VE09","Cabbage",0.0),
-    ("VE10","Garlic",0.0),
-    ("VE11","Ginger",0.0),
-    ("VE12","Carrot",0.0),
-    ("VE13","Eggplant",0.0),
-    ("VE14","Yellow Pumbkin",0.0),
-    ("VE15","White Pumbkin",0.0),
-    ("VE16","Radish",0.0),
-    ("VE17","Broccoli",0.0),
-    ("VE18","Pea",0.0),
-    ("VE19","Sweet Potato",0.0),
-    ("VE20","Mushroom",0.0),
-    ("VE21","Spinach",0.0),
-    ("VE22","Kale",0.0),
-    ("VE23","Green Beans",0.0),
-    ("VE24","Lettuce",0.0),
-    ("VE25","Bitter Gourd",0.0),
-    ("VE26","Coriander Leaves",0.0),
-    ("VE27","Curry Leaves",0.0),
-    ("VE28","Beetroot",0.0),
-    ("VE29","Olives",0.0);
+    ("VE01","Red Chilli per Kg",5.55),
+    ("VE02","Green Chilli per Kg",3.95),
+    ("VE03","Green Capsicum per Kg",4.55),
+    ("VE04","Yellow Capsicum per Kg",4.55),
+    ("VE05","Red Capsicum per Kg",4.55),
+    ("VE06","Onion per Kg",5.45),
+    ("VE07","Tomato per Kg",3.95),
+    ("VE08","Potato per Kg",4.15),
+    ("VE09","Cucumber per Kg",3.65),
+    ("VE10","Cabbage per Kg",7.90),
+    ("VE11","Garlic per Kg",3.25),
+    ("VE12","Ginger per Kg",3.75),
+    ("VE13","Carrot per Kg",4.35),
+    ("VE14","Eggplant per Kg",4.85),
+    ("VE15","Yellow Pumbkin per Kg",5.15),
+    ("VE16","White Pumbkin per Kg",4.95),
+    ("VE17","Radish per Kg",4.15),
+    ("VE18","Broccoli per Kg",3.95),
+    ("VE19","Pea per Kg",2.90),
+    ("VE20","Sweet Potato per Kg",4.55),
+    ("VE21","Mushroom 500g",5.95),
+    ("VE22","Spinach",4.25),
+    ("VE23","Kale",4.15),
+    ("VE24","Green Beans per Kg",4.45),
+    ("VE25","Lettuce",4.55),
+    ("VE26","Bitter Gourd 500g",3.35),
+    ("VE27","Coriander Leaves",4.35),
+    ("VE28","Curry Leaves packet",1.0),
+    ("VE29","Beetroot per Kg",4.25),
+    ("VE30","Olives 250g",3.25);
 
 --| fish |-----------------------------------------------------------;
 
@@ -109,12 +110,12 @@ use shop;
     );
 
     insert into fish values
-    ("FI01","Sardines",0.1),
-    ("FI02","Prawns",0.23),
-    ("FI03","Salmon",0.17),
-    ("FI04","Sheri",0.15),
+    ("FI01","Sardines",6.15),
+    ("FI02","Prawns",9.95),
+    ("FI03","Salmon",8.55),
+    ("FI04","Sheri",9.15),
     ("FI05","Tuna 1kg",9.99),
-    ("FI06","Seema 1kg",13.99),
+    ("FI06","Seema 1kg",13.99);
 
 --| bakery |---------------------------------------------------------;
 
@@ -125,26 +126,26 @@ use shop;
     );
 
     insert into bakery values
-    ("BA01","Veg Samosa",0.0),
-    ("BA02","Chicken Samosa",0.0),
-    ("BA03","Punjabi Samosa",0.0),
-    ("BA04","Choco Cream Cake",0.0),
-    ("BA05","Dark Choco Cream Cake",0.0),
-    ("BA06","White Cream Cake",0.0),
-    ("BA07","Black Forest Cake",0.0),
-    ("BA08","White Forest Cake",0.0),
-    ("BA09","Red Velvet Cake",0.0),
-    ("BA10","Honey Cake",0.0),
-    ("BA11","Veg Puffs",0.0),
-    ("BA12","Chicken Puffs",0.0),
-    ("BA13","Egg Puffs",0.0),
-    ("BA14","Chicken Cutlet",0.0),
-    ("BA15","Veg Cutlet",0.0),
-    ("BA16","Bread",0.0),
-    ("BA17","Milk Bread",0.0),
-    ("BA18","Brown Bread",0.0),
-    ("BA19","Biscut",0.0),
-    ("BA20","Cupcakes",0.0)
+    ("BA01","Veg Samosa",1.15),
+    ("BA02","Chicken Samosa",1.15),
+    ("BA03","Punjabi Samosa",2.50),
+    ("BA04","Choco Cream Cake per Kg",30.0),
+    ("BA05","Dark Choco Cream Cake per Kg"30.0),
+    ("BA06","White Cream Cake per Kg",40.0),
+    ("BA07","Black Forest Cake per Kg",60.0),
+    ("BA08","White Forest Cake",60.0),
+    ("BA09","Red Velvet Cake per Kg",75.0),
+    ("BA10","Honey Cake per Kg",15.0),
+    ("BA11","Veg Puffs",2.50),
+    ("BA12","Chicken Puffs",2.50),
+    ("BA13","Egg Puffs",2.50),
+    ("BA14","Chicken Cutlet",2.15),
+    ("BA15","Veg Cutlet",2.15),
+    ("BA16","Bread",5.0),
+    ("BA17","Milk Bread",5.15),
+    ("BA18","Brown Bread",5.15),
+    ("BA19","Coockie",1.0),
+    ("BA20","Cupcakes",1.50),
     ("BA21","Mini Doughnuts 12s",9.50),;
 
 --| drinks |---------------------------------------------------------;
@@ -156,28 +157,22 @@ use shop;
     );
 
     insert into drinks values
-    ("DR01","Red Bull Energy Drink 355 ml",0.0),
-    ("DR02","Red Bull Energy Drink 250 ml",0.0),
-    ("DR03","Lancor Mango Juice 180 ml",0.0),
-    ("DR04","Lancor Apple Juice 180 ml",0.0),
-    ("DR05","Lancor Choclate Milk 180 ml",0.0),
-    ("DR06","Bottled Drinking Water 500 ml",0.0),
-    ("DR07","Bottled Drinking Water 1.5 L",0.0),
-    ("DR08","Mountain Dew 155 ml",0.0),
-    ("DR09","Seven Up 155 ml",0.0),
-    ("DR10","Pepsi 155 ml",0.0),
-    ("DR11","Sprite 330 ml",0.0),
-    ("DR12","Al Rawabi Milk 500 ml",0.0),
-    ("DR13","Al Rawabi Milk 1 L",0.0),
-    ("DR14","Al Rawabi Milk 2 L",0.0),
-    ("DR15","Almarai Milk 500 ml",0.0),
-    ("DR16","Almarai Milk 1 L",0.0),
-    ("DR17","Almarai Milk 2 l",0.0)
-    ("DR18","Fresh Apple Juice 500ml",0.0)
-    ("DR19","Fresh Watermelon Juice 500ml",0.0)
-    ("DR20","Fresh Mango Juice 500ml",0.0)
-    ("DR21","Fresh Lemonade 500ml",0.0)
-    ("DR22","Fresh Sugarcane Juice 500ml",0.0);
+    ("DR01","Red Bull Energy Drink 355 ml",2.50),
+    ("DR02","Red Bull Energy Drink 250 ml",2.0),
+    ("DR03","Lancor Mango Juice 180 ml",1.50),
+    ("DR04","Lancor Apple Juice 180 ml",1.50),
+    ("DR05","Lancor Choclate Milk 180 ml",1.50),
+    ("DR06","Bottled Drinking Water 500 ml",1.50),
+    ("DR07","Bottled Drinking Water 1.5 L",3.95),
+    ("DR08","Mountain Dew 155 ml",1.50),
+    ("DR09","Seven Up 155 ml",1.90),
+    ("DR10","Pepsi 155 ml",2.0),
+    ("DR11","Sprite 330 ml",2.15),
+    ("DR12","Fresh Apple Juice 500ml",2.50),
+    ("DR13","Fresh Watermelon Juice 500ml",2.50),
+    ("DR14","Fresh Mango Juice 500ml",2.50),
+    ("DR15","Fresh Lemonade 500ml",2.50),
+    ("DR16","Fresh Sugarcane Juice 500ml",2.50);
 
 --| medicine |-------------------------------------------------------;
 
@@ -188,9 +183,9 @@ use shop;
     );
 
     insert into medicine values
-    ("ME01","Hansaplast Plastic Bandage",0.0),
-    ("ME02","Hansaplast Aqua Protector Bandage",0.0),
-    ("ME03","Baby Ointment",0.0);
+    ("ME01","Hansaplast Plastic Bandage",1.90),
+    ("ME02","Hansaplast Aqua Protector Bandage",2.50),
+    ("ME03","Baby Ointment",3.50);
 
 --| utensils |-------------------------------------------------------;
 
@@ -201,19 +196,19 @@ use shop;
     );
 
     insert into utensils values
-    ("UT01","Insulated Plastic Flask",0.0),
-    ("UT02","Measuring Cup",0.0),
-    ("UT03","Iron Fry Pan",0.0),
-    ("UT04","Stainless Steal Saucepan",0.0),
-    ("UT05","Coffee Maker",0.0),
-    ("UT06","Dinner Plate",0.0),
-    ("UT07","Plastic Plates",0.0),
-    ("UT08","Cutlery Wooden Block",0.0),
-    ("UT09","Steel Spoons",0.0),
-    ("UT10","Steel Turner",0.0),
-    ("UT11","Apple Slicer",0.0),
-    ("UT12","Melon Slicer",0.0)
-    ("UT13","Prestige Cookware Set 7 pc",199.0),;
+    ("UT01","Insulated Plastic Flask",6.50),
+    ("UT02","Measuring Cup",4.95),
+    ("UT03","Iron Fry Pan",15.50),
+    ("UT04","Stainless Steal Saucepan",23.95),
+    ("UT05","Coffee Maker",25.80),
+    ("UT06","Dinner Plate",5.35),
+    ("UT07","Plastic Plates",4.20),
+    ("UT08","Cutlery Wooden Block",4.15),
+    ("UT09","Steel Spoons",2.40),
+    ("UT10","Steel Turner",3.95),
+    ("UT11","Apple Slicer",15.95),
+    ("UT12","Melon Slicer",18.15),
+    ("UT13","Prestige Cookware Set 7 pc",199.0);
 
 --| computers |------------------------------------------------------;
 
@@ -224,21 +219,21 @@ use shop;
     );
 
     insert into computers values
-    ("CO01","Apple Macbook Air 2020",0.0),
-    ("CO02","Dell XPS",0.0),
-    ("CO03","Acer Aspire 3",0.0),
-    ("CO04","Asus Notebook",0.0),
-    ("CO05","Lenovo Yoga",0.0),
-    ("CO06","HP Envy",0.0),
-    ("CO07","Microsoft Surface",0.0),
-    ("CO08","Microsoft Surface Pro",0.0),
-    ("CO06","Lenovo Flex 5",0.0)
-    ("CO06","Lenovo Ideapad Gaming 3",0.0),
-    ("CO07","Asus Notebook X515",1799.0),
-    ("CO08","Lenovo Notebook Ideapad 3",2499.0),
-    ("CO09","Huawei Notebook D14",2499.0),
-    ("CO10","Acer Notebook Nitro 5",3999.0),
-    ("CO11","Lenovo Notebook Legion 5",4799.0);
+    ("CO01","Apple Macbook Air 2020",5499.0),
+    ("CO02","Dell XPS",4199.0),
+    ("CO03","Acer Aspire 3",2599.0),
+    ("CO04","Asus Vivobook",2099.0),
+    ("CO05","Lenovo Yoga 730",4999.0),
+    ("CO06","HP Envy X360",3999.0),
+    ("CO07","Microsoft Surface Go",2399.0),
+    ("CO08","Microsoft Surface Pro Plus",5999.0),
+    ("CO09","Lenovo Flex 5",3199.0)
+    ("CO10","Lenovo Ideapad Gaming 3",2955.0),
+    ("CO11","Asus Notebook X515",1799.0),
+    ("CO12","Lenovo Notebook Ideapad 3",2499.0),
+    ("CO13","Huawei Notebook D14",2499.0),
+    ("CO14","Acer Notebook Nitro 5",3999.0),
+    ("CO15","Lenovo Notebook Legion 5",4799.0);
 
 --| phones |---------------------------------------------------------;
 
@@ -255,9 +250,9 @@ use shop;
     ("PH04","Apple Iphone 11",0.0),
     ("PH05","Apple Iphone 11 Pro Max",0.0),
     ("PH06","Apple Iphone X",0.0),
-    ("PH07","Samsung Galaxy S21 Ultra",0.0),
-    ("PH08","Samsung Galaxy S21+",0.0),
-    ("PH09","Samsung Galaxy S21",0.0),
+    ("PH07","Samsung Galaxy S21 Ultra",4999.0),
+    ("PH08","Samsung Galaxy S21+",3599.0),
+    ("PH09","Samsung Galaxy S21",3200.0),
     ("PH10","Samsung Galaxy S20 Ultra",0.0),
     ("PH11","Samsung Galaxy S20",0.0),
     ("PH12","Samsung Galaxy Note 20 Ultra",0.0),
@@ -266,8 +261,8 @@ use shop;
     ("PH15","Samsung Galaxy Note 10",0.0),
     ("PH16","Samsung Galaxy Note 8",0.0),
     ("PH17","Nokia X10",0.0),
-    ("PH18","One Plus 9 Pro",0.0),
-    ("PH19","One Plus 9",0.0),
+    ("PH18","One Plus 9 Pro",3500.0),
+    ("PH19","One Plus 9",2500.0),
     ("PH20","One Plus 8 Pro",0.0),
     ("PH21","One Plus 8t",0.0),
     ("PH22","One Plus 8",0.0),
@@ -323,18 +318,18 @@ use shop;
     );
 
     insert into tvs values
-    ("TV01","LG Smart TV 8K",0.0),
-    ("TV02","LG Smart TV 8K",0.0),
-    ("TV03","Samsung Smart TV 8K QLED",0.0),
-    ("TV04","Samsung Smart TV 4K SUHD",0.0),
-    ("TV05","Samsung Smart TV 4K Curved",0.0),
-    ("TV06","Samsung Smart TV 4K UHD",0.0),
-    ("TV07","Sony TV 8K SUHD",0.0),
-    ("TV08","Sony TV 4K UHD",0.0),
-    ("TV09","Philips Smart TV 4K UHD",0.0)
-    ("TV10","TCL UHD Android TV 75P718",7604.0),
+    ("TV01","LG Smart TV 8K",7499.0),
+    ("TV02","LG Smart TV 4K",3899.0),
+    ("TV03","Samsung Smart TV 8K QLED",8599.0),
+    ("TV04","Samsung Smart TV 4K SUHD",5999.0),
+    ("TV05","Samsung Smart TV 4K Curved",6599.0),
+    ("TV06","Samsung Smart TV 4K UHD",4999.0),
+    ("TV07","Sony TV 8K SUHD",7099.0),
+    ("TV08","Sony TV 4K UHD",4699.0),
+    ("TV09","Philips Smart TV 4K UHD",4899.0)
+    ("TV10","TCL UHD Android TV 75P718",5604.0),
     ("TV11","TCl UHD Android TV 50P618",1749.0),
-    ("TV12","Samsung UHD TV",0.0),
+    ("TV12","Samsung UHD TV",3099.0),
     ("TV13","LG UHD TV",2999.0),
     ("TV14","LG OLED TV",8499.0),;
     
@@ -376,11 +371,11 @@ use shop;
     ("MI06","Al Rawabi Strawberry Milk 500ml",0.0),
     ("MI07","Almarie Chocolate Milk 500ml",0.0),
     ("MI08","Al Rawabi Chocolate Milk 500ml",0.0),
-    ("MI09","Almarie Milk 1L",0.0),
-    ("MI10","Almarine Milk 1L Low Fat",0.0),
-    ("MI11","Al Rawabi Milk 1L",0.0),
-    ("MI12","Al Rawabi Milk 1L Low fat",0.0),
-    ("MI13","Almarie Milk 2L",0.0),
+    ("MI09","Almarie Milk 1L",10.0),
+    ("MI10","Almarine Milk 1L Low Fat",11.0),
+    ("MI11","Al Rawabi Milk 1L",10.0),
+    ("MI12","Al Rawabi Milk 1L Low fat",11.0),
+    ("MI13","Almarie Milk 2L",.0),
     ("MI14","Al Rawabi Milk 2L",0.0),
     ("MI15","Almarie Laban 1L",0.0),
     ("MI16","Al Rawabi Laban 1L",0.0),
@@ -415,6 +410,17 @@ use shop;
     ("MI45","Puck Slice Cheese",24.0),
     ("MI46","Kiri Al Jarra Spreadable Cream Cheese",32.0),
     ("MI47","Solgnon Goat Plain Cheese",17.0);
+
+--| oil |------------------------------------------------------------;
+
+    create table oil(
+        ID char(4) primary,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    insert into oil values
+    ("OI00","",0.0);
 
 -- .r
 
