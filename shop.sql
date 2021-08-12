@@ -2,9 +2,6 @@ drop database shop;
 create database shop;
 use shop;
 
-<<<<<<< HEAD
---| snacks |---------------------------------------------------------;
-=======
 delimiter //
 create procedure cats ()
 begin
@@ -12,7 +9,6 @@ begin
 end//
 delimiter ;
 -- snacks---------------------------------------------------------;
->>>>>>> bd612bda6bfcc5de06c108546966e928db194b37
 
     create table snacks(
         ID char(4) primary key,
@@ -37,7 +33,7 @@ delimiter ;
     ("SN14","Britannia Bourbn Cream",9.99),
     ("SN15","Tiffany Cookie Monsta Mini",8.99);
 
---| fruits |---------------------------------------------------------;
+-- fruits ---------------------------------------------------------;
 
     create table fruits(
         ID char(4) primary key,
@@ -71,7 +67,7 @@ delimiter ;
     ("FR23","Jackfruit per Kg",8.95),
     ("FR24","Raspberry 500g",3.95);
 
---| veg |------------------------------------------------------------;
+-- veg ------------------------------------------------------------;
 
     create table veg(
         ID char(4) primary key,
@@ -111,7 +107,7 @@ delimiter ;
     ("VE29","Beetroot per Kg",4.25),
     ("VE30","Olives 250g",3.25);
 
---| fish |-----------------------------------------------------------;
+-- fish -----------------------------------------------------------;
 
     create table fish(
         ID char(4) primary key,
@@ -127,7 +123,7 @@ delimiter ;
     ("FI05","Tuna 1kg",9.99),
     ("FI06","Seema 1kg",13.99);
 
---| bakery |---------------------------------------------------------;
+-- bakery ---------------------------------------------------------;
 
     create table bakery(
         ID char(4) primary key,
@@ -158,7 +154,7 @@ delimiter ;
     ("BA20","Cupcakes",1.50),
     ("BA21","Mini Doughnuts 12s",9.50),;
 
---| drinks |---------------------------------------------------------;
+-- drinks ---------------------------------------------------------;
 
     create table drinks(
         ID char(4) primary key,
@@ -184,7 +180,7 @@ delimiter ;
     ("DR15","Fresh Lemonade 500ml",2.50),
     ("DR16","Fresh Sugarcane Juice 500ml",2.50);
 
---| medicine |-------------------------------------------------------;
+-- medicine -------------------------------------------------------;
 
     create table medicine(
         ID char(4) primary key,
@@ -197,7 +193,7 @@ delimiter ;
     ("ME02","Hansaplast Aqua Protector Bandage",2.50),
     ("ME03","Baby Ointment",3.50);
 
---| utensils |-------------------------------------------------------;
+-- utensils -------------------------------------------------------;
 
     create table utensils(
         ID char(4) primary key,
@@ -206,7 +202,7 @@ delimiter ;
     );
 
     insert into utensils values
-<<<<<<< HEAD
+
     ("UT01","Insulated Plastic Flask",6.50),
     ("UT02","Measuring Cup",4.95),
     ("UT03","Iron Fry Pan",15.50),
@@ -224,7 +220,8 @@ delimiter ;
 
 
 -- computers------------------------------------------------------;
->>>>>>> bd612bda6bfcc5de06c108546966e928db194b37
+
+
 
     create table computers(
         ID char(4) primary key,
@@ -249,7 +246,7 @@ delimiter ;
     ("CO14","Acer Notebook Nitro 5",3999.0),
     ("CO15","Lenovo Notebook Legion 5",4799.0);
 
---| phones |---------------------------------------------------------;
+-- phones ---------------------------------------------------------;
 
     create table phones(
         ID char(4) primary key,
@@ -260,7 +257,6 @@ delimiter ;
     insert into phones values
     ("PH01","Vivo",0.0),
     ("PH02","Apple Iphone 12",0.0),
-<<<<<<< HEAD
     ("PH03","Apple Iphone 12 Pro Max",0.0),
     ("PH04","Apple Iphone 11",0.0),
     ("PH05","Apple Iphone 11 Pro Max",0.0),
@@ -288,37 +284,14 @@ delimiter ;
     ("PH27","Samsung A22 LTE",849.0),
     ("PH28","Xiaomi Poco X3 LTE",1099.0);
 
---| electronic_accessories |-----------------------------------------;
+-- electronic_accessories -----------------------------------------;
 
     create table electronic_accessories(
-=======
-    ("PH03","Apple Iphone 11",0.0),
-    ("PH04","Apple Iphone X",0.0),
-    ("PH05","Samsung Galaxy S21 Ultra",0.0),
-    ("PH06","Samsung Galaxy S21 ",0.0),
-    ("PH07","Samsung Galaxy S20 Ultra",0.0),
-    ("PH08","Samsung Galaxy S20",0.0),
-    ("PH09","Samsung Galaxy Note 20 Ultra",0.0),
-    ("PH10","Samsung Galaxy Note 20 ",0.0),
-    ("PH11","Samsung Galaxy Note 10 Ultra",0.0),
-    ("PH12","Samsung Galaxy Note 10",0.0),
-    ("PH13","Samsung Galaxy Note 8",0.0),
-    ("PH14","Nokia ",0.0),
-    ("PH15","Huawei",0.0),
-    ("PH16","Motorola",0.0),
-    ("PH17","Xiaomi",0.0),
-    ("PH18","Oppo",0.0);
-
--- electronic_accesories------------------------------------------;
-
-    create table electronic_accesories(
->>>>>>> bd612bda6bfcc5de06c108546966e928db194b37
         ID char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
     );
 
-<<<<<<< HEAD
     insert into electronic_accessories values
     ("OD01","Sony Bluetooth Headset",0.0),
     ("OD02","Bose Wireless Earpiece",0.0),
@@ -347,26 +320,7 @@ delimiter ;
     ("OD25","X.Cell Bluetooth Earpods Soul 7 bundle",139.0),
     ("OD26","JBL Sound Bar 2,1 Deep Bass",1199.0),;
 
---| tvs |------------------------------------------------------------;
-=======
-    insert into electronic_accesories values
-    ("EL01","Sony Bluetooth Headset",0.0),
-    ("EL02","Bose Wireless Earpiece",0.0),
-    ("EL03","JBL Wireless Speaker",0.0),
-    ("EL04","Samsung Galaxy Smart Tag",0.0),
-    ("EL05","Apple Air Tag",0.0),
-    ("EL06","Micro SD Card 32/64/128/256/1TB (GB)",0.0),
-    ("EL07","Toshiba External Hard Disk",0.0),
-    ("EL08","Dell Gaming Monitor",0.0),
-    ("EL09","Toshiba Gaming Monitor",0.0),
-    ("EL10","Benq Gaming Monitor",0.0),
-    ("EL11","Logitech Webcam",0.0),
-    ("EL12","Logitech Wireless Mouse and Keypad Small",0.0),
-    ("EL13","Logitech Wireless Mouse and Keypad Big",0.0),
-    ("EL14","Dell Laptop Back Pack",0.0);
-
--- tvs------------------------------------------------------------;
->>>>>>> bd612bda6bfcc5de06c108546966e928db194b37
+-- tvs ------------------------------------------------------------;
 
     create table tvs(
         ID char(4) primary key,
@@ -390,7 +344,7 @@ delimiter ;
     ("TV13","LG UHD TV",2999.0),
     ("TV14","LG OLED TV",8499.0),;
     
---| toys |-----------------------------------------------------------;
+-- toys -----------------------------------------------------------;
 
     create table toys(
         ID char(4) primary key,
@@ -412,8 +366,7 @@ delimiter ;
     ("TO11","Marvel Action Figures Set",0.0),
     ("TO12","Monopoly Electronic Banking",0.0);
 
-<<<<<<< HEAD
---| milk |-----------------------------------------------------------;
+-- milk -----------------------------------------------------------;
     create table milk(
         ID char(4) primary key,
         Name varchar(50),
@@ -469,7 +422,7 @@ delimiter ;
     ("MI46","Kiri Al Jarra Spreadable Cream Cheese",32.0),
     ("MI47","Solgnon Goat Plain Cheese",17.0);
 
---| oil |------------------------------------------------------------;
+-- oil ------------------------------------------------------------;
 
     create table oil(
         ID char(4) primary,
@@ -482,7 +435,6 @@ delimiter ;
 
 -- .r
 
-=======
 -- .r 
 -- accounts-------------------------------------------------------;
     create table accounts(
@@ -498,8 +450,6 @@ delimiter ;
         Product_Name varchar(25),
         Quantity int,
         Price decimal(10,2),
-        Total_Price decimal(10,2)
     );
 
 -- .y
->>>>>>> bd612bda6bfcc5de06c108546966e928db194b37
