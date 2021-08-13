@@ -8,7 +8,7 @@ begin
     show tables;
 end//
 delimiter ;
--- snacks ----------------------------------------------------------;
+-- snacks ---------------------------------------------------------;
 
     create table snacks(
         ID char(4) primary key,
@@ -33,7 +33,7 @@ delimiter ;
     ("SN14","Britannia Bourbn Cream",9.99),
     ("SN15","Tiffany Cookie Monsta Mini",8.99);
 
--- fruits ----------------------------------------------------------;
+-- fruits ---------------------------------------------------------;
 
     create table fruits(
         ID char(4) primary key,
@@ -67,7 +67,7 @@ delimiter ;
     ("FR23","Jackfruit per Kg",8.95),
     ("FR24","Raspberry 500g",3.95);
 
--- veg -------------------------------------------------------------;
+-- veg ------------------------------------------------------------;
 
     create table veg(
         ID char(4) primary key,
@@ -107,7 +107,7 @@ delimiter ;
     ("VE29","Beetroot per Kg",4.25),
     ("VE30","Olives 250g",3.25);
 
--- fish ------------------------------------------------------------;
+-- fish -----------------------------------------------------------;
 
     create table fish(
         ID char(4) primary key,
@@ -123,7 +123,7 @@ delimiter ;
     ("FI05","Tuna 1kg",9.99),
     ("FI06","Seema 1kg",13.99);
 
--- bakery ----------------------------------------------------------;
+-- bakery ---------------------------------------------------------;
 
     create table bakery(
         ID char(4) primary key,
@@ -154,7 +154,7 @@ delimiter ;
     ("BA20","Cupcakes",1.50),
     ("BA21","Mini Doughnuts 12s",9.50),;
 
--- drinks ----------------------------------------------------------;
+-- drinks ---------------------------------------------------------;
 
     create table drinks(
         ID char(4) primary key,
@@ -180,7 +180,7 @@ delimiter ;
     ("DR15","Fresh Lemonade 500ml",2.50),
     ("DR16","Fresh Sugarcane Juice 500ml",2.50);
 
--- medicine --------------------------------------------------------;
+-- medicine -------------------------------------------------------;
 
     create table medicine(
         ID char(4) primary key,
@@ -193,7 +193,7 @@ delimiter ;
     ("ME02","Hansaplast Aqua Protector Bandage",2.50),
     ("ME03","Baby Ointment",3.50);
 
--- utensils --------------------------------------------------------;
+-- utensils -------------------------------------------------------;
 
     create table utensils(
         ID char(4) primary key,
@@ -219,7 +219,7 @@ delimiter ;
 
 
 
--- computers -------------------------------------------------------;
+-- computers ------------------------------------------------------;
 
 
 
@@ -246,7 +246,7 @@ delimiter ;
     ("CO14","Acer Notebook Nitro 5",3999.0),
     ("CO15","Lenovo Notebook Legion 5",4799.0);
 
--- phones ----------------------------------------------------------;
+-- phones ---------------------------------------------------------;
 
     create table phones(
         ID char(4) primary key,
@@ -284,7 +284,7 @@ delimiter ;
     ("PH27","Samsung A22 LTE",849.0),
     ("PH28","Xiaomi Poco X3 LTE",1099.0);
 
--- electronic_accessories ------------------------------------------;
+-- electronic_accessories -----------------------------------------;
 
     create table electronic_accessories(
         ID char(4) primary key,
@@ -317,7 +317,7 @@ delimiter ;
     ("OD22","X.Cell Bluetooth Earpods Soul 7 bundle",139.0),
     ("OD23","JBL Sound Bar 2,1 Deep Bass",1199.0);
 
--- tvs -------------------------------------------------------------;
+-- tvs ------------------------------------------------------------;
 
     create table tvs(
         ID char(4) primary key,
@@ -341,7 +341,7 @@ delimiter ;
     ("TV13","LG UHD TV",2999.0),
     ("TV14","LG OLED TV",8499.0);
     
--- toys ------------------------------------------------------------;
+-- toys -----------------------------------------------------------;
 
     create table toys(
         ID char(4) primary key,
@@ -363,7 +363,7 @@ delimiter ;
     ("TO11","Marvel Action Figures Set",20.0),
     ("TO12","Monopoly Electronic Banking",150.0);
 
--- milk ------------------------------------------------------------;
+-- milk -----------------------------------------------------------;
     create table milk(
         ID char(4) primary key,
         Name varchar(50),
@@ -418,27 +418,27 @@ delimiter ;
     ("MI45","Puck Slice Cheese",24.0),
     ("MI46","Kiri Al Jarra Spreadable Cream Cheese",32.0),
     ("MI47","Solgnon Goat Plain Cheese",17.0)
-    ("MI00","Amul Pure Ghee 425g",16.85),
-    ("MI00","Qbb Pure Ghee 400g",17.45),
-    ("MI00","Qbb Pure Ghee 800g",28.70),
-    ("MI00","Qbb Pure Ghee 1.6Kg",59.70),
-    ("MI00","Gowardhan Pure Cow Ghee 905g",35.70),
-    ("MI00","Ashirvaad Svasti Pure Cow Ghee 200ml",15.0),
-    ("MI00","Ashirvaad Svasti Pure Cow Ghee 500ml",25.0),
-    ("MI00","Ashirvaad Svasti Pure Cow Ghee 1L",48.50),
-    ("MI00","Nambisan's Pure Ghee Jar 200ml",10.45),
-    ("MI00","Nambisan's Pure Ghee Jar 1L",41.95),
-    ("MI00","Verka Desi Ghee 900g",32.0),
-    ("MI00","RKG Classic Pure Cow Ghee 100ml",6.0),
-    ("MI00","RKG Pure Cow Ghee 200ml",9.95),
-    ("MI00","RKG Pure Cow Ghee 1L",44.95),
-    ("MI00","Almarai Ghee Butter 400g",19.85),
-    ("MI00","Almarai Ghee Butter 800g",30.60),
-    ("MI00","Almarai Ghee Butter 1.6Kg",66.40),
-    ("MI00","Sakthi Agmark Ghee 500ml",21.65),
-    ("MI00","GRB Pure Ghee 200ml",9.50);
+    ("MI48","Amul Pure Ghee 425g",16.85),
+    ("MI49","Qbb Pure Ghee 400g",17.45),
+    ("MI50","Qbb Pure Ghee 800g",28.70),
+    ("MI51","Qbb Pure Ghee 1.6Kg",59.70),
+    ("MI52","Gowardhan Pure Cow Ghee 905g",35.70),
+    ("MI53","Ashirvaad Svasti Pure Cow Ghee 200ml",15.0),
+    ("MI54","Ashirvaad Svasti Pure Cow Ghee 500ml",25.0),
+    ("MI55","Ashirvaad Svasti Pure Cow Ghee 1L",48.50),
+    ("MI56","Nambisan's Pure Ghee Jar 200ml",10.45),
+    ("MI57","Nambisan's Pure Ghee Jar 1L",41.95),
+    ("MI58","Verka Desi Ghee 900g",32.0),
+    ("MI59","RKG Classic Pure Cow Ghee 100ml",6.0),
+    ("MI60","RKG Pure Cow Ghee 200ml",9.95),
+    ("MI61","RKG Pure Cow Ghee 1L",44.95),
+    ("MI62","Almarai Ghee Butter 400g",19.85),
+    ("MI63","Almarai Ghee Butter 800g",30.60),
+    ("MI64","Almarai Ghee Butter 1.6Kg",66.40),
+    ("MI65","Sakthi Agmark Ghee 500ml",21.65),
+    ("MI66","GRB Pure Ghee 200ml",9.50);
 
--- rice ------------------------------------------------------------;
+-- rice -----------------------------------------------------------;
 
     create table rice(
         ID char(4) primary,
@@ -465,7 +465,7 @@ delimiter ;
     ("RI16","Lucky Gold Indian Sona Masoori Rice 5Kg",18.50),
     ("RI17","Mahamood VVIP Sella Basmati Rice 10Kg",49.50);
 
--- oil -------------------------------------------------------------;
+-- oil ------------------------------------------------------------;
     
     create table oil(
         Id char(4) primary,
@@ -508,6 +508,44 @@ delimiter ;
     ("OI32","Alokozay Sunflower Oil 750ml",7.99),
     ("OI33","Bharat Pure Mustard Oil 5L",58.77),
     ("OI34","Alwedaya Virgin Olive Oil 3L",53.85);
+
+-- sugar ----------------------------------------------------------;
+    
+    create table sugar(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    insert into sugar values
+    ("SU01","Natures Choice Fine Granulated Sugar 500g",2.18),
+    ("SU02","Natures Choice Fine Granulated Sugar 1Kg",3.25),
+    ("SU03","Natures Choice Fine Granulated Sugae 2Kg",7.25),
+    ("SU04","Natures Choice Fine Granulated Sugar 5Kg",16.68),
+    ("SU05","Natures Choice Light Brown Sugar Raw 500g",6.0),
+    ("SU06","Natures Choice Light Brown Sugar Raw 1Kg",9.90),
+    ("SU07","Natures Choice Raw Dark Brown Sugar 500g",5.15),
+    ("SU08","Natures Choice Dark Brown Sugar 1Kg",11.45),
+    ("SU09","Natures Choice Lump Sugar (Misri) 200g",2.0),
+    ("SU10","Green Valley White Sugar 1Kg",4.55),
+    ("SU11","Green Valley Lump Sugar 500g",6.0),
+    ("SU12","Spoonz Pure Refined Cane Sugar 2Kg",5.90),
+    ("SU13","Spoonz Pure Refined Cane Sugar 5Kg",12.61),
+    ("SU14","Mubarak Sugar 5Kg",14.15),
+    ("SU15","SIS Brown Sugar 1Kg",12.0),
+    ("SU16","SIS Icing Sugar 500g",5.75),
+    ("SU17","SIS Raw Sugar 1Kg",11.0),
+    ("SU18","KLF Natural Coconut Sugar 300g",17.50),
+    ("SU19","Down To Earth Organic Coconut Sugar 500g",22.0),
+    ("SU20","Down To Earth Organic Brown Sugar 1Kg",14.38),
+    ("SU21","Purna White Crystal Sugar 1Kg",0.0),
+    ("SU22","Purna White Crystal Sugar 5Kg",16.77),
+    ("SU23","Al-Osra Sugar 2Kg",9.75),
+    ("SU24","Al-Osra Natural Brown Sugar 500g",5.12),
+    ("SU25","Al-Osra Natural Brown Sugar 1Kg",10.10),
+    ("SU26","Daily Fresh Fine Granulated Sugar 2Kg",6.75),
+    ("SU27","Aling Conching Brown Sugar 1Kg",12.50),
+    ("SU28","Safa Sugar Cube 1Kg",6.57);
 
 -- .r
 
