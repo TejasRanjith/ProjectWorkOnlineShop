@@ -8,7 +8,7 @@ begin
     show tables;
 end//
 delimiter ;
--- snacks---------------------------------------------------------;
+-- snacks ----------------------------------------------------------;
 
     create table snacks(
         ID char(4) primary key,
@@ -33,7 +33,7 @@ delimiter ;
     ("SN14","Britannia Bourbn Cream",9.99),
     ("SN15","Tiffany Cookie Monsta Mini",8.99);
 
--- fruits ---------------------------------------------------------;
+-- fruits ----------------------------------------------------------;
 
     create table fruits(
         ID char(4) primary key,
@@ -67,7 +67,7 @@ delimiter ;
     ("FR23","Jackfruit per Kg",8.95),
     ("FR24","Raspberry 500g",3.95);
 
--- veg ------------------------------------------------------------;
+-- veg -------------------------------------------------------------;
 
     create table veg(
         ID char(4) primary key,
@@ -107,7 +107,7 @@ delimiter ;
     ("VE29","Beetroot per Kg",4.25),
     ("VE30","Olives 250g",3.25);
 
--- fish -----------------------------------------------------------;
+-- fish ------------------------------------------------------------;
 
     create table fish(
         ID char(4) primary key,
@@ -123,7 +123,7 @@ delimiter ;
     ("FI05","Tuna 1kg",9.99),
     ("FI06","Seema 1kg",13.99);
 
--- bakery ---------------------------------------------------------;
+-- bakery ----------------------------------------------------------;
 
     create table bakery(
         ID char(4) primary key,
@@ -154,7 +154,7 @@ delimiter ;
     ("BA20","Cupcakes",1.50),
     ("BA21","Mini Doughnuts 12s",9.50),;
 
--- drinks ---------------------------------------------------------;
+-- drinks ----------------------------------------------------------;
 
     create table drinks(
         ID char(4) primary key,
@@ -180,7 +180,7 @@ delimiter ;
     ("DR15","Fresh Lemonade 500ml",2.50),
     ("DR16","Fresh Sugarcane Juice 500ml",2.50);
 
--- medicine -------------------------------------------------------;
+-- medicine --------------------------------------------------------;
 
     create table medicine(
         ID char(4) primary key,
@@ -193,7 +193,7 @@ delimiter ;
     ("ME02","Hansaplast Aqua Protector Bandage",2.50),
     ("ME03","Baby Ointment",3.50);
 
--- utensils -------------------------------------------------------;
+-- utensils --------------------------------------------------------;
 
     create table utensils(
         ID char(4) primary key,
@@ -219,7 +219,7 @@ delimiter ;
 
 
 
--- computers------------------------------------------------------;
+-- computers -------------------------------------------------------;
 
 
 
@@ -246,7 +246,7 @@ delimiter ;
     ("CO14","Acer Notebook Nitro 5",3999.0),
     ("CO15","Lenovo Notebook Legion 5",4799.0);
 
--- phones ---------------------------------------------------------;
+-- phones ----------------------------------------------------------;
 
     create table phones(
         ID char(4) primary key,
@@ -255,36 +255,36 @@ delimiter ;
     );
 
     insert into phones values
-    ("PH01","Vivo",0.0),
-    ("PH02","Apple Iphone 12",0.0),
-    ("PH03","Apple Iphone 12 Pro Max",0.0),
-    ("PH04","Apple Iphone 11",0.0),
-    ("PH05","Apple Iphone 11 Pro Max",0.0),
-    ("PH06","Apple Iphone X",0.0),
+    ("PH01","Vivo Y72",1199.0),
+    ("PH02","Apple Iphone 12",3599.0),
+    ("PH03","Apple Iphone 12 Pro Max",5199.0),
+    ("PH04","Apple Iphone 11",2953.0),
+    ("PH05","Apple Iphone 11 Pro Max",4099.0),
+    ("PH06","Apple Iphone SE",1354.0),
     ("PH07","Samsung Galaxy S21 Ultra",4999.0),
     ("PH08","Samsung Galaxy S21+",3599.0),
     ("PH09","Samsung Galaxy S21",3200.0),
-    ("PH10","Samsung Galaxy S20 Ultra",0.0),
-    ("PH11","Samsung Galaxy S20",0.0),
-    ("PH12","Samsung Galaxy Note 20 Ultra",0.0),
-    ("PH13","Samsung Galaxy Note 20",0.0),
-    ("PH14","Samsung Galaxy Note 10 Ultra",0.0),
-    ("PH15","Samsung Galaxy Note 10",0.0),
-    ("PH16","Samsung Galaxy Note 8",0.0),
-    ("PH17","Nokia X10",0.0),
+    ("PH10","Samsung Galaxy S20 Ultra",3599.0),
+    ("PH11","Samsung Galaxy S20",2699.0),
+    ("PH12","Samsung Galaxy Note 20 Ultra",3599.0),
+    ("PH13","Samsung Galaxy Note 20",3199.0),
+    ("PH14","Samsung Galaxy Note 10 Plus",2038.0),
+    ("PH15","Samsung Galaxy Note 10",2649.0),
+    ("PH16","Samsung Galaxy A32",999.0),
+    ("PH17","Nokia X10",930.0),
     ("PH18","One Plus 9 Pro",3500.0),
     ("PH19","One Plus 9",2500.0),
-    ("PH20","One Plus 8 Pro",0.0),
-    ("PH21","One Plus 8t",0.0),
-    ("PH22","One Plus 8",0.0),
-    ("PH23","Huawei",0.0),
-    ("PH24","",0.0),
-    ("PH25","Xiaomi Mi 10",0.0),
+    ("PH20","One Plus 8 Pro",2365.0),
+    ("PH21","One Plus 8t",2399.0),
+    ("PH22","One Plus 8",1450.0),
+    ("PH23","Huawei Nova 7 SE",1259.0),
+    ("PH24","Huawei P40 Lite",799.0),
+    ("PH25","Xiaomi Mi 10",3099.0),
     ("PH26","Oppo A73 5G",1100.0)
     ("PH27","Samsung A22 LTE",849.0),
     ("PH28","Xiaomi Poco X3 LTE",1099.0);
 
--- electronic_accessories -----------------------------------------;
+-- electronic_accessories ------------------------------------------;
 
     create table electronic_accessories(
         ID char(4) primary key,
@@ -293,34 +293,31 @@ delimiter ;
     );
 
     insert into electronic_accessories values
-    ("OD01","Sony Bluetooth Headset",0.0),
-    ("OD02","Bose Wireless Earpiece",0.0),
-    ("OD03","JBL Wireless Speaker",0.0),
-    ("OD04","Samsung Galaxy Smart Tag",0.0),
-    ("OD05","Apple Air Tag",0.0),
-    ("OD06","Micro SD Card 32GB",0.0),
-    ("OD07","Micro SD Card 64GB",0.0),
-    ("OD08","Micro SD Card 128GB",0.0),
-    ("OD09","Micro SD Card 256GB",0.0),
-    ("OD10","Micro SD Card 1TB",0.0),
-    ("OD11","Toshiba External Hard Disk",0.0),
-    ("OD12","Dell Gaming Monitor",0.0),
-    ("OD13","Toshiba Gaming Monitor",0.0),
-    ("OD14","Benq Gaming Monitor",0.0),
-    ("OD15","Logitech Webcam",0.0),
-    ("OD16","D-Link Wireless IP Webcam DC56500",0.0),
-    ("OD17","Logitech Wireless Mouse and Keypad Small",0.0),
-    ("OD18","Logitech Wireless Mouse and Keypad Big",0.0),
-    ("OD19","Microsoft Keyboard + Mouse",135.0),
-    ("OD20","Dell Laptop Back Pack",0.0)
-    ("OD21","Canon All in one Printer",249.0),
-    ("OD22","Apple Earpods",65.0),
-    ("OD23","Anker Power Bank",139.0),
-    ("OD24","Promate Earphones Motive Sport",104.0),
-    ("OD25","X.Cell Bluetooth Earpods Soul 7 bundle",139.0),
-    ("OD26","JBL Sound Bar 2,1 Deep Bass",1199.0),;
+    ("OD01","Sony Bluetooth Headset",499.0),
+    ("OD02","Bose Wireless Earpiece",395.0),
+    ("OD03","JBL Wireless Speaker",120.0),
+    ("OD04","Micro SD Card 32GB",18.0),
+    ("OD05","Micro SD Card 64GB",27.0),
+    ("OD06","Micro SD Card 128GB",49.0),
+    ("OD07","Micro SD Card 256GB",157.0),
+    ("OD08","Micro SD Card 1TB",239.0),
+    ("OD09","Toshiba External Hard Drive 1TB",159.0),
+    ("OD10","Dell Gaming Monitor",1999.0),
+    ("OD11","Benq Gaming Monitor",2911.0),
+    ("OD12","Logitech Webcam",469.0),
+    ("OD13","D-Link Wireless IP Webcam DC56500",279.0),
+    ("OD14","Logitech Wireless Mouse and Keypad Small",199.0),
+    ("OD15","Logitech Wireless Mouse and Keypad Big",250.0),
+    ("OD16","Microsoft Keyboard + Mouse",135.0),
+    ("OD17","Dell Laptop Back Pack",150.0),
+    ("OD18","Canon All in one Printer",249.0),
+    ("OD19","Apple Earpods",65.0),
+    ("OD20","Anker Power Bank",139.0),
+    ("OD21","Promate Earphones Motive Sport",104.0),
+    ("OD22","X.Cell Bluetooth Earpods Soul 7 bundle",139.0),
+    ("OD23","JBL Sound Bar 2,1 Deep Bass",1199.0);
 
--- tvs ------------------------------------------------------------;
+-- tvs -------------------------------------------------------------;
 
     create table tvs(
         ID char(4) primary key,
@@ -337,14 +334,14 @@ delimiter ;
     ("TV06","Samsung Smart TV 4K UHD",4999.0),
     ("TV07","Sony TV 8K SUHD",7099.0),
     ("TV08","Sony TV 4K UHD",4699.0),
-    ("TV09","Philips Smart TV 4K UHD",4899.0)
+    ("TV09","Philips Smart TV 4K UHD",4899.0),
     ("TV10","TCL UHD Android TV 75P718",5604.0),
     ("TV11","TCl UHD Android TV 50P618",1749.0),
     ("TV12","Samsung UHD TV",3099.0),
     ("TV13","LG UHD TV",2999.0),
-    ("TV14","LG OLED TV",8499.0),;
+    ("TV14","LG OLED TV",8499.0);
     
--- toys -----------------------------------------------------------;
+-- toys ------------------------------------------------------------;
 
     create table toys(
         ID char(4) primary key,
@@ -353,20 +350,20 @@ delimiter ;
     );
 
     insert into toys values
-    ("TO01","Engineering Truck Set",0.0),
-    ("TO02","Parking Garage Set",0.0),
-    ("TO03","Nerf Alpha Battlion Set",0.0),
-    ("TO04","RC Remote Controlled Car ",0.0),
-    ("TO05","RC Remote Controlled Jeep",0.0),
-    ("TO06","Lego Architecture Dubai",0.0),
-    ("TO07","Lego Prison Building Set",0.0),
-    ("TO08","Axis Gyro Quadcopter Small",0.0),
-    ("TO09","UNO Game Card",0.0),
-    ("TO10","Volley Ball",0.0),
-    ("TO11","Marvel Action Figures Set",0.0),
-    ("TO12","Monopoly Electronic Banking",0.0);
+    ("TO01","Engineering Truck Set",199.0),
+    ("TO02","Parking Garage Set",150.0),
+    ("TO03","Nerf Alpha Battlion Set",235.0),
+    ("TO04","RC Remote Controlled Car ",89.0),
+    ("TO05","RC Remote Controlled Jeep",99.0),
+    ("TO06","Lego Architecture Dubai",189.0),
+    ("TO07","Lego Prison Building Set",225.0),
+    ("TO08","Axis Gyro Quadcopter Small",110.0),
+    ("TO09","UNO Game Card",35.0),
+    ("TO10","Volley Ball",30.0),
+    ("TO11","Marvel Action Figures Set",20.0),
+    ("TO12","Monopoly Electronic Banking",150.0);
 
--- milk -----------------------------------------------------------;
+-- milk ------------------------------------------------------------;
     create table milk(
         ID char(4) primary key,
         Name varchar(50),
@@ -374,64 +371,143 @@ delimiter ;
     );
 
     insert into milk values
-    ("MI01","Almarie Milk 500ml",0.0),
-    ("MI02","Al Rawabi Milk 500ml",0.0),
-    ("MI03","Almarie Laban 500ml",0.0),
-    ("MI04","Al Rawabi Laban 500ml",0.0),
-    ("MI05","Almarie Strawberry Milk 500ml",0.0),
-    ("MI06","Al Rawabi Strawberry Milk 500ml",0.0),
-    ("MI07","Almarie Chocolate Milk 500ml",0.0),
-    ("MI08","Al Rawabi Chocolate Milk 500ml",0.0),
+    ("MI01","Almarie Milk 500ml",3.50),
+    ("MI02","Al Rawabi Milk 500ml",3.50),
+    ("MI03","Almarie Laban 500ml",3.0),
+    ("MI04","Al Rawabi Laban 500ml",3.0),
+    ("MI05","Almarie Strawberry Milk 500ml",5.0),
+    ("MI06","Al Rawabi Strawberry Milk 500ml",5.0),
+    ("MI07","Almarie Chocolate Milk 500ml",5.0),
+    ("MI08","Al Rawabi Chocolate Milk 500ml",5.0),
     ("MI09","Almarie Milk 1L",10.0),
     ("MI10","Almarine Milk 1L Low Fat",11.0),
     ("MI11","Al Rawabi Milk 1L",10.0),
     ("MI12","Al Rawabi Milk 1L Low fat",11.0),
-    ("MI13","Almarie Milk 2L",.0),
-    ("MI14","Al Rawabi Milk 2L",0.0),
-    ("MI15","Almarie Laban 1L",0.0),
-    ("MI16","Al Rawabi Laban 1L",0.0),
-    ("MI17","Almarie Laban 2L",0.0),
-    ("MI18","Al Rawabi 2L",0.0),
-    ("MI19","Amul Butter Salted",0.0),
-    ("MI20","Kwality Butter Salted",0.0),
-    ("MI21","Amul Butter UnSalted",0.0),
-    ("MI22","Kwality Butter Unsalted",0.0),
-    ("MI23","Amul Cheese",0.0),
+    ("MI13","Almarie Milk 2L",20.50),
+    ("MI14","Al Rawabi Milk 2L",20.50),
+    ("MI15","Almarie Laban 1L",6.99),
+    ("MI16","Al Rawabi Laban 1L",6.99),
+    ("MI17","Almarie Laban 2L",12.0),
+    ("MI18","Al Rawabi 2L",12.0),
+    ("MI19","Amul Butter Salted",15.25),
+    ("MI20","Kwality Butter Salted",17.55),
+    ("MI21","Amul Butter UnSalted",20.99),
+    ("MI22","Kwality Butter Unsalted",23.30),
+    ("MI23","Amul Cheese",24.25),
     ("MI24","Regal Picon Portion Cheese 120gm x 5",9.50),
-    ("MI25","Mozaralla Cheese",0.0),
-    ("MI26","Chedder Cheese",0.0),
-    ("MI27","Igloo Vanilla Ice Cream",0.0),
-    ("MI28","Kwality Vanilla Ice Cream",0.0),
-    ("MI29","Baskin Robins Vanilla Ice Cream",0.0),
-    ("MI30","Igloo Chocolate Ice Cream",0.0),
-    ("MI31","Kwality Chocolate Ice Cream",0.0),
-    ("MI32","Baskin Robins Chocolate Ice Cream",0.0),
-    ("MI33","Igloo Strawberry Ice cream",0.0),
-    ("MI34","Kwality Strwberry Ice Cream",0.0),
-    ("MI35","Igloo Mango Ice Cream",0.0),
-    ("MI36","Kwality Mango Ice Cream",0.0),
-    ("MI37","Igloo Kulfi Ice Cream",0.0),
-    ("MI38","Kwality Kulfi Ice Cream",0.0),
-    ("MI39","Baskin Robins Cotton Candy",0.0),
-    ("MI40","Baskin Robins Oreo Cookies'n Cream",0.0),
-    ("MI41","Baskin Robins Chocolate Fudge",0.0),
-    ("MI42","Baskin Robins World Class Chocolate",0.0),
+    ("MI25","Mozaralla Cheese",22.0),
+    ("MI26","Chedder Cheese",25.0),
+    ("MI27","Igloo Vanilla Ice Cream 1Kg",20.0),
+    ("MI28","Kwality Vanilla Ice Cream 1Kg",22.0),
+    ("MI29","Baskin Robins Vanilla Ice Cream 1Kg",25.65),
+    ("MI30","Igloo Chocolate Ice Cream 1Kg",20.0),
+    ("MI31","Kwality Chocolate Ice Cream 1Kg",22.0),
+    ("MI32","Baskin Robins Chocolate Ice Cream 1Kg",25.65),
+    ("MI33","Igloo Strawberry Ice cream 1Kg",20.0),
+    ("MI34","Kwality Strwberry Ice Cream 1Kg",22.0),
+    ("MI35","Igloo Mango Ice Cream 1Kg",20.0),
+    ("MI36","Kwality Mango Ice Cream 1Kg",22.0),
+    ("MI37","Igloo Kulfi Ice Cream 1Kg",23.0),
+    ("MI38","Kwality Kulfi Ice Cream 1Kg",28.0),
+    ("MI39","Baskin Robins Cotton Candy 1Kg",35.65),
+    ("MI40","Baskin Robins Oreo Cookies'n Cream 1Kg",35.65),
+    ("MI41","Baskin Robins Chocolate Fudge 1Kg",35.65),
+    ("MI42","Baskin Robins World Class Chocolate 1Kg",35.65),
     ("MI43","Amul Paneer",9.75),
-    ("MI44","Kwality Malai Paneer",0.0),
+    ("MI44","Kwality Malai Paneer",20.95),
     ("MI45","Puck Slice Cheese",24.0),
     ("MI46","Kiri Al Jarra Spreadable Cream Cheese",32.0),
-    ("MI47","Solgnon Goat Plain Cheese",17.0);
+    ("MI47","Solgnon Goat Plain Cheese",17.0)
+    ("MI00","Amul Pure Ghee 425g",16.85),
+    ("MI00","Qbb Pure Ghee 400g",17.45),
+    ("MI00","Qbb Pure Ghee 800g",28.70),
+    ("MI00","Qbb Pure Ghee 1.6Kg",59.70),
+    ("MI00","Gowardhan Pure Cow Ghee 905g",35.70),
+    ("MI00","Ashirvaad Svasti Pure Cow Ghee 200ml",15.0),
+    ("MI00","Ashirvaad Svasti Pure Cow Ghee 500ml",25.0),
+    ("MI00","Ashirvaad Svasti Pure Cow Ghee 1L",48.50),
+    ("MI00","Nambisan's Pure Ghee Jar 200ml",10.45),
+    ("MI00","Nambisan's Pure Ghee Jar 1L",41.95),
+    ("MI00","Verka Desi Ghee 900g",32.0),
+    ("MI00","RKG Classic Pure Cow Ghee 100ml",6.0),
+    ("MI00","RKG Pure Cow Ghee 200ml",9.95),
+    ("MI00","RKG Pure Cow Ghee 1L",44.95),
+    ("MI00","Almarai Ghee Butter 400g",19.85),
+    ("MI00","Almarai Ghee Butter 800g",30.60),
+    ("MI00","Almarai Ghee Butter 1.6Kg",66.40),
+    ("MI00","Sakthi Agmark Ghee 500ml",21.65),
+    ("MI00","GRB Pure Ghee 200ml",9.50);
 
--- oil ------------------------------------------------------------;
+-- rice ------------------------------------------------------------;
 
-    create table oil(
+    create table rice(
         ID char(4) primary,
         Name varchar(50),
         Price decimal(10,2)
     );
 
+    insert into rice values
+    ("RI01","India Gate Classic Basmati Rice 5Kg",69.85),
+    ("RI02","India Gate Classic Basmati Rice 2Kg",29.15),
+    ("RI03","Shehrazade Indian Basmati Rice 5Kg",45.45),
+    ("RI04","India Gate Super Basmati 5Kg",47.99),
+    ("RI05","India Gate Super Basmati 2Kg",20.95),
+    ("RI06","GAutam Basmati Rice 20Kg",154.0),
+    ("RI07","India Gate Sona Masoori 5Kg",28.96),
+    ("RI08","Gold Sella Basmati Rice 10Kg",40.95),
+    ("RI09","Sinnara White Long Grain BAsmati Rice 5Kg",29.95),
+    ("RI10","Silver Swan Fragnant Milagrosa Beras Wangi Mabango Jasmine Rice 10Kg",61.45),
+    ("RI11","India Gate Brown Basmati Rice 2Kg",22.75),
+    ("RI12","India Gate Sella Basmati Rice 5Kg",44.75),
+    ("RI13","Natures Choice Palakkadam Matta Rice 5Kg",25.75),
+    ("RI14","Natures Choice Jeerakasala Rice 2Kg",21.55),
+    ("RI15","Daawat Devaaya Basmati Rice 5Kg",29.85),
+    ("RI16","Lucky Gold Indian Sona Masoori Rice 5Kg",18.50),
+    ("RI17","Mahamood VVIP Sella Basmati Rice 10Kg",49.50);
+
+-- oil -------------------------------------------------------------;
+    
+    create table oil(
+        Id char(4) primary,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
     insert into oil values
-    ("OI00","",0.0);
+    ("OI01","Noor Canola Oil 750ml",11.25),
+    ("OI02","Noor Sunflower Oil 750ml",11.35),
+    ("OI03","Noor Sunflower Oil 3L",34.95),
+    ("OI04","Noor Sunflower Oil 5L",52.90),
+    ("OI05","Noor Sunflower Oil 9L",104.85),
+    ("OI06","Mazola Corn Oil 750ml",11.25),
+    ("OI07","Mazola Corn Oil 3L",38.50),
+    ("OI08","Al Douri Sunflower Oil 1.8L",13.25),
+    ("OI09","Parachute Edible Oil 200ml",5.25),
+    ("OI10","Parachute Edible Oil 975ml",15.60),
+    ("OI11","Teeba Peanut Oil 250ml",14.72),
+    ("OI12","Teeba Extra Virgin Olive Oil 1L",18.45),
+    ("OI13","Teeba Virgin Oil 3L",65.45),
+    ("OI14","Teeba Clove Oil 250ml",28.37),
+    ("OI15","Teeba Hazel Nut Oil 250ml",15.36),
+    ("OI16","Borges Extra Virgin Olive Oil 500ml",16.20),
+    ("OI17","Borges Extra Light Olive Oil 1L",34.25),
+    ("OI18","Borges Grape Seed Oil 1L",29.75),
+    ("OI19","Borges Classic Olive Oil 1L",31.15),
+    ("OI20","Alagha Virgin Olive Oil 1L",20.45),
+    ("OI21","Pran Virgin Mustard Oil 200ml",4.95),
+    ("OI22","KLF Tilnad Seasame Oil 500ml",11.15),
+    ("OI23","KLF Tilnad Seasame Oil 1L",22.75),
+    ("OI24","KLF Nirmal Virgin Coconut Oil 500ml",22.0),
+    ("OI25","KLF COCONAD Pure Coconut Cooking Oil 1L",21.25),
+    ("OI26","KLF Nirmal Cold Pressured Virgin Coconut Oil 400ml",20.0),
+    ("OI27","Earth's Finest Virgin Coconut Oil 500ml",25.55),
+    ("OI28","Sunny Sun Active Blended Vegetable Oil 750ml",7.75),
+    ("OI29","Natures Choice Mustard Oil 1L",17.25),
+    ("OI30","Golden Shine Sesame Oil 1L",19.65),
+    ("OI31","Beratolli Extra Virgin Oil 750ml",29.70),
+    ("OI32","Alokozay Sunflower Oil 750ml",7.99),
+    ("OI33","Bharat Pure Mustard Oil 5L",58.77),
+    ("OI34","Alwedaya Virgin Olive Oil 3L",53.85);
 
 -- .r
 

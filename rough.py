@@ -51,6 +51,3 @@ myc = mydb.cursor()
     #     print(table_display(d[key]))
 
 #.b EXEC 3.:
-
-
-tejas
