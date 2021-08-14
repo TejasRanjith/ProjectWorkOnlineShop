@@ -136,7 +136,7 @@ delimiter ;
     ("BA02","Chicken Samosa",1.15),
     ("BA03","Punjabi Samosa",2.50),
     ("BA04","Choco Cream Cake per Kg",30.0),
-    ("BA05","Dark Choco Cream Cake per Kg"30.0),
+    ("BA05","Dark Choco Cream Cake per Kg",30.0),
     ("BA06","White Cream Cake per Kg",40.0),
     ("BA07","Black Forest Cake per Kg",60.0),
     ("BA08","White Forest Cake",60.0),
@@ -152,7 +152,7 @@ delimiter ;
     ("BA18","Brown Bread",5.15),
     ("BA19","Coockie",1.0),
     ("BA20","Cupcakes",1.50),
-    ("BA21","Mini Doughnuts 12s",9.50),;
+    ("BA21","Mini Doughnuts 12s",9.50);
 
 -- drinks ---------------------------------------------------------;
 
@@ -238,7 +238,7 @@ delimiter ;
     ("CO06","HP Envy X360",3999.0),
     ("CO07","Microsoft Surface Go",2399.0),
     ("CO08","Microsoft Surface Pro Plus",5999.0),
-    ("CO09","Lenovo Flex 5",3199.0)
+    ("CO09","Lenovo Flex 5",3199.0),
     ("CO10","Lenovo Ideapad Gaming 3",2955.0),
     ("CO11","Asus Notebook X515",1799.0),
     ("CO12","Lenovo Notebook Ideapad 3",2499.0),
@@ -280,7 +280,7 @@ delimiter ;
     ("PH23","Huawei Nova 7 SE",1259.0),
     ("PH24","Huawei P40 Lite",799.0),
     ("PH25","Xiaomi Mi 10",3099.0),
-    ("PH26","Oppo A73 5G",1100.0)
+    ("PH26","Oppo A73 5G",1100.0),
     ("PH27","Samsung A22 LTE",849.0),
     ("PH28","Xiaomi Poco X3 LTE",1099.0);
 
@@ -417,7 +417,7 @@ delimiter ;
     ("MI44","Kwality Malai Paneer",20.95),
     ("MI45","Puck Slice Cheese",24.0),
     ("MI46","Kiri Al Jarra Spreadable Cream Cheese",32.0),
-    ("MI47","Solgnon Goat Plain Cheese",17.0)
+    ("MI47","Solgnon Goat Plain Cheese",17.0),
     ("MI48","Amul Pure Ghee 425g",16.85),
     ("MI49","Qbb Pure Ghee 400g",17.45),
     ("MI50","Qbb Pure Ghee 800g",28.70),
@@ -441,7 +441,7 @@ delimiter ;
 -- rice -----------------------------------------------------------;
 
     create table rice(
-        ID char(4) primary,
+        ID char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
     );
@@ -456,7 +456,7 @@ delimiter ;
     ("RI07","India Gate Sona Masoori 5Kg",28.96),
     ("RI08","Gold Sella Basmati Rice 10Kg",40.95),
     ("RI09","Sinnara White Long Grain BAsmati Rice 5Kg",29.95),
-    ("RI10","Silver Swan Fragnant Milagrosa Beras Wangi Mabango Jasmine Rice 10Kg",61.45),
+    ("RI10","Silver Swan Fragnant Jasmine Rice 10Kg",61.45),
     ("RI11","India Gate Brown Basmati Rice 2Kg",22.75),
     ("RI12","India Gate Sella Basmati Rice 5Kg",44.75),
     ("RI13","Natures Choice Palakkadam Matta Rice 5Kg",25.75),
@@ -468,7 +468,7 @@ delimiter ;
 -- oil ------------------------------------------------------------;
     
     create table oil(
-        Id char(4) primary,
+        Id char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
     );
@@ -563,7 +563,7 @@ delimiter ;
         Product_ID char(4),
         Product_Name varchar(25),
         Quantity int,
-        Price decimal(10,2),
+        Price decimal(10,2)
     );
 
 -- .y
