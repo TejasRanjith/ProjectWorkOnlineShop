@@ -500,7 +500,7 @@ delimiter ;
     ("OI24","KLF Nirmal Virgin Coconut Oil 500ml",22.0),
     ("OI25","KLF COCONAD Pure Coconut Cooking Oil 1L",21.25),
     ("OI26","KLF Nirmal Cold Pressured Virgin Coconut Oil 400ml",20.0),
-    ("OI27","Earth's Finest Virgin Coconut Oil 500ml",25.55),
+    ("OI27","Earths Finest Virgin Coconut Oil 500ml",25.55),
     ("OI28","Sunny Sun Active Blended Vegetable Oil 750ml",7.75),
     ("OI29","Natures Choice Mustard Oil 1L",17.25),
     ("OI30","Golden Shine Sesame Oil 1L",19.65),
