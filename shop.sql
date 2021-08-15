@@ -547,6 +547,97 @@ delimiter ;
     ("SU27","Aling Conching Brown Sugar 1Kg",12.50),
     ("SU28","Safa Sugar Cube 1Kg",6.57);
 
+-- salt -----------------------------------------------------------;
+
+    create table salt(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    ("SA01","Nezo Fine Table Salt Blue 600g",2.65),
+    ("SA02","Nezo Fine Table Salt Blue 1Kg",3.50),
+    ("SA03","Nezo Fine Iodized Vacuum Salt Red 1Kg",3.40),
+    ("SA04","Nezo Extra Fine Table Iodized Salt 125g",2.60),
+    ("SA05","Nezo Coarse Seasalt 500g",8.10),
+    ("SA06","Nezo Fine Iodized Table Salt Low Sodium 450g",10.45),
+    ("SA07","Bayara Iodized Table Salt 1Kg",2.25),
+    ("SA08","Bayara Iodized Table Salt 700g",2.65),
+    ("SA09","Bayara Fine Table Salt Bottle 700g",2.60),
+    ("SA10","Teeba Pure Salt Non Iodized 1Kg",1.45),
+    ("SA11","Natures Choice Himalayan Pink Salt 600g",7.25),
+    ("SA12","Natures Choice Black Salt Powder 100g",1.33),
+    ("SA13","Natures Choice Iodized Salt 1Kg",1.33),
+    ("SA14","TATA Salt Lite 1Kg",5.0),
+    ("SA15","Natures Finest Pink Crystal Salt 500g",11.85),
+    ("SA16","Aashirvaad Iodised Salt 1Kg",3.12),
+    ("SA17","Uncle J's Black Salt 1Kg",7.28);
+
+-- bathroom_items -------------------------------------------;
+
+    create table bathroom_items(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    ("BI01","Colgate Optic White Toothpaste 75ml",12.15),
+    ("BI02","Colgate Maximum Cavity Protection Toothpaste 150ml",28.55),
+    ("BI03","Colgate Maximum Cavity Protection Toothpaste 50ml",3.35),
+    ("BI04","Colgate Toothpaste Kids 50ml",5.50),
+    ("BI05","Colgate Optic White Charcoal Toothpaste 75ml",12.44),
+    ("BI06","Colgate Max Fresh Cool Mint Toothpaste 100ml",8.60),
+    ("BI07","Colgate Total 12 Pro Gum Toothpaste 75ml",14.20),
+    ("BI08","Colgate Natural Extracts Charcoal Toothpaste 75ml",15.00),
+    ("BI09","Colgate Herbal Toothpaste 125ml",6.00),
+    ("BI10","Colgate Total 12 Toothpaste ",9.25),
+    ("BI11","Colgate Advanced Whitening Toothpaste 125ml",9.80),
+    ("BI12","Colgate Fresh Confidence Red Toothpaste 125ml",6.50),
+    ("BI13","Colgate Max Fresh Mint Toothpaste 100ml",7.40),
+    ("BI14","Colgate Total 12 Pro Whitening Toothpaste 75ml",16.90),
+    ("BI15","Himalaya Mint Fresh Herbal Toothpaste",4.80),
+    ("BI16","Himalaya Stain-Away Herbal Toothpaste 100ml",7.70),
+    ("BI17","Himalaya Sparkly White Herbal Toothpaste 50ml",4.20),
+    ("BI18","Oral-B Complete Fresh Mint Toothpaste 100ml",7.55),
+    ("BI19","Oral-B Gum Repair Toothpaste 75ml",18.20),
+    ("BI20","Oral-B Pro-Expert Mint Toothpaste 75ml",16.11),
+    ("BI21","Dabur Miswak Toothpaste 190g + Free Toothbrush",4.75),
+    ("BI22","Dabur Red Toothpaste 100ml",2.95),
+    ("BI23","Dabur Herbal Clove Toothpaste 150ml",5.60),
+    ("BI24","Dabur Herbal Neem Toothpaste 150g",5.60),
+    ("BI25","Dabur Herbal Charcoal Toothpaste 150ml",12.30),
+    ("BI26","Dabur Herbal Whitening Toothpaste 150ml",6.32),
+    ("BI27","Dabur Miswaak Gold Toothpaste + Free Toothbrush 120g",6.49),
+    ("BI28","Jordan Junior Toothpaste 50ml",8.0),
+    ("BI29","Jordan Kids Toothpaste 50ml",8.0),
+    ("BI30","Jordan Green Clean Toothpaste 75ml",10.00),
+    ("BI31","Aquafresh Kids Toothpaste 50ml",6.35),
+    ("BI32","Parodontax Flouride Toothpaste 75ml",19.75),
+    ("BI33","Crest 3D White Deluxe Toothpaste 75ml",17.20),
+    ("BI34","Crest Cavity Protection Mint Toothpaste 125ml",8.65),
+    ("BI35","Crest Active Fluoride Salt Toothpaste 125ml",5.45),
+    ("BI36","Sensodyne Flouride Toothpaste 75ml",19.20),
+    ("BI37","Sensodyne Extra Fresh Toothpaste 50ml",13.75),
+    ("BI38","Sensodyne Specialist Whitening Toothpaste",29.95),
+    ("BI39","Sensodyne Daily Repair Toothpaste 75ml",26.20),
+    ("BI40","Sensodyne Sensitivity & Gum Toothpaste 75ml",30.65),
+    ("BI41","Sensodyne Toothpaste Original 75ml",19.20),
+    ("BI42","Sensodyne Multi Care + Whitening Toothpaste 75ml",24.95),
+    ("BI43","Sensodyne Rapid Action Toothpaste 75ml",28.00),
+    ("BI44","Elgydium Whitening Toothpaste 75ml",20.80),
+    ("BI45","Signal Kids Toothpaste Strawberry 75ml",10.00),
+    ("BI46","Signal Nature Element Charcoal Toothpaste 100ml",11.50),
+    ("BI47","Signal Toothpaste Cavity Fighter 120ml",6.25),
+    ("BI48","Signal Toothpaste Witening 100ml",10.65),
+    ("BI49","Signal Complete 8 Toothpaste Gold 100ml",8.10),
+    ("BI50","Closeup Menthol Toothpaste 120ml",14.71),
+    ("BI51","Closeup Anti-Bacterial Toothpaste 120ml",8.30),
+    ("BI52","Closeup Anti-Bacterial Toothpaste Red 120ml",8.95),
+    ("BI53","Euthymol Original Toothpaste 75ml",16.34),
+    ("BI54","Signal Junior Toothpaste 75ml",10.00),
+    ("BI55","Crest 3D White Brilliance Blast Toothpaste 75ml",27.00),
+    ("BI56","Sensodyne Pronamel Toothpaste 75ml",37.47);
+
 -- .r
 
 -- .r 
