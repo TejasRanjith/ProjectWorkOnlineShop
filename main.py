@@ -18,10 +18,14 @@ def opt_0():
 def table_display(rows,fields):
     from prettytable import PrettyTable
     t = PrettyTable()
-    t.field_names = fields
+    t.field_names,count = fields,0
     for row in rows:
+        count+=1
         t.add_row(row)
+    
     return t
+
+# .y basic functions....↑ ↑ ↑ ↑ ↑ ↑
 
 def search():
     mydb = ms.connect(host = "localhost",
@@ -47,7 +51,9 @@ def search():
                 table,catg_table = myc.fetchall(),elem
             if search in item:
                 myc.execute(f"select * from {elem} where name = '{item}'")
-                data,catg_data = myc.fetchall(),elem
+                data.append(myc.fetchall())
+                catg_data = elem
+
     new_table,new_data = [],[]
     if len(table) != 0:
         for tup in table:
@@ -55,9 +61,9 @@ def search():
             new_table.append(tup)
         print(table_display(new_table,["ID","Name","Price","Category"]))
     if len(data) != 0:
-        for tup in data:
-            tup += tuple([catg_data])
-            new_data.append(tup)
+        for l in data:
+            l[0] += tuple([catg_data])
+            new_data.append(l[0])
         print(table_display(new_data,["ID","Name","Price","Category"]))
     
     return data,table
@@ -205,7 +211,7 @@ def cart():
                     return ["Cash On Delivery",discount]
                 else:
                     print("Invalid Payment Method.....")
-            
+
         def summary(ad,pay):
             cart,total = display_cart()[1],[]
             for item in cart:
