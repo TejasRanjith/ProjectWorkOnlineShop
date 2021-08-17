@@ -51,3 +51,38 @@ myc = mydb.cursor()
     #     print(table_display(d[key]))
 
 #.b EXEC 3.:
+    # l = [("a","1"),("b","2"),("c","3")]
+    # d = {}
+    # d1 = {}
+    # list_rows = []
+    # for a in range(0,len(l)):                       #.g {0: ['a', '1'], 1: ['b', '2'], 2: ['c', '3']}
+    #     d[a] = list(l[a])
+    # for i in range(0,len(l[0])):
+    #     for k in d:
+    #         d1[k] = d[k][i]
+    #         list_rows.append(d1[k])
+    # new_list_rows,i = [],0
+    # while i < len(list_rows):
+    #     new_list_rows.append(list_rows[i:i+3])
+    #     i+=3
+    # l,list_rows = new_list_rows,[]
+    # for elem in l:
+    #     str_rows=""
+    #     for i in range(0,len(elem)):
+    #         if i < len(elem)-1:
+    #             str_rows+=f"{elem[i]}\n"
+    #         elif i == len(elem)-1:
+    #             str_rows+=f"{elem[i]}"
+    #     list_rows.append(str_rows)
+    # print(list_rows)
+    # import texttable
+    # t = texttable.Texttable()
+    # t.add_rows([
+    #     ["Letter","Num"],
+    #     eval(str(list_rows)),
+    #     ["Total",""]
+    # ])
+    # # t.add_row()
+    # print(t.draw())
+
+#.b EXEC 4.:

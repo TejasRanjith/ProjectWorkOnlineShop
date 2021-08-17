@@ -555,6 +555,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into salt values
     ("SA01","Nezo Fine Table Salt Blue 600g",2.65),
     ("SA02","Nezo Fine Table Salt Blue 1Kg",3.50),
     ("SA03","Nezo Fine Iodized Vacuum Salt Red 1Kg",3.40),
@@ -581,6 +582,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into bathroom_items values
     ("BI01","Colgate Optic White Toothpaste 75ml",12.15),
     ("BI02","Colgate Maximum Cavity Protection Toothpaste 150ml",28.55),
     ("BI03","Colgate Maximum Cavity Protection Toothpaste 50ml",3.35),
@@ -607,7 +609,7 @@ delimiter ;
     ("BI24","Dabur Herbal Neem Toothpaste 150g",5.60),
     ("BI25","Dabur Herbal Charcoal Toothpaste 150ml",12.30),
     ("BI26","Dabur Herbal Whitening Toothpaste 150ml",6.32),
-    ("BI27","Dabur Miswaak Gold Toothpaste + Free Toothbrush 120g",6.49),
+    ("BI27","Dabur Miswaak Gold Toothpaste and Free Toothbrush",6.49),
     ("BI28","Jordan Junior Toothpaste 50ml",8.0),
     ("BI29","Jordan Kids Toothpaste 50ml",8.0),
     ("BI30","Jordan Green Clean Toothpaste 75ml",10.00),
@@ -653,8 +655,8 @@ delimiter ;
     create table cart(
         Product_ID char(4),
         Product_Name varchar(25),
-        Quantity int,
-        Price decimal(10,2)
+        Price decimal(10,2),
+        Quantity int
     );
 
 -- .y

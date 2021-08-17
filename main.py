@@ -15,16 +15,35 @@ def opt_0():
     timer(1.5)
     print('Program exited with exit code 0'+'\n')
 
-def table_display(rows,fields):
-    from prettytable import PrettyTable
-    t = PrettyTable()
-    t.field_names,count = fields,0
-    for row in rows:
-        count+=1
-        t.add_row(row)
-    
-    return t
-
+def table_display(headings,rows,footers):
+    d,d1,list_rows = {},{},[]
+    for a in range(0,len(rows)):
+        d[a] = list(rows[a])
+    for i in range(0,len(rows[0])):
+        for k in d:
+            d1[k] = d[k][i]
+            list_rows.append(d1[k])
+    new_list_rows,i = [],0
+    while i < len(list_rows):
+        new_list_rows.append(list_rows[i:i+(len(rows))])
+        i+=len(rows)
+    rows,list_rows = new_list_rows,[]
+    for elem in rows:
+        str_row=""
+        for i in range(0,len(elem)):
+            if i < len(elem)-1:
+                str_row+=f"{elem[i]}\n"
+            elif i == len(elem)-1:
+                str_row+=f"{elem[i]}"
+        list_rows.append(str_row)
+    import texttable
+    t = texttable.Texttable()
+    t.add_rows([
+        headings,
+        list_rows,
+        footers
+    ])
+    return t.draw()
 # .y basic functions....↑ ↑ ↑ ↑ ↑ ↑
 
 def search():
@@ -36,14 +55,15 @@ def search():
     tbs,d,table,data = list(myc.fetchall()),{},[],[]
     tbs.remove(("accounts",))
     tbs.remove(("cart",))
-    print(table_display(tbs,["Categories"]))
-    search = input("your item to search --> ").capitalize()
+    print(table_display(headings=["Categories"],rows=tbs,footers=["-"]))
+    search = input("your item to search --> ").title()
     for tb in tbs:
         myc.execute(f"select name from {tb[0]};")
         items,l = myc.fetchall(),[]
         for item in items:
             l.append(item[0])
             d[tb[0]] = l
+    catg_data = []
     for elem in d:
         for item in d[elem]:
             if search.lower() in elem:
@@ -52,19 +72,27 @@ def search():
             if search in item:
                 myc.execute(f"select * from {elem} where name = '{item}'")
                 data.append(myc.fetchall())
-                catg_data = elem
+                catg_data.append(elem)
 
     new_table,new_data = [],[]
     if len(table) != 0:
         for tup in table:
             tup += tuple([catg_table])
             new_table.append(tup)
-        print(table_display(new_table,["ID","Name","Price","Category"]))
+        l = []
+        for tup in new_table:
+            l.append(tup[2])
+        print("\nCategory-Wise:\n")
+        print(table_display(["ID","Name","Price","Category"],new_table,["Total:","-",sum(l),"-"]))
     if len(data) != 0:
-        for l in data:
-            l[0] += tuple([catg_data])
-            new_data.append(l[0])
-        print(table_display(new_data,["ID","Name","Price","Category"]))
+        for i in range(0,len(data)):
+            data[i][0] += tuple([catg_data[i]])
+            new_data.append(data[i][0])
+        l = []
+        for tup in new_data:
+            l.append(tup[2])
+        print("\nItem-Wise:\n")
+        print(table_display(["ID","Name","Price","Category"],new_data,["Total:","-",sum(l),"-"]))
     
     return data,table
 
@@ -85,7 +113,10 @@ def display():
             l.append(item)
             d[tb[0]] = l
     for key in d:
-        print(table_display(d[key],["ID","Name","Price","Category"]))
+        l = []
+        for i in range(0,len(d[key])):
+            l.append(float(d[key][i][2]))
+        print(table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
 
 def account():
     name = input("Name : ")
@@ -149,10 +180,15 @@ def cart():
         for elem in data:
             new_data.append(list(elem))
         data = new_data
+        num,tot_rate,tot_price = 0,0,0
+        print(data)
         for elem in data:
             elem.append(elem[2]*elem[3])
+            tot_rate+=float(elem[2])
+            num+=int(elem[3])
+            tot_price+=float(elem[4])
         if len(data) != 0:
-            display = table_display(data,["PID","Name","Rate","Quantity","Price"])
+            display = table_display(["PID","Name","Rate","Quantity","Price"],data,["Total:","-",tot_rate,num,tot_price])
             return [display,data]
         else:
             return "Your cart is empty"
@@ -220,7 +256,7 @@ def cart():
             print(f"Location: {ad[4]},{ad[5]}")
             print(f"Address: {ad[0]}")
             print(f"Payment Method: {pay[0]}")
-            print(table_display(cart,["PID","Name","Rate","Quantity","Price"]))
+            print(table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
             print("-"*100)
             print(f"Coupoun Code Applied: {pay[1][1]}")
             print(f"Discount Applied: {pay[1][0]}")
