@@ -86,3 +86,7 @@ myc = mydb.cursor()
     # print(t.draw())
 
 #.b EXEC 4.:
+
+l = [1,2,3,4]
+for i in enumerate(l):
+    print(i)

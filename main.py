@@ -1,10 +1,9 @@
 import mysql.connector as ms
 from prettytable import PrettyTable
 import stdiomask as sm
-import os
+import os,time,texttable
 
 def timer(n):
-    import time
     time.sleep(n)
 
 def opt_0():
@@ -36,7 +35,6 @@ def table_display(headings,rows,footers):
             elif i == len(elem)-1:
                 str_row+=f"{elem[i]}"
         list_rows.append(str_row)
-    import texttable
     t = texttable.Texttable()
     t.add_rows([
         headings,
