@@ -1,7 +1,7 @@
 import mysql.connector as ms
 from prettytable import PrettyTable
 import stdiomask as sm
-import os,time,texttable
+import os,time,texttable,decimal
 
 def timer(n):
     time.sleep(n)
@@ -27,15 +27,35 @@ def table_display(headings,rows,footers):
         new_list_rows.append(list_rows[i:i+(len(rows))])
         i+=len(rows)
     rows,list_rows = new_list_rows,[]
-    for elem in rows:
+    max_lens = []
+    for col in rows:
+        max_len = 0
+        for elem in col:
+            if type(elem) == decimal.Decimal or type(elem) == int:
+                elem = str(elem)
+            if max_len <= len(elem):
+                max_len=len(elem)+4
+        max_lens.append(max_len)
         str_row=""
-        for i in range(0,len(elem)):
-            if i < len(elem)-1:
-                str_row+=f"{elem[i]}\n"
-            elif i == len(elem)-1:
-                str_row+=f"{elem[i]}"
+        for i in range(0,len(col)):
+            if i < len(col)-1:
+                str_row+=f"{col[i]}\n"
+            elif i == len(col)-1:
+                str_row+=f"{col[i]}"
         list_rows.append(str_row)
+    max_lens_head,max_len_head = [],0
+    for head in headings:
+        if max_len_head <= len(head):
+            max_len_head = len(head)
+        max_lens_head.append(max_len_head)
+    col_width = []
+    for i in range(len(max_lens)):
+        if max_lens_head[i] > max_lens[i]:
+            col_width.append(max_lens_head[i])
+        else:
+            col_width.append(max_lens[i])
     t = texttable.Texttable()
+    t.set_cols_width(col_width)
     t.add_rows([
         headings,
         list_rows,
@@ -77,10 +97,12 @@ def search():
         for tup in table:
             tup += tuple([catg_table])
             new_table.append(tup)
-        l = []
+        l,count = [],0
         for tup in new_table:
             l.append(tup[2])
-        print("\nCategory-Wise:\n")
+            if len(tup) >=count:
+                count+=len(tup)
+        print("\nCategory-Wise:\nCount!!!!",count)
         print(table_display(["ID","Name","Price","Category"],new_table,["Total:","-",sum(l),"-"]))
     if len(data) != 0:
         for i in range(0,len(data)):
@@ -154,20 +176,10 @@ def cart():
         item = list(item)
         item[2] = str(item[2])
         item.append(str(Qty))
-        print(item)
         item = tuple(item)
         myc.execute(f'''insert into cart values {item};''')
         mydb.commit()
     
-    def del_cart():
-        mydb = ms.connect(host = "localhost",
-        user = "root",password = "Tejas@035611",
-        database = "shop")
-        myc = mydb.cursor()
-        ID = input("Product ID of the item to be deleted from the cart --> ")
-        myc.execute(f"delete from cart where Product_ID = '{ID}'")
-        mydb.commit()
-
     def display_cart():
         mydb = ms.connect(host = "localhost",
         user = "root",password = "Tejas@035611",
@@ -178,18 +190,43 @@ def cart():
         for elem in data:
             new_data.append(list(elem))
         data = new_data
-        num,tot_rate,tot_price = 0,0,0
-        print(data)
+        num,tot_rate,tot_price,max_len = 0,0,0,0
         for elem in data:
             elem.append(elem[2]*elem[3])
             tot_rate+=float(elem[2])
             num+=int(elem[3])
             tot_price+=float(elem[4])
+        print(max_len)
         if len(data) != 0:
             display = table_display(["PID","Name","Rate","Quantity","Price"],data,["Total:","-",tot_rate,num,tot_price])
-            return [display,data]
         else:
-            return "Your cart is empty"
+            display =  "Your cart is empty"
+        return [display,data]
+
+    def del_cart(ID = ""):
+        mydb = ms.connect(host = "localhost",
+        user = "root",password = "Tejas@035611",
+        database = "shop")
+        myc = mydb.cursor()
+        if ID == "all":
+            myc.execute(f"delete from cart;")
+            mydb.commit()
+        else:
+            ID = input("Product ID of the item to be deleted from the cart --> ").upper()
+            data = display_cart()[1]
+            # print(data)  #.y[['UT01', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]
+            #.y,['UT03', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]]
+            for item in data:
+                for elem in item:
+                    if ID == elem:
+                        myc.execute(f"delete from cart where Product_ID = '{ID}'")
+                        mydb.commit()
+                        display = f"Your item with the ID : {ID} had been deleted. Please select the display option to see the changes."
+                        return display
+                    else:
+                        display = "item not found.... pls try again"
+                        return display
+
     
     def menu_opt_0():
         print("Returning to the main program....")
@@ -198,9 +235,10 @@ def cart():
     def checkout():
 
         def confirmation():
+            cart = display_cart()[1]
             opt = input("Proceed To checkout (y/n) ?").lower()
             if opt == 'y':
-                if type(cart) == None:
+                if len(cart) == 0:
                     print("Your cart is empty")
                     return False
                 else:
@@ -222,7 +260,7 @@ def cart():
             return ad
 
         def payment():
-            discount = 0
+            discount = []
             print("\n       <<-- PAYMENT DETAILS -->>\n\nCredit Card         --> cc\nDebit Card          --> dc\nCash On Delivaery   --> cash")
             while True:
                 coup = input("Do you have a coupon code ? (y/n)").lower()
@@ -236,6 +274,8 @@ def cart():
                         discount = [0.75,"DIS75"]
                     else:
                         print("The above code doesn't exist....")
+                else:
+                    discount = [0,0]
                 opt = input("Your Option: ").lower()
                 if opt == "cc":
                     return ["Credit Card",discount]
@@ -249,12 +289,15 @@ def cart():
         def summary(ad,pay):
             cart,total = display_cart()[1],[]
             for item in cart:
-                total.append(item[-1])
+                total.append(int(item[-1]))
             print("Summary:\n")
             print(f"Location: {ad[4]},{ad[5]}")
             print(f"Address: {ad[0]}")
             print(f"Payment Method: {pay[0]}")
-            print(table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
+            if len(cart) == 0:
+                print("your cart is empty.....")
+            else:
+                print(table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
             print("-"*100)
             print(f"Coupoun Code Applied: {pay[1][1]}")
             print(f"Discount Applied: {pay[1][0]}")
@@ -265,9 +308,10 @@ def cart():
             address = address()
             payment = payment()
             summary(address,payment)
+            del_cart(ID="all")
     
-    l_opt = ['a','d','c','cls','del','sum']
-    l_func = ["add_cart()","print(display_cart()[0])","checkout()","os.system('cls')","del_cart()"]
+    l_opt = ['a','d','c','cls','del','exit']
+    l_func = ["add_cart()","print(display_cart()[0])","checkout()","os.system('cls')","print(del_cart())","exit()"]
     d_menu = {
         'a': 'To add an item to the cart with their product ID          ',
         'd': 'To display the cart in the form of a table                ',
