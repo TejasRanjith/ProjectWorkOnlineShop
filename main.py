@@ -1,5 +1,4 @@
 import mysql.connector as ms
-from prettytable import PrettyTable
 import stdiomask as sm
 import os,time,texttable,decimal
 
@@ -320,7 +319,7 @@ def cart():
         '0': 'To return to the main menu                                '
     }
     while True:
-        print('<<----  CART_MENU  ---->>\n')
+        print('\n<<----  CART_MENU  ---->>\n')
         for elem in d_menu:
             print('  '+d_menu[elem] + '  --> ' + elem)
         opt = input('\nYour Option -->').lower()
@@ -335,12 +334,11 @@ def cart():
         else:
             print('Invalid Option......')
 
-l_opt = ['d','s','a','c','cls','exit']
-l_func = ["display()","search()","account()","cart()","os.system('cls')","exit()"]
+l_opt = ['d','s','c','cls','exit']
+l_func = ["display()","search()","cart()","os.system('cls')","exit()"]
 d_menu = {
     'd': "To display all the items available                            ",
     's': "To search for any item category wise or using a hint of name  ",
-    'a': "To create an account                                          ",
     'c': "To open the cart menu                                         ",
     '0': "To stop the main program                                      "
 }
