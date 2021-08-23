@@ -96,13 +96,11 @@ def search():
         for tup in table:
             tup += tuple([catg_table])
             new_table.append(tup)
-        l,count = [],0
+        l = []
         for tup in new_table:
             l.append(tup[2])
-            if len(tup) >=count:
-                count+=len(tup)
-        print("\nCategory-Wise:\nCount!!!!",count)
-        print(table_display(["ID","Name","Price","Category"],new_table,["Total:","-",sum(l),"-"]))
+        print("\nCategory-Wise:\n")
+        print(table_display(["ID","Name","Price","Category"],new_table,["Total:",len(new_table),sum(l),"-"]))
     if len(data) != 0:
         for i in range(0,len(data)):
             data[i][0] += tuple([catg_data[i]])
@@ -111,7 +109,7 @@ def search():
         for tup in new_data:
             l.append(tup[2])
         print("\nItem-Wise:\n")
-        print(table_display(["ID","Name","Price","Category"],new_data,["Total:","-",sum(l),"-"]))
+        print(table_display(["ID","Name","Price","Category"],new_data,["Total:",len(new_data),sum(l),"-"]))
     
     return data,table
 
@@ -136,22 +134,6 @@ def display():
         for i in range(0,len(d[key])):
             l.append(float(d[key][i][2]))
         print(table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
-
-def account():
-    name = input("Name : ")
-    email = input("Email-ID : ")
-    password = sm.getpass(prompt= "Password : ")
-    database = {}
-    if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
-        database[email] = [name,password]
-    mydb = ms.connect(host = "localhost",
-    user = "root",password = "Tejas@035611",
-    database = "shop")
-    myc = mydb.cursor()
-    for email in database:
-        myc.execute(f'''insert into accounts values
-    ('{database[email][0]}','{email}','{database[email][1]}');''')
-    mydb.commit()
 
 def cart():
 
