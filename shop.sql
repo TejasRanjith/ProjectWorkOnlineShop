@@ -647,14 +647,17 @@ delimiter ;
     create table accounts(
         Name varchar(25),
         Email_ID varchar(50) primary key,
-        Password varchar(25)
+        Password varchar(25),
+        Phone_No varchar(20),
+        Gender char(1),
+        Date_of_Birth date
     );
 
 
 -- cart-----------------------------------------------------------;
     create table cart(
         Product_ID char(4),
-        Product_Name varchar(25),
+        Product_Name varchar(50),
         Price decimal(10,2),
         Quantity int
     );
