@@ -63,6 +63,28 @@ def table_display(headings,rows,footers):
     return t.draw()
 # .y basic functions....↑ ↑ ↑ ↑ ↑ ↑
 
+def display():
+    mydb = ms.connect(host = "localhost",
+    user = "root",password = "Tejas@035611",
+    database = "shop")
+    myc = mydb.cursor()
+    myc.execute("show tables;")
+    tbs,d= list(myc.fetchall()),{}
+    tbs.remove(("accounts",))
+    tbs.remove(("cart",))
+    for tb in tbs:
+        myc.execute(f"select * from {tb[0]};")
+        items,l = myc.fetchall(),[]
+        for item in items:
+            item += tb
+            l.append(item)
+            d[tb[0]] = l
+    for key in d:
+        l = []
+        for i in range(0,len(d[key])):
+            l.append(float(d[key][i][2]))
+        print(table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
+
 def search():
     mydb = ms.connect(host = "localhost",
     user = "root",password = "Tejas@035611",
@@ -96,13 +118,11 @@ def search():
         for tup in table:
             tup += tuple([catg_table])
             new_table.append(tup)
-        l,count = [],0
+        l = []
         for tup in new_table:
             l.append(tup[2])
-            if len(tup) >=count:
-                count+=len(tup)
-        print("\nCategory-Wise:\nCount!!!!",count)
-        print(table_display(["ID","Name","Price","Category"],new_table,["Total:","-",sum(l),"-"]))
+        print("\nCategory-Wise:\n")
+        print(table_display(["ID","Name","Price","Category"],new_table,["Total:",len(new_table),sum(l),"-"]))
     if len(data) != 0:
         for i in range(0,len(data)):
             data[i][0] += tuple([catg_data[i]])
@@ -111,53 +131,15 @@ def search():
         for tup in new_data:
             l.append(tup[2])
         print("\nItem-Wise:\n")
-        print(table_display(["ID","Name","Price","Category"],new_data,["Total:","-",sum(l),"-"]))
+        print(table_display(["ID","Name","Price","Category"],new_data,["Total:",len(new_data),sum(l),"-"]))
     
     return data,table
-
-def display():
-    mydb = ms.connect(host = "localhost",
-    user = "root",password = "Tejas@035611",
-    database = "shop")
-    myc = mydb.cursor()
-    myc.execute("show tables;")
-    tbs,d= list(myc.fetchall()),{}
-    tbs.remove(("accounts",))
-    tbs.remove(("cart",))
-    for tb in tbs:
-        myc.execute(f"select * from {tb[0]};")
-        items,l = myc.fetchall(),[]
-        for item in items:
-            item += tb
-            l.append(item)
-            d[tb[0]] = l
-    for key in d:
-        l = []
-        for i in range(0,len(d[key])):
-            l.append(float(d[key][i][2]))
-        print(table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
-
-def account():
-    name = input("Name : ")
-    email = input("Email-ID : ")
-    password = sm.getpass(prompt= "Password : ")
-    database = {}
-    if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
-        database[email] = [name,password]
-    mydb = ms.connect(host = "localhost",
-    user = "root",password = "Tejas@035611",
-    database = "shop")
-    myc = mydb.cursor()
-    for email in database:
-        myc.execute(f'''insert into accounts values
-    ('{database[email][0]}','{email}','{database[email][1]}');''')
-    mydb.commit()
 
 def cart():
 
     def add_cart():
-        PID = input("PID -->").capitalize()
-        Qty = int(input("Qty -->"))
+        PID = input("Product ID of your required item -->").capitalize()
+        Qty = int(input("Quantity of required item -->"))
         mydb = ms.connect(host = "localhost",
         user = "root",password = "Tejas@035611",
         database = "shop")
@@ -189,13 +171,12 @@ def cart():
         for elem in data:
             new_data.append(list(elem))
         data = new_data
-        num,tot_rate,tot_price,max_len = 0,0,0,0
+        num,tot_rate,tot_price = 0,0,0
         for elem in data:
             elem.append(elem[2]*elem[3])
             tot_rate+=float(elem[2])
             num+=int(elem[3])
             tot_price+=float(elem[4])
-        print(max_len)
         if len(data) != 0:
             display = table_display(["PID","Name","Rate","Quantity","Price"],data,["Total:","-",tot_rate,num,tot_price])
         else:
@@ -211,12 +192,14 @@ def cart():
             myc.execute(f"delete from cart;")
             mydb.commit()
         else:
+            display = ""
             ID = input("Product ID of the item to be deleted from the cart --> ").upper()
             data = display_cart()[1]
             # print(data)  #.y[['UT01', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]
             #.y,['UT03', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]]
             for item in data:
                 for elem in item:
+                    print(elem)
                     if ID == elem:
                         myc.execute(f"delete from cart where Product_ID = '{ID}'")
                         mydb.commit()
@@ -224,8 +207,7 @@ def cart():
                         return display
                     else:
                         display = "item not found.... pls try again"
-                        return display
-
+            return display
     
     def menu_opt_0():
         print("Returning to the main program....")
@@ -273,8 +255,9 @@ def cart():
                         discount = [0.75,"DIS75"]
                     else:
                         print("The above code doesn't exist....")
+                        discount = ["no discount","no discount"]
                 else:
-                    discount = [0,0]
+                    discount = ["null","no coupoun code applied"]
                 opt = input("Your Option: ").lower()
                 if opt == "cc":
                     return ["Credit Card",discount]
@@ -293,15 +276,18 @@ def cart():
             print(f"Location: {ad[4]},{ad[5]}")
             print(f"Address: {ad[0]}")
             print(f"Payment Method: {pay[0]}")
+            if pay[1][0] == "null":
+                total = sum(total)
+            else:
+                total = sum(total)*pay[1][0]
+            print("-"*100+"\n")
             if len(cart) == 0:
                 print("your cart is empty.....")
             else:
-                print(table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
+                print(table_display(["PID","Name","Rate","Quantity","Price"],cart,["Total:","-","-","-",total]))
             print("-"*100)
             print(f"Coupoun Code Applied: {pay[1][1]}")
             print(f"Discount Applied: {pay[1][0]}")
-            print("Total: ",sum(total)*pay[1][0],sep = "\n\n       ")
-            print("-"*100+"\n")
         
         if confirmation():
             address = address()
@@ -334,15 +320,16 @@ def cart():
         else:
             print('Invalid Option......')
 
-l_opt = ['d','s','c','cls','exit']
-l_func = ["display()","search()","cart()","os.system('cls')","exit()"]
+
+l_opt = ['d','s','a','c','cls','exit']
+l_func = ["display()","account()","search()","cart()","os.system('cls')","exit()"]
 d_menu = {
     'd': "To display all the items available                            ",
     's': "To search for any item category wise or using a hint of name  ",
+    'a': "To open account settings                                      ",
     'c': "To open the cart menu                                         ",
     '0': "To stop the main program                                      "
 }
-
 while True:
     print('\n<<----  SHOP  ---->>\n')
     for elem in d_menu:
