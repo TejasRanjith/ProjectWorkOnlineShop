@@ -1,22 +1,18 @@
 import decimal,texttable,time,os
 import mysql.connector as ms
 import stdiomask as sm
-
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import datetime
-import wikipedia
-import pyjokes
+
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 engine.setProperty("rate",160)
 
-
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-
 
 def take_command():
     try:
@@ -298,39 +294,30 @@ class shop():
 
             def address(self):
                 print("\n     <<-- SHIPPING DETAILS -->>\n")
-                ad = [input("Address: "),
-                    input("First Name: "),
-                    input("Last Name: "),
-                    input("Phone No.: "),
+                ad = [input("Street name : "),
+                    input("Building name/ floor no., Apt or Villa No. : "),
                     input("City: "),
                     input("Area: ")]
                 return ad
 
             def payment(self):
-                discount = []
                 print("\n       <<-- PAYMENT DETAILS -->>\n\nCredit Card         --> cc\nDebit Card          --> dc\nCash On Delivaery   --> cash")
                 while True:
-                    coup = input("Do you have a coupon code ? (y/n)").lower()
-                    if coup == "y":
-                        code = input("Coupon Code: ").upper()
-                        if code == "FREE":
-                            print("Thank you for applying the coupon code.")
-                            discount = [0,"FREE"]
-                        elif code == "DIS75":
-                            print("Thank you for applying the coupon code.")
-                            discount = [0.75,"DIS75"]
-                        else:
-                            print("The above code doesn't exist....")
-                            discount = ["no discount","no discount"]
-                    else:
-                        discount = ["null","no coupoun code applied"]
                     opt = input("Your Option: ").lower()
                     if opt == "cc":
-                        return ["Credit Card",discount]
+                        card_no = input("Card Number : ")
+                        cvv = input("CVV Number : ")
+                        name = input("Name on Card : ")
+                        exp = input("Expiration date (mm-yyyy): ")
+                        return ["Credit Card",card_no,cvv,name,exp]
                     elif opt == "dc":
-                        return ["Debit Card",discount]
+                        card_no = input("Card Number : ")
+                        cvv = input("CVV Number : ")
+                        name = input("Name on Card : ")
+                        exp = input("Expiration date (mm-yyyy): ")
+                        return ["Debit Card",card_no,cvv,name,exp]
                     elif opt == "cash":
-                        return ["Cash On Delivery",discount]
+                        return ["Cash On Delivery"]
                     else:
                         print("Invalid Payment Method.....")
 
@@ -342,18 +329,18 @@ class shop():
                 print(f"Location: {ad[4]},{ad[5]}")
                 print(f"Address: {ad[0]}")
                 print(f"Payment Method: {pay[0]}")
-                if pay[1][0] == "null":
-                    total = sum(total)
-                else:
-                    total = sum(total)*pay[1][0]
+                # if pay[1][0] == "null":
+                #     total = sum(total)       #.y   Discount Applying part!!!!!!!!!!!!
+                # else:
+                #     total = sum(total)*pay[1][0]
                 print("-"*100+"\n")
                 if len(cart) == 0:
                     print("your cart is empty.....")
                 else:
                     print(shop.table_display(shop,["PID","Name","Rate","Quantity","Price"],cart,["Total:","-","-","-",total]))
                 print("-"*100)
-                print(f"Coupoun Code Applied: {pay[1][1]}")
-                print(f"Discount Applied: {pay[1][0]}")
+                # print(f"Coupoun Code Applied: {pay[1][1]}")
+                # print(f"Discount Applied: {pay[1][0]}")
 
             def menu(self):
                 if self.confirmation():
@@ -368,13 +355,13 @@ class account():
 
     def confirm(self):
         print("\n<<---- STARTUP PAGE(  www.shopify.ae  ) ---->>\n")
-        shop().timer(0.5)
         print("Hi there,\n")
-        shop().timer(1)
+        talk("Hi there,")
         print("Welcome to shopify\n")
-        shop().timer(2)
-        print("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
-        shop().timer(5)
+        talk("Welcome to shopify")
+        print("If you want to exit the shop at anytime, you can type '0' where ever specified.")
+        talk("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
+        talk("Do you have an account ?")
         opt = input("Do you have an account ? (y/n) : ").lower()
         if opt == "0":
             exit()
@@ -388,8 +375,10 @@ class account():
         dob,no,gender = input("Date of Birth (yyyy-mm-dd): "),input("Phone No.: "),input("Gender (M/F): ")
         password = sm.getpass(prompt= "Password : ")
         name = first_name+" "+last_name
+        payment = shop().cart().checkout().payment()
+        address = shop().cart().checkout().address()
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"] and len(password) >= 8 and len(password) <=15 and len(no) == 10:
-            database[email] = [name,password,no,gender,dob]
+            database[email] = [name,password,no,gender,dob,address,payment]
         else:
             print("Invalid Email-ID/Password . Please try again.")
         mydb = ms.connect(host = "localhost",
@@ -398,7 +387,7 @@ class account():
         myc = mydb.cursor()
         for email in database:
             myc.execute(f'''insert into accounts value
-            ('{database[email][0]}','{email}','{database[email][1]}','{database[email][2]}','{database[email][3]}','{database[email][4]}');''')
+            ('{database[email][0]}','{email}','{database[email][1]}','{database[email][2]}','{database[email][3]}','{database[email][4]}','{database[email][5]}','{database[email][6]}','{database[email][7]}');''')
         mydb.commit()
     
     def login(self):
