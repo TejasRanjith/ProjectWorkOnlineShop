@@ -948,8 +948,8 @@ delimiter ;
     ("ST101","Double A A4 Printer Copy Paper 500 Pages",17.60),
     ("ST102","Double A A4 Printer Copy Paper 100 Pages",5.50),
     ("ST103","High Plus Premium Quality Paper 500 Pages",47.99),
-    ("ST104","",),
-    ("ST105","",);
+    ("ST104","12 Pockets Expanding File A4 organizer",18.90),
+    ("ST105","10-Piece FIS Rado Box File 8cm",48.25);
 
 -- story_book -----------------------------------------------;
 
@@ -1026,7 +1026,7 @@ delimiter ;
 
 -- gaming_console -------------------------------------------;
 
-    create table story_book(
+    create table gaming_console(
         ID char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
@@ -1042,7 +1042,7 @@ delimiter ;
     
 -- game_cds -------------------------------------------------;
 
-    create table story_book(
+    create table game_cds(
         ID char(4) primary key,
         Name varchar(50),
         Price decimal(10,2)
@@ -1123,6 +1123,106 @@ delimiter ;
     ("GC73","Nintendo Switch-Pokemon Sheild",187.00),
     ("GC74","Nintendo Switch-Minecraft Dungeons",98.0),
     ("GC75","Nintendo Switch-Just Dance 2021",126.0);
+
+-- sports ---------------------------------------;
+
+    create table sports(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    ("SP01","Premiere League Football Blue",49.99),
+    ("SP02","Premiere League Football Red",49.99),
+    ("SP03","Synplay Machine Stich Football",29.00),
+    ("SP04","Vector X Men England Football",20.46),
+    ("SP05","Vector X Men Football Green-Black",0),
+    ("SP06","Synplay Rubber Football Black",26.00),
+    ("SP07","Football Goal Post For Children",135.00),
+    ("SP08","Nivia 742 Raptor Torrido Football Goalkeeper Gloves",44.18),
+    ("SP09","Nivia 642 Ditmar Spider Goalkeeper Gloves",43.50),
+    ("SP10","Puma Unisex One Grip Goalkeeper Gloves",61.57),
+    ("SP11","Justdolife Kids Cricket Set",16.55),
+    ("SP12","Pro Impact Classic Kashmir Cricket Bat",270.0),
+    ("SP13","SG Scorer Classisc Kashmir Willow Cricket Bat",82.83),
+    ("SP14","SG Max Cover Kashmir Willow Cricket Bat",86.25),
+    ("SP15","Sportaxis Premium Cricket Bat",175.06),
+    ("SP16","DS Cricket Wind-Ball - Yellow",15.0),
+    ("SP17","Gray Nicolls Club Cricket Ball",37.0),
+    ("SP18","Dawnson Sport Cricket Wind-Ball",19.0),
+    ("SP19","DSC Premium Complete Kit With Helmet Cricket Mens",398.0),
+    ("SP20","Gray Nicolls Cricket Wicket Keeping Glovs Cotton White",34.18),
+    ("SP21","DSC Condor Atoms Leather Cricket Wicket Keeping Gloves",106.70),
+    ("SP22","GM Siren Cricket Wicket Keeping Gloves",49.84),
+    ("SP23","Cricket Stumps With Spring 28 inches",73.20),
+    ("SP24","Cricket Stumps With Wood Base",47.00),
+    ("SP25","Cricket Stumps With Metal Base Spring STand 28 inches",70.00),
+    ("SP26","Pro Impact Cricket Stumps",240.0),
+    ("SP27","GM Spring Cricket Stumps Set",130.87),
+    ("SP28","Wilson Tennis Racket Fusion XL Red-Black",130.63),
+    ("SP29","Dawson Sports Unisex Adult Tennis Racket",69.00),
+    ("SP30","Dunlop For All Court Tennis Balls 3Pc",24.24),
+    ("SP31","Wilson Champ Extra Duty Tennis Balls",35.0),
+    ("SP32","Head Radical Tennis Balls 12Pc",63.47),
+    ("SP33","2 Table Tennis Racket Set Solid Wood With 3 Balls",19.0),
+    ("SP34","Stiga Pure Advanced Table Tennis Racket",117.69),
+    ("SP35","Retractable Adjustable Table Tennis Nets Post Set",29.55),
+    ("SP36","Steel Table Tennis Table International Standard Size",699.0),
+    ("SP37","Stansom Professional Foldable Table Tennis Table",1495.0),
+    ("SP38","Badminton Set Including 2 Shuttlecock and 2 Badminton",23.9),
+    ("SP39","Yonex Badminton Racket Blue-White",93.75),
+    ("SP40","Yonex 2 Racket With 2 SHuttlecock Blue",110.0),
+    ("SP41","Dorsa Outdoor Light Weight Badminton Racket Set",27.34),
+    ("SP42","Yonex 4 Player Badminton Set",189.0),
+    ("SP43","Yonex Nano Flare Badminton Racket Turquoise-Black",168.0),
+    ("SP44","Delee Portable Badminton Net",102.77),
+    ("SP45","Carlton Unisex Shuttlecock",21.92),
+    ("SP46","Yonex Mavis 2000 Nylon Badminton Shuttlcock",57.48),
+    ("SP47","Dunlop Carlton Badminton Shuttlecock 6Pc",30.45),
+    ("SP48","Spalding NBA Gold Series Basketball Size 7",106.73),
+    ("SP49","Spalding NBA Silver Series Basketball Size 7",63.50),
+    ("SP50","Spalding NBA Gold Series Basketball SIze 7",58.89),
+    ("SP51","Spalding NBA Neverflat Basketball",153.06),
+    ("SP52","NBA Graffiti Size 7 Rubber Basketball",59.32),
+    ("SP53","Spalding NBA Basketball Hoop",4119.0),
+    ("SP54","Adjustable 160cm Kids Basketball Hoop Set",50.98),
+    ("SP55","Idealt Children Standing Basketball Hoop",178.0),
+    ("SP56","Spalding Extreme Pro Wave Volleyball",59.0),
+    ("SP57","Legend Volleyball",44.99),
+    ("SP58","Mikasa Beach Volleyball",284),
+    ("SP59","Wilson Super Soft Play Volleyball",76.90),
+    ("SP60","Volleyball Net Portable 9.5x1m",99.75);
+
+-- indoor_games ---------------------------------------;
+
+    create table indoor_games(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    ("IG00","Berry Wooden Tradistional Chess Game",59.99),
+    ("IG00","Blessing Decor Collecrible Sovient Metal Brass Chess",1088.58),
+    ("IG00","Festnight Portable Wooden Magnetic Chess Game",78.0),
+    ("IG00","Radical 15 inches Large Handmade White-Green Onyx Chess Game",489.0),
+    ("IG00","Umbra Wobble Chess Set",650.52),
+    ("IG00","Amerous Magnetic Wooden Chess Set",89.46),
+    ("IG00","Rubix's Cube 3x3",41.87),
+    ("IG00","Spped Cube 2x2",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ("IG00","",0),
+    ;
 
 -- .r
 
