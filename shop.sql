@@ -1229,12 +1229,8 @@ delimiter ;
 -- .r 
 -- accounts-------------------------------------------------------;
     create table accounts(
-        Name varchar(25),
         Email_ID varchar(50) primary key,
-        Password varchar(25),
-        Phone_No varchar(20),
-        Gender char(1),
-        Date_of_Birth date
+        Info varchar(7999)
     );
 
 
