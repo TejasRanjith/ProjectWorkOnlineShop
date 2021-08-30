@@ -1,0 +1,16 @@
+{
+    "tasks": {
+		"version": "2.0.0",
+		"tasks": [
+			{
+				"label": "Run SQL Query",
+				"type": "shell",
+				"command": "python 'C:\\Users\\home\\Desktop\\Computer Stuff\\CORTANA CMDs\\Run_SQL_Query.py'",
+				"presentation": {
+					"reveal": "silent"
+				},
+				"problemMatcher": []
+			}
+		]//'C:/Users\\home\\Desktop\\Computer Stuff\\CORTANA CMDs\\Run_SQL_Query.py'
+	}
+}

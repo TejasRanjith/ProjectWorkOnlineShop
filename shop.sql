@@ -11,8 +11,8 @@ delimiter ;
 -- snacks --------------------------------------------------------;
 
     create table snacks(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -58,8 +58,8 @@ delimiter ;
 -- fruits ---------------------------------------------------------;
 
     create table fruits(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -92,8 +92,8 @@ delimiter ;
 -- veg ------------------------------------------------------------;
 
     create table veg(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -132,8 +132,8 @@ delimiter ;
 -- fish -----------------------------------------------------------;
 
     create table fish(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -148,8 +148,8 @@ delimiter ;
 -- bakery ---------------------------------------------------------;
 
     create table bakery(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -179,8 +179,8 @@ delimiter ;
 -- drinks ---------------------------------------------------------;
 
     create table drinks(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -205,8 +205,8 @@ delimiter ;
 -- medicine -------------------------------------------------------;
 
     create table medicine(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -218,8 +218,8 @@ delimiter ;
 -- utensils -------------------------------------------------------;
 
     create table utensils(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -246,8 +246,8 @@ delimiter ;
 
 
     create table computers(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -271,8 +271,8 @@ delimiter ;
 -- phones --------------------------------------------------------;
 
     create table phones(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -337,8 +337,8 @@ delimiter ;
 -- electronic_accessories ----------------------------------------;
 
     create table electronic_accessories(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -394,13 +394,13 @@ delimiter ;
     ("EA49","UGREEN HDMI 2.1 Cable 8K",47.00),
     ("EA50","UGREEN USB C 3.1 to HDMI 4K",68.00),
     ("EA51","S-TEK 4K HDMI Cable Ulta Slim 4K",26.99),
-    ("EA52","Samsung S Pen",116.0),;
+    ("EA52","Samsung S Pen",116.0);
 
 -- tvs ------------------------------------------------------------;
 
     create table tvs(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -423,8 +423,8 @@ delimiter ;
 -- toys -----------------------------------------------------------;
 
     create table toys(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -444,8 +444,8 @@ delimiter ;
 
 -- milk -----------------------------------------------------------;
     create table milk(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -520,8 +520,8 @@ delimiter ;
 -- rice -----------------------------------------------------------;
 
     create table rice(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -547,8 +547,8 @@ delimiter ;
 -- oil ------------------------------------------------------------;
     
     create table oil(
-        Id char(4) primary key,
-        Name varchar(50),
+        Id char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -591,8 +591,8 @@ delimiter ;
 -- sugar ----------------------------------------------------------;
     
     create table sugar(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -629,8 +629,8 @@ delimiter ;
 -- salt -----------------------------------------------------------;
 
     create table salt(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -656,8 +656,8 @@ delimiter ;
 -- bathroom_items ------------------------------------------------;
 
     create table bathroom_items(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -770,7 +770,7 @@ delimiter ;
     ("BI108","Diatomaceous Earth Bathroom Mat Non-Slip Fast Dryig",80.00),
     ("BI109","OGX Biotin & Collagen Shampoo 385ml",36.90),
     ("BI110","OGX Weightless Hydration + Coconut Water Shampoo 385ml",36.02),
-    ("BI111","OGX Renewing + Argan Oil Of Morocco 385ml",36.02)
+    ("BI111","OGX Renewing + Argan Oil Of Morocco 385ml",36.02),
     ("BI112","Herbal Essences Argan Oil Of Morroco Shampoo 400ml",20.77),
     ("BI113","Herbal Essences Coconut Milk Shampoo 400ml",25.00),
     ("BI114","Pantene Smooth & Silky Shampoo Pack(2)",14.25),
@@ -785,14 +785,14 @@ delimiter ;
     ("BI123","Dove Nourishing Secrets Avacado Shampoo 400ml",17.75),
     ("BI124","Sebamed Baby Shampoo 500ml",24.30),
     ("BI125","Sunsilk Shampoo Shine & Strength 400ml",21.95),
-    ("BI126","Sunsilk Coconut Moisture Shampoo 400ml",20.11)
+    ("BI126","Sunsilk Coconut Moisture Shampoo 400ml",20.11),
     ("BI127","Vatika Shampoo Repair & Restore 400ml",7.70);
 
 -- chocolate -----------------------------------------------------;
 
     create table chcolate(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -841,8 +841,8 @@ delimiter ;
 -- stationaries ---------------------------------------------;
 
     create table stationaries(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -877,76 +877,76 @@ delimiter ;
     ("ST28","Pilot Frixion Erasable Pen 4Pc (Black, Blue, Green, Red)",33.40),
     ("ST29","Faber-Castell Connector Felt Pen 20Pc",13.60),
     ("ST30","Faber-Castell Sketch Pen 30Pc",15.0),
-    ("ST30","Faber-Castell Sketch Pen 12Pc",6.0),
-    ("ST31","Sky-Touch 20Pc Sketch Pen",18.16),
-    ("ST32","Marker Painting Sketch Pen 80Pc",49.09),
-    ("ST33","Bespoke Sketch Pen 24Pc",25.0),
-    ("ST34","Stabilo Tri Jumbo Sketch Pen 12Pc",21.0),
-    ("ST35","Faber-Castell Whiteboard Marker 4Pc (Green, Blue, Red, Black)",9.0),
-    ("ST36","Sharpie Permanent Marker 3Pc Black",23.90),
-    ("ST37","Maxi Permanent Marker 4Pc (Blue, Black, Red, Green)",6.0),
-    ("ST38","Faber-Castell Classic Highlighter Pen 4Pc",12.0),
-    ("ST39","Stabilo Highlighter Pen 8Pc",18.42),
-    ("ST40","Steadler Textsurf Highlighter 6Pc",23.75),
-    ("ST41","Faber-Castell Pastel Highlighter 4Pc",11.0),
-    ("ST42","Maxi Super-Fluo Mini Highlighter 4Pc",7.0),
-    ("ST43","Deli Correction Whitener Pen",8.0),
-    ("ST44","Deli Correction Whitener Pen Easy Uncapping",2.12),
-    ("ST45","Pentel Correction Whitener Pen",16.25),
-    ("ST46","Fis Correction Whitener Pen 12Pc",15.0),
-    ("ST47","Scotch Household Scissors 8inches Red",6.62),
-    ("ST48","Scotch Muti-Purpose Scissor 6inches Red",5.01),
-    ("ST49","Deli Scissors Polished Blade",3.45),
-    ("ST50","Faber-Castell Student Scissors 3Pc",7.20),
-    ("ST51","Faber-Castell Kinder Scissor with Plastic Blade",5.0),
-    ("ST52","Livingo Small School Scissors 5Pc",36.99),
-    ("ST53","Livingo 2Pc 8inches Titanium Non-Stick Stainless Steel",59.99),
-    ("ST54","Livingo Premium Tailor Scissors",65.99),
-    ("ST55","Scissors Professional Super Sharp Tailor",15.0),
-    ("ST56","Fiskars Razor Edge Scissors 8inches",90.02),
-    ("ST57","Tailor Scissors Professional 10.5inches",18.50),
-    ("ST58","GVTECH 40x30cm Double Sided Whiteboard",19.99),
-    ("ST59","White Board 60x90cm Whiteboard",89.99),
-    ("ST60","Womdee Small Dry Erase Whiteboard",35.90),
-    ("ST61","Maxi Double Sided A4 Whiteboard",15.0),
-    ("ST62","Deli Whiteboard Eraser",3.36),
-    ("ST63","Magnetic Whiteboard Eraser",12.99),
-    ("ST64","Maxi Medium Magnetic White Board Eraser",4.0),
-    ("ST65","Faber-Castell PVC-Free Eraser 16Pc",7.20),
-    ("ST66","Faber-Castell PVC-Free Big Eraser Black 2Pc",4.75),
-    ("ST67","Steadler Large Rasoplast Eraser 5Pc",19.75),
-    ("ST68","Faber-Castell Dust_Free Eraser 6Pc",9.60),
-    ("ST69","Raso Plast Eraser Box 30Pc",36.95),
-    ("ST70","Steadler Rasoplast 3Pc",4.56),
-    ("ST71","Manuscript Notebook 8mm Single Ruled A4 (210x297mm) 5Pc",52.94),
-    ("ST72","Manuscript Notebook 8mm Single Ruled With Spiral A4 (210x297mm) 5Pc",47.34),
-    ("ST73","Manuscript Notebook 8mm Single Ruled A4 (148x210mm) 5Pc",40.35),
-    ("ST74","Manuscript Notebook 5mm Single Ruled With Spiral A4 (148x210mm) 5Pc",38.65),
-    ("ST75","Manuscript Notebook 8mm Single Ruled A4 (210x330mm) 5Pc",66.25),
-    ("ST76","Manuscript Notebook 8mm Single Ruled A4 100pages",29),
-    ("ST77","Maxi Register Book A4",13.0),
-    ("ST78","Password Code Locked Notebook Business Premium Leather Diary",29.99),
-    ("ST79","Soft Touch Hardcover Notebook",18.0),
-    ("ST80","2021 Diary",25.36),
-    ("ST81","2022 Diary",25.36),
-    ("ST82","Faber-Castell Drawing Book A4 36 Sheets",5.0),
-    ("ST83","Cartidge Sketch Pad Drawing Book A4",3.75),
-    ("ST84","Deli Sketchbook Spiral Bound A4 40 Sheets",21.77),
-    ("ST85","Avengers Coloring Book Kids",15.32),
-    ("ST86","Disney Frozen 2 Coloring Book Kids",17.79),
-    ("ST87","UHU Stic 8.2g 3Pc",7.80),
-    ("ST88","UHU Super Glue Control 3g",4.0),
-    ("ST89","Deli White Glue Washable Glue",3.78),
-    ("ST90","Deli Super Glue 3gm",1.20),
-    ("ST91","Faber-Castell White Glue 250ml",5.60),
-    ("ST92","Faber-Castell White Glue 480ml",10.0),
-    ("ST93","Elmer's Clear Washable Liquid Glue",27.75),
-    ("ST94","Scola Washable Glue 5 Litre",49.78),
-    ("ST95","Gorilla Super Glue 3g",28.25),
-    ("ST96","Bosch Glue Gun",109.06),
-    ("ST97","Mini Hot Glue Gun with 50Pc Glue Stick",30.0),
-    ("ST98","Skeido Hot Glue Gun with 12Pc Glue Stick",18.99),
-    ("ST99","Supvox 100Pc A4 Color Paper",16.0),
+    ("ST31","Faber-Castell Sketch Pen 12Pc",6.0),
+    ("ST32","Sky-Touch 20Pc Sketch Pen",18.16),
+    ("ST33","Marker Painting Sketch Pen 80Pc",49.09),
+    ("ST34","Bespoke Sketch Pen 24Pc",25.0),
+    ("ST35","Stabilo Tri Jumbo Sketch Pen 12Pc",21.0),
+    ("ST36","Faber-Castell Whiteboard Marker 4Pc (Green, Blue, Red, Black)",9.0),
+    ("ST37","Sharpie Permanent Marker 3Pc Black",23.90),
+    ("ST38","Maxi Permanent Marker 4Pc (Blue, Black, Red, Green)",6.0),
+    ("ST39","Faber-Castell Classic Highlighter Pen 4Pc",12.0),
+    ("ST40","Stabilo Highlighter Pen 8Pc",18.42),
+    ("ST41","Steadler Textsurf Highlighter 6Pc",23.75),
+    ("ST42","Faber-Castell Pastel Highlighter 4Pc",11.0),
+    ("ST43","Maxi Super-Fluo Mini Highlighter 4Pc",7.0),
+    ("ST44","Deli Correction Whitener Pen",8.0),
+    ("ST45","Deli Correction Whitener Pen Easy Uncapping",2.12),
+    ("ST46","Pentel Correction Whitener Pen",16.25),
+    ("ST47","Fis Correction Whitener Pen 12Pc",15.0),
+    ("ST48","Scotch Household Scissors 8inches Red",6.62),
+    ("ST49","Scotch Muti-Purpose Scissor 6inches Red",5.01),
+    ("ST50","Deli Scissors Polished Blade",3.45),
+    ("ST51","Faber-Castell Student Scissors 3Pc",7.20),
+    ("ST52","Faber-Castell Kinder Scissor with Plastic Blade",5.0),
+    ("ST53","Livingo Small School Scissors 5Pc",36.99),
+    ("ST54","Livingo 2Pc 8inches Titanium Non-Stick Stainless Steel",59.99),
+    ("ST55","Livingo Premium Tailor Scissors",65.99),
+    ("ST56","Scissors Professional Super Sharp Tailor",15.0),
+    ("ST57","Fiskars Razor Edge Scissors 8inches",90.02),
+    ("ST58","Tailor Scissors Professional 10.5inches",18.50),
+    ("ST59","GVTECH 40x30cm Double Sided Whiteboard",19.99),
+    ("ST60","White Board 60x90cm Whiteboard",89.99),
+    ("ST61","Womdee Small Dry Erase Whiteboard",35.90),
+    ("ST62","Maxi Double Sided A4 Whiteboard",15.0),
+    ("ST63","Deli Whiteboard Eraser",3.36),
+    ("ST64","Magnetic Whiteboard Eraser",12.99),
+    ("ST65","Maxi Medium Magnetic White Board Eraser",4.0),
+    ("ST66","Faber-Castell PVC-Free Eraser 16Pc",7.20),
+    ("ST67","Faber-Castell PVC-Free Big Eraser Black 2Pc",4.75),
+    ("ST68","Steadler Large Rasoplast Eraser 5Pc",19.75),
+    ("ST69","Faber-Castell Dust_Free Eraser 6Pc",9.60),
+    ("ST70","Raso Plast Eraser Box 30Pc",36.95),
+    ("ST71","Steadler Rasoplast 3Pc",4.56),
+    ("ST72","Manuscript Notebook 8mm Single Ruled A4 (210x297mm) 5Pc",52.94),
+    ("ST73","Manuscript Notebook 8mm Single Ruled With Spiral A4 (210x297mm) 5Pc",47.34),
+    ("ST74","Manuscript Notebook 8mm Single Ruled A4 (148x210mm) 5Pc",40.35),
+    ("ST75","Manuscript Notebook 5mm Single Ruled With Spiral A4 (148x210mm) 5Pc",38.65),
+    ("ST76","Manuscript Notebook 8mm Single Ruled A4 (210x330mm) 5Pc",66.25),
+    ("ST77","Manuscript Notebook 8mm Single Ruled A4 100pages",29),
+    ("ST78","Maxi Register Book A4",13.0),
+    ("ST79","Password Code Locked Notebook Business Premium Leather Diary",29.99),
+    ("ST80","Soft Touch Hardcover Notebook",18.0),
+    ("ST81","2021 Diary",25.36),
+    ("ST82","2022 Diary",25.36),
+    ("ST83","Faber-Castell Drawing Book A4 36 Sheets",5.0),
+    ("ST84","Cartidge Sketch Pad Drawing Book A4",3.75),
+    ("ST85","Deli Sketchbook Spiral Bound A4 40 Sheets",21.77),
+    ("ST86","Avengers Coloring Book Kids",15.32),
+    ("ST87","Disney Frozen 2 Coloring Book Kids",17.79),
+    ("ST88","UHU Stic 8.2g 3Pc",7.80),
+    ("ST89","UHU Super Glue Control 3g",4.0),
+    ("ST90","Deli White Glue Washable Glue",3.78),
+    ("ST91","Deli Super Glue 3gm",1.20),
+    ("ST92","Faber-Castell White Glue 250ml",5.60),
+    ("ST93","Faber-Castell White Glue 480ml",10.0),
+    ("ST94","Elmer's Clear Washable Liquid Glue",27.75),
+    ("ST95","Scola Washable Glue 5 Litre",49.78),
+    ("ST96","Gorilla Super Glue 3g",28.25),
+    ("ST97","Bosch Glue Gun",109.06),
+    ("ST98","Mini Hot Glue Gun with 50Pc Glue Stick",30.0),
+    ("ST99","Skeido Hot Glue Gun with 12Pc Glue Stick",18.99),
+    ("ST100","Supvox 100Pc A4 Color Paper",16.0),
     ("ST101","Double A A4 Printer Copy Paper 500 Pages",17.60),
     ("ST102","Double A A4 Printer Copy Paper 100 Pages",5.50),
     ("ST103","High Plus Premium Quality Paper 500 Pages",47.99),
@@ -956,85 +956,85 @@ delimiter ;
 -- story_book -----------------------------------------------;
 
     create table story_book(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
     insert into story_book values
-    ("SB00","Harry Potter And The Philosofer's Stone Book",29.99),
-    ("SB00","Harry Potter And The Chamber Of Secrets Book",26.65),
-    ("SB00","Harry Potter And The Prisoner Of Azkaban",22.32),
-    ("SB00","Harry Potter And The Goblet Of Fire",27.32),
-    ("SB00","Harry Potter And The Order Of The Pheonix",25.55),
-    ("SB00","Harry Potter And The Half Blood Prince",23.32),
-    ("SB00","Harry Potter And The Dethly Hallows",27.32),
-    ("SB00","Harry Potter And The Cursed Child",28.25),
-    ("SB00","Percy Jackson And The Olympians Book 1 The Lighting Theif",38.99),
-    ("SB00","Percy Jackson And The Olympians Book 2 The Sea Of Monsters",29.99),
-    ("SB00","Percy Jackson And The Olympians Book 3 The Titan's Curse",32.51),
-    ("SB00","Percy Jackson And The Olympians Book 4 The Battle Of The Laybirth",29.68),
-    ("SB00","Percy Jackson And The Olympians Book 5 The Last Olympian",30.37),
-    ("SB00","The Alchemist - Paulo Caelho",28.51),
-    ("SB00","Sherlock Holmes Volume I",26.07),
-    ("SB00","Sherlock Holmes Volume II",22.37),
-    ("SB00","Hamley - William Shakespeare",22.78),
-    ("SB00","Macbeth - William Shakespeare",35.0),
-    ("SB00","Romeo And Juliet - William Shakespeare",24.96),
-    ("SB00","Diary Of A Wimpy Kid Book 1",24.09),
-    ("SB00","Diary Of A Wimpy Kid: Rodrick Rules Book 2",24.23),
-    ("SB00","Diary Of A Wimpy Kid: The Last Straw Book 3",25.36),
-    ("SB00","Diary Of A Wimpy Kid: The Dog Days Book 4",27.23),
-    ("SB00","Diary Of A Wimpy Kid: The Ugly Truth Book 5",23.69),
-    ("SB00","Diary Of A Wimpy Kid: Cabin Fever Book 6",),
-    ("SB00","Diary Of A Wimpy Kid: The Third Wheel Book 7",22.84),
-    ("SB00","Diary Of A Wimpy Kid: Hard Luck Book 8",23.95),
-    ("SB00","Diary Of A Wimpy Kid: The Long Haul Book 9",24.01),
-    ("SB00","Diary Of A Wimpy Kid: Old School Book 10",24.21),
-    ("SB00","Diary Of A Wimpy Kid: Double Down Book 11",27.41),
-    ("SB00","Diary Of A Wimpy Kid: The Getaway Book 12",26.39),
-    ("SB00","Diary Of A Wimpy Kid: The Meltdown Book 13",29.88),
-    ("SB00","Diary Of A Wimpy Kid: Wrecking Ball Book 14",37.19),
-    ("SB00","Diary Of A Wimpy Kid: The Deep End Book 15",34.76),
-    ("SB00","Diary Of A Wimpy Kid: Big Shot Book 16",53.94),
-    ("SB00","A Promised Land - Barack Obama",160.0),
-    ("SB00","Roald Dahl Charlie And The Chocolate Factory",23.56),
-    ("SB00","Roald Dahl George's Marvellous Medicine",25.13),
-    ("SB00","Roald Dahl Charlie And The Great Glass Elevator",28.09),
-    ("SB00","Roald Dahl James And The Giant Peach",23.31),
-    ("SB00","Roald Dahl The Magic Finger",26.03),
-    ("SB00","Roald Dahl The BFG",28.09),
-    ("SB00","Roald Dahl Fantastic Mr Fox",25.75),
-    ("SB00","Roald Dahl Billy And The Minpins",27.36),
-    ("SB00","Roald Dahl The Twits",22.53),
-    ("SB00","Roald Dahl Matilda",25.36),
-    ("SB00","Roald Dahl The Witches",28.09),
-    ("SB00","Dork Diaries",29.0),
-    ("SB00","Dork Diaries: Party Time",29.0),
-    ("SB00","Dork Diaries: Pop Star ",29.0),
-    ("SB00","Dork Diaries: How to Dork Your Diary",21.0),
-    ("SB00","Dork Diaries: Skating Sensation",27.0),
-    ("SB00","Dork Diaries: Dear Dork",28.36),
-    ("SB00","Dork Diaries: Holiday Heartbreak",30.0),
-    ("SB00","Dork Diaries: TV Star "29.0,),
-    ("SB00","Dork Diaries: Once Upon a Dork",31.93),
-    ("SB00","Dork Diaries: Drama Queen",29.20),
-    ("SB00","Dork Diaries: Puppy Love",29.0),
-    ("SB00","Dork Diaries: Frenemies Forever",31.93),
-    ("SB00","Dork Diaries: Crush Catastrophe",29.0),
-    ("SB00","Dork Diaries: Birthday Drama",31.95),
-    ("SB00","Dork Diaries: Spectacular Superstar",31.93),
-    ("SB00","Dork Diaries: I Love Paris!",32.56),
-    ("SB00","",);
-
+    ("SB01","Harry Potter And The Philosofer's Stone Book",29.99),
+    ("SB02","Harry Potter And The Chamber Of Secrets Book",26.65),
+    ("SB03","Harry Potter And The Prisoner Of Azkaban",22.32),
+    ("SB04","Harry Potter And The Goblet Of Fire",27.32),
+    ("SB05","Harry Potter And The Order Of The Pheonix",25.55),
+    ("SB06","Harry Potter And The Half Blood Prince",23.32),
+    ("SB07","Harry Potter And The Dethly Hallows",27.32),
+    ("SB08","Harry Potter And The Cursed Child",28.25),
+    ("SB09","Percy Jackson And The Olympians Book 1 The Lighting Theif",38.99),
+    ("SB10","Percy Jackson And The Olympians Book 2 The Sea Of Monsters",29.99),
+    ("SB11","Percy Jackson And The Olympians Book 3 The Titan's Curse",32.51),
+    ("SB12","Percy Jackson And The Olympians Book 4 The Battle Of The Laybirth",29.68),
+    ("SB13","Percy Jackson And The Olympians Book 5 The Last Olympian",30.37),
+    ("SB14","The Alchemist - Paulo Caelho",28.51),
+    ("SB15","Sherlock Holmes Volume I",26.07),
+    ("SB16","Sherlock Holmes Volume II",22.37),
+    ("SB17","Hamley - William Shakespeare",22.78),
+    ("SB18","Macbeth - William Shakespeare",35.0),
+    ("SB19","Romeo And Juliet - William Shakespeare",24.96),
+    ("SB20","Diary Of A Wimpy Kid Book 1",24.09),
+    ("SB21","Diary Of A Wimpy Kid: Rodrick Rules Book 2",24.23),
+    ("SB22","Diary Of A Wimpy Kid: The Last Straw Book 3",25.36),
+    ("SB23","Diary Of A Wimpy Kid: The Dog Days Book 4",27.23),
+    ("SB24","Diary Of A Wimpy Kid: The Ugly Truth Book 5",23.69),
+    ("SB25","Diary Of A Wimpy Kid: Cabin Fever Book 6",23.85),
+    ("SB26","Diary Of A Wimpy Kid: The Third Wheel Book 7",22.84),
+    ("SB27","Diary Of A Wimpy Kid: Hard Luck Book 8",23.95),
+    ("SB28","Diary Of A Wimpy Kid: The Long Haul Book 9",24.01),
+    ("SB29","Diary Of A Wimpy Kid: Old School Book 10",24.21),
+    ("SB30","Diary Of A Wimpy Kid: Double Down Book 11",27.41),
+    ("SB31","Diary Of A Wimpy Kid: The Getaway Book 12",26.39),
+    ("SB32","Diary Of A Wimpy Kid: The Meltdown Book 13",29.88),
+    ("SB33","Diary Of A Wimpy Kid: Wrecking Ball Book 14",37.19),
+    ("SB34","Diary Of A Wimpy Kid: The Deep End Book 15",34.76),
+    ("SB35","Diary Of A Wimpy Kid: Big Shot Book 16",53.94),
+    ("SB36","A Promised Land - Barack Obama",160.0),
+    ("SB37","Roald Dahl Charlie And The Chocolate Factory",23.56),
+    ("SB38","Roald Dahl George's Marvellous Medicine",25.13),
+    ("SB39","Roald Dahl Charlie And The Great Glass Elevator",28.09),
+    ("SB40","Roald Dahl James And The Giant Peach",23.31),
+    ("SB41","Roald Dahl The Magic Finger",26.03),
+    ("SB42","Roald Dahl The BFG",28.09),
+    ("SB43","Roald Dahl Fantastic Mr Fox",25.75),
+    ("SB44","Roald Dahl Billy And The Minpins",27.36),
+    ("SB45","Roald Dahl The Twits",22.53),
+    ("SB46","Roald Dahl Matilda",25.36),
+    ("SB47","Roald Dahl The Witches",28.09),
+    ("SB48","Dork Diaries",29.0),
+    ("SB49","Dork Diaries: Party Time",29.0),
+    ("SB50","Dork Diaries: Pop Star ",29.0),
+    ("SB51","Dork Diaries: How to Dork Your Diary",21.0),
+    ("SB52","Dork Diaries: Skating Sensation",27.0),
+    ("SB53","Dork Diaries: Dear Dork",28.36),
+    ("SB54","Dork Diaries: Holiday Heartbreak",30.0),
+    ("SB55","Dork Diaries: TV Star",29.0),
+    ("SB56","Dork Diaries: Once Upon a Dork",31.93),
+    ("SB57","Dork Diaries: Drama Queen",29.20),
+    ("SB58","Dork Diaries: Puppy Love",29.0),
+    ("SB59","Dork Diaries: Frenemies Forever",31.93),
+    ("SB60","Dork Diaries: Crush Catastrophe",29.0),
+    ("SB61","Dork Diaries: Birthday Drama",31.95),
+    ("SB62","Dork Diaries: Spectacular Superstar",31.93),
+    ("SB63","Dork Diaries: I Love Paris!",32.56);
+    
 -- gaming_console -------------------------------------------;
 
     create table gaming_console(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
+    insert into gaming_console values
     ("GS01","Sony Playstation 5 Console Standard Edition White",3030.00),
     ("GS02","Sony Playstation 5 Console Standard Edition Black",3030.00),
     ("GS03","Sony Playstation 4 Slim 500GB",1476.0),
@@ -1046,8 +1046,8 @@ delimiter ;
 -- game_cds -------------------------------------------------;
 
     create table game_cds(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -1131,8 +1131,8 @@ delimiter ;
 -- sports ---------------------------------------;
 
     create table sports(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -1201,8 +1201,8 @@ delimiter ;
 -- indoor_games ---------------------------------------;
 
     create table indoor_games(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -1267,8 +1267,8 @@ delimiter ;
 -- camera ----------------------------------------------;
 
     create table camera(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
 
@@ -1307,49 +1307,49 @@ delimiter ;
 -- kitchen_items ------------------------------------------;
 
     create table kitchen_items(
-        ID char(4) primary key,
-        Name varchar(50),
+        ID char(5) primary key,
+        Name varchar(75),
         Price decimal(10,2)
     );
     
     insert into kitchen_items values
-    ("KI00","Prestige 5 Pieces Vibro Kitchen Knife Stainless Stee;",49.0),
-    ("KI00","Royalford Stainless Steel Kitchen Knife 3Pc",16.0),
-    ("KI00","Kitchu Chef Knife",49.94),
-    ("KI00","Chef Knife 8 inches German Carbon Stainless Steel",83.0),
-    ("KI00","Bergner Stainless Steel Knife",22.0),
-    ("KI00","Berner Uniblade 17.5cm Stainless Steel",20.90),
-    ("KI00","Prestige Kitchen Knife Block Set Of 15Pc",101.0),
-    ("KI00","Prestige Kitchen Knife Block Set 7Pc",47.0),
-    ("KI00","Jasmine's Universe 8Pc Kitchen Knife Set",85.0),
-    ("KI00","Insiya 9-Piece Superior Kitchen Knife St Silver 5Pc",39.0),
-    ("KI00","Stainless Steel Kitchen Knife Set Black",69.95),
-    ("KI00","Universal Knife Blocks Holders With Slot For Siccors",105.0),
-    ("KI00","Berner Resa 8Pc Knife Set Stainless Steel Black",105.0),
-    ("KI00","Delcasa Kitchen Cleaver Knife",9.35),
-    ("KI00","Hom Geek Professional Kitchen Knife Set With BLock Stainless Steel",249.99),
-    ("KI00","Kitchen Knife Set Fine Professional Chef Knife High Carbon Steel",252.66),
-    ("KI00","J RUMtm Kitchen Knife Sharpener 4 in 1",53.99),
-    ("KI00","16Pc Of Cutlery Set Stainless Steel",89.99),
-    ("KI00","Necomi Kitchen Knife Sharpener 3 Stage",166.80),
-    ("KI00","Kitchen Knife Sharpener 4 in 1",25.99),
-    ("KI00","Dish Drying Rack 3 Tier Large Dish Rack Stainless Steel",284.98),
-    ("KI00","Dish Rack Drainer Storage Rack Organizer",160.0),
-    ("KI00","S.A.C Dish Rack Stainless Steel 2 Layers",69.0),
-    ("KI00","Extra Large Premium Bamboo Cutting Board",17.84),
-    ("KI00","3Pc Plastic Kitchen Cutting Board Set",56.99),
-    ("KI00","Cutting Board Thick Stainless Steel Heavy Duty Non Slip",70.62),
-    ("KI00","Prestige Cutting Board White",18.75),
-    ("KI00","Large Kitchen Cutting Board",55.0),
-    ("KI00","LocjnLock Rubber Wood Cutting Board Medium Brown",33.0),
-    ("KI00","Wheat Straw Life Unbreakable Plates Reusable Plate Set",19.0),
-    ("KI00","Hot Pack White Foam Plate 10 inches 25Pc",4.51),
-    ("KI00","Hot Pack Foam Plate 50Pc",8.90),
-    ("KI00","Hot Pack White Foam Plates 9 inches 25Pc",3.93),
-    ("KI00","Hot Pack Disposable Plates 25Pc",4.51),
-    ("KI00","Hot Pack Premium Quality Disposable Plastic Plates 9 inches",8.09),
-    ("KI00","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99),
-    ("KI00","",0);
+    ("KI01","Prestige 5 Pieces Vibro Kitchen Knife Stainless Stee;",49.0),
+    ("KI02","Royalford Stainless Steel Kitchen Knife 3Pc",16.0),
+    ("KI03","Kitchu Chef Knife",49.94),
+    ("KI04","Chef Knife 8 inches German Carbon Stainless Steel",83.0),
+    ("KI05","Bergner Stainless Steel Knife",22.0),
+    ("KI06","Berner Uniblade 17.5cm Stainless Steel",20.90),
+    ("KI07","Prestige Kitchen Knife Block Set Of 15Pc",101.0),
+    ("KI08","Prestige Kitchen Knife Block Set 7Pc",47.0),
+    ("KI09","Jasmine's Universe 8Pc Kitchen Knife Set",85.0),
+    ("KI10","Insiya 9-Piece Superior Kitchen Knife St Silver 5Pc",39.0),
+    ("KI11","Stainless Steel Kitchen Knife Set Black",69.95),
+    ("KI12","Universal Knife Blocks Holders With Slot For Siccors",105.0),
+    ("KI13","Berner Resa 8Pc Knife Set Stainless Steel Black",105.0),
+    ("KI14","Delcasa Kitchen Cleaver Knife",9.35),
+    ("KI15","Hom Geek Professional Kitchen Knife Set With BLock Stainless Steel",249.99),
+    ("KI16","Kitchen Knife Set Fine Professional Chef Knife High Carbon Steel",252.66),
+    ("KI17","J RUMtm Kitchen Knife Sharpener 4 in 1",53.99),
+    ("KI18","16Pc Of Cutlery Set Stainless Steel",89.99),
+    ("KI19","Necomi Kitchen Knife Sharpener 3 Stage",166.80),
+    ("KI20","Kitchen Knife Sharpener 4 in 1",25.99),
+    ("KI21","Dish Drying Rack 3 Tier Large Dish Rack Stainless Steel",284.98),
+    ("KI22","Dish Rack Drainer Storage Rack Organizer",160.0),
+    ("KI23","S.A.C Dish Rack Stainless Steel 2 Layers",69.0),
+    ("KI24","Extra Large Premium Bamboo Cutting Board",17.84),
+    ("KI25","3Pc Plastic Kitchen Cutting Board Set",56.99),
+    ("KI26","Cutting Board Thick Stainless Steel Heavy Duty Non Slip",70.62),
+    ("KI27","Prestige Cutting Board White",18.75),
+    ("KI28","Large Kitchen Cutting Board",55.0),
+    ("KI29","LocjnLock Rubber Wood Cutting Board Medium Brown",33.0),
+    ("KI30","Wheat Straw Life Unbreakable Plates Reusable Plate Set",19.0),
+    ("KI31","Hot Pack White Foam Plate 10 inches 25Pc",4.51),
+    ("KI32","Hot Pack Foam Plate 50Pc",8.90),
+    ("KI33","Hot Pack White Foam Plates 9 inches 25Pc",3.93),
+    ("KI34","Hot Pack Disposable Plates 25Pc",4.51),
+    ("KI35","Hot Pack Premium Quality Disposable Plastic Plates 9 inches",8.09),
+    ("KI36","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99),
+    ("KI37","",0);
 
 -- .r
 
@@ -1363,8 +1363,8 @@ delimiter ;
 
 -- cart-----------------------------------------------------------;
     create table cart(
-        Product_ID char(4),
-        Product_Name varchar(50),
+        Product_ID char(5),
+        Product_Name varchar(75),
         Price decimal(10,2),
         Quantity int
     );
