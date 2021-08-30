@@ -796,6 +796,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into chcolate values
     ("CH01","Hershey's Semi Sweet Chocolate Chips 425g",26.64),
     ("CH02","Hershey's Cookies 'n' Creme Chocolate Bar 40g",2.45),
     ("CH03","Hershey;s Dark Chocolate Pearls 50g",8.65),
@@ -845,6 +846,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into stationaries values
     ("ST01","Maxi Classic Graphite Pencil HB 12Pc",4.25),
     ("ST02","Maxi Classic Graphite Pencil HB 48Pc",16.0),
     ("ST03","Faber-Castell Bonanza Graphite Pencil HB 12Pc",5.20),
@@ -959,6 +961,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into story_book values
     ("SB00","Harry Potter And The Philosofer's Stone Book",29.99),
     ("SB00","Harry Potter And The Chamber Of Secrets Book",26.65),
     ("SB00","Harry Potter And The Prisoner Of Azkaban",22.32),
@@ -1048,6 +1051,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into game_cds values
     ("GC01","PS5-Fortnite: The Last Laugh",115.00),
     ("GC02","PS5-The Pathless",201.95),
     ("GC03","PS5-Control Unlimited Edition",145.00),
@@ -1132,6 +1136,7 @@ delimiter ;
         Price decimal(10,2)
     );
 
+    insert into sports values
     ("SP01","Premiere League Football Blue",49.99),
     ("SP02","Premiere League Football Red",49.99),
     ("SP03","Synplay Machine Stich Football",29.00),
@@ -1201,28 +1206,150 @@ delimiter ;
         Price decimal(10,2)
     );
 
-    ("IG00","Berry Wooden Tradistional Chess Game",59.99),
-    ("IG00","Blessing Decor Collecrible Sovient Metal Brass Chess",1088.58),
-    ("IG00","Festnight Portable Wooden Magnetic Chess Game",78.0),
-    ("IG00","Radical 15 inches Large Handmade White-Green Onyx Chess Game",489.0),
-    ("IG00","Umbra Wobble Chess Set",650.52),
-    ("IG00","Amerous Magnetic Wooden Chess Set",89.46),
-    ("IG00","Rubix's Cube 3x3",41.87),
-    ("IG00","Spped Cube 2x2",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ("IG00","",0),
-    ;
+    insert into indoor_games values
+    ("IG01","Berry Wooden Tradistional Chess Game",59.99),
+    ("IG02","Blessing Decor Collecrible Sovient Metal Brass Chess",1088.58),
+    ("IG03","Festnight Portable Wooden Magnetic Chess Game",78.0),
+    ("IG04","Radical 15 inches Large Handmade White-Green Onyx Chess Game",489.0),
+    ("IG05","Umbra Wobble Chess Set",650.52),
+    ("IG06","Amerous Magnetic Wooden Chess Set",89.46),
+    ("IG07","Rubix's Cube 3x3",41.87),
+    ("IG08","Rubix's Cube 4x4",49.62),
+    ("IG09","Rubix's Cube 5x5",73.04),
+    ("IG10","Wilong 3x3 Magnetic Rubi's Cube",159.0),
+    ("IG11","Speed Cube 2x2",28.80),
+    ("IG12","Sokoyo Pyramid Speed Cube",50.00),
+    ("IG13","Professional Speed Cube Set of 2x2 3x3 4x4 5x5 Pack",44.10),
+    ("IG14","Liangcuber 3x3 Speed Cube",87.48),
+    ("IG15","Liangcuber 5x5 Speed Cube",39.92),
+    ("IG16","Ai-yun Gear Speed Cube",36.39),
+    ("IG17","Megaminx Pentagonal Speed Cube",50.06),
+    ("IG18","Mysterystone 4-Pack Set",73.63),
+    ("IG19","AioTio 4Pc Infinity Cube",16.99),
+    ("IG20","Magic Cube Pack(2) Dyssmorphism Gold-Silver",48.07),
+    ("IG21","Waterproof PVC Playing Cards Black",15.0),
+    ("IG22","Royal Pok Playing Cards",15.01),
+    ("IG23","Solar Matrix Black Diamond Plastic Waterproof Playing Cards",49.99),
+    ("IG24","Bonus Playing Cards",7.61),
+    ("IG25","Bicycle Standard Playing Cards Pack(2) Red-Blue",51.10),
+    ("IG26","Bicycle Stargazer Playing Cards",68.84),
+    ("IG27","Artisan Playing Cards Luxury Set",243.88),
+    ("IG28","These Cards Will Get You Drunk Adult Dringing Card Game",18.42),
+    ("IG29","Cards Against Humanity Part Game",65.80),
+    ("IG30","Do or Drink Adult Drinking Car Game",128.0),
+    ("IG31","Our Moments Couples Game",55.99),
+    ("IG32","Never Have I Ever Card Game",63.98),
+    ("IG33","Uno Card Game",35.0),
+    ("IG34","The Mafia Card Game",143.73),
+    ("IG35","Monopoly Dubai Official Board Game",199.0),
+    ("IG36","Monopoly Ultimate Reward Board Game",183.41),
+    ("IG37","Hasbro Jenga CLassic",55.0),
+    ("IG38","Hasbro Taboo Board Game",0),
+    ("IG39","Hasbro Connect 4 Game",55.26),
+    ("IG40","Hasbro Game Of Life Board Game",139.0),
+    ("IG41","Hedbanz Party Board Game",30.16),
+    ("IG42","Merchant Ambasador Board & Card Games 100 Games",63.0),
+    ("IG43","Scrabble Original English Board Game",112.61),
+    ("IG44","Drawing Without Dignity Aldult Party Game",60.0),
+    ("IG45","Cluedo Liars Edition Board Game Murder Mystery",159.0),
+    ("IG46","Marshal Mini Table Top Mini Soccer",118.69),
+    ("IG47","Bernabeu Soccer Table Game Indoor Game",1699.0),
+    ("IG48","Viper Hudson All-in-One Dart Board",412.59),
+    ("IG49","Viper Rozorback Dart Board",245.79),
+    ("IG50","Lixada Safety Plastic Dart And Dart Board 16.5 inches",44.0),
+    ("IG51","Unicorn Eclipse Pro Bristle Dartboard",165.41),
+    ("IG52","Winmau Blade 5 Bristle Dartboard",305.77),
+    ("IG53","Safety Dart Board Set 16 inches",75.00),
+    ("IG54","NuSense 12Pc Tip Dart High Steel Dart",99.90),
+    ("IG55","Viper Blitz 95% Tungsten Steel Tip",231.60),
+    ("IG56","Dart Set Magnetic Dart Board Hanging Roll Up",24.27);
+
+-- camera ----------------------------------------------;
+
+    create table camera(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+
+    insert into camera values
+    ("CA01","Sony Alpha A73 With 28-70mm Lens Mirrorless Camera",6999.00),
+    ("CA02","Soy Alpha A6600 Mirrorless Camera",3949.0),
+    ("CA03","Sony Alpha A6000 With 16-500mm Lens Mirrorless Camera",1999.0),
+    ("CA04","Sony Cyber-Shot DSC 20.1 MP",479.0),
+    ("CA05","Sony A9 Body Only 24.2 MP Mirrorless Digital Camera",12186.0),
+    ("CA06","Sony Cyber Shot DSC_RX100 VII Digital Camera",3818.0),
+    ("CA07","Sony DSCWX500 Compact Digital Camera w/30x Optical Zoom",1299.0),
+    ("CA08","Sony RX100 VI Advanced Compact Premim Camera",3499.0),
+    ("CA09","Sony Alpha A7RM3 42.4MP 35mm Full Frame Mirrorless Camera",7699.0),
+    ("CA10","Sony Alpha 7R IV Full Framed Mirrorless Interchangeable Lens Camera 61MP",10995.0),
+    ("CA11","Canon EOS R With RF 24-105mm Lens Mirrorless Camera",11863.56),
+    ("CA12","Canon EOS 6D Mark II 24-105mm 26.2MP DSLR Camera",5999.01),
+    ("CA13","Conon EOS RP Mirrorless Camera Body",4355.45),
+    ("CA14","Canon EOS 80D 18-135mm Lens Kit 24.2MP SLR Camera",4175.0),
+    ("CA15","Canon EOS 800D EF-S 55mm Lens Camera",2712.0),
+    ("CA16","Canon EOS 45mm Lens Mirrorless Digital Camera",2258.55),
+    ("CA17","Canon EOS 250D 18-55mm Lens Camera",2199.0),
+    ("CA18","Canon EOS 4000D 18-55mm Lens Camera",1199.0),
+    ("CA19","Canon EOS 2000D 55mm Lens",1581.0),
+    ("CA20","Canon PowerShot w/40x Optical zoom Digital Camera",1490.88),
+    ("CA21","Canon 90D DSLR Camera With 18-55mm Lens Digital Camera",4455.0),
+    ("CA22","Canon PowerShot G7 X Digital Camera",1949.0),
+    ("CA23","Canon PowerShot SX70 20.3MP",2002.0),
+    ("CA24","Canon IXUS 185 20 MP Point & Shoot Camera",520.99),
+    ("CA25","Nikon D700 With 140mm VR Lens DSLR Camera",3959.0),
+    ("CA26","Nikon Z50 With 16-55mm Lens Mirrorless Digital Camera",3159.0),
+    ("CA27","Nikon P1000 16MP 125 Optical Zoom Point Camera",3499.0),
+    ("CA28","Nikon Coolpix 8500 16MP Compact Camera",897.0),
+    ("CA29","Nikon D850 45.7 MP  Body Only Digital Camera",9199.0),
+    ("CA30","Nikon D5600 AF-P 18-55mm VR Lens 24.4MP DSLR Camera",2299.0);
+
+-- kitchen_items ------------------------------------------;
+
+    create table kitchen_items(
+        ID char(4) primary key,
+        Name varchar(50),
+        Price decimal(10,2)
+    );
+    
+    insert into kitchen_items values
+    ("KI00","Prestige 5 Pieces Vibro Kitchen Knife Stainless Stee;",49.0),
+    ("KI00","Royalford Stainless Steel Kitchen Knife 3Pc",16.0),
+    ("KI00","Kitchu Chef Knife",49.94),
+    ("KI00","Chef Knife 8 inches German Carbon Stainless Steel",83.0),
+    ("KI00","Bergner Stainless Steel Knife",22.0),
+    ("KI00","Berner Uniblade 17.5cm Stainless Steel",20.90),
+    ("KI00","Prestige Kitchen Knife Block Set Of 15Pc",101.0),
+    ("KI00","Prestige Kitchen Knife Block Set 7Pc",47.0),
+    ("KI00","Jasmine's Universe 8Pc Kitchen Knife Set",85.0),
+    ("KI00","Insiya 9-Piece Superior Kitchen Knife St Silver 5Pc",39.0),
+    ("KI00","Stainless Steel Kitchen Knife Set Black",69.95),
+    ("KI00","Universal Knife Blocks Holders With Slot For Siccors",105.0),
+    ("KI00","Berner Resa 8Pc Knife Set Stainless Steel Black",105.0),
+    ("KI00","Delcasa Kitchen Cleaver Knife",9.35),
+    ("KI00","Hom Geek Professional Kitchen Knife Set With BLock Stainless Steel",249.99),
+    ("KI00","Kitchen Knife Set Fine Professional Chef Knife High Carbon Steel",252.66),
+    ("KI00","J RUMtm Kitchen Knife Sharpener 4 in 1",53.99),
+    ("KI00","16Pc Of Cutlery Set Stainless Steel",89.99),
+    ("KI00","Necomi Kitchen Knife Sharpener 3 Stage",166.80),
+    ("KI00","Kitchen Knife Sharpener 4 in 1",25.99),
+    ("KI00","Dish Drying Rack 3 Tier Large Dish Rack Stainless Steel",284.98),
+    ("KI00","Dish Rack Drainer Storage Rack Organizer",160.0),
+    ("KI00","S.A.C Dish Rack Stainless Steel 2 Layers",69.0),
+    ("KI00","Extra Large Premium Bamboo Cutting Board",17.84),
+    ("KI00","3Pc Plastic Kitchen Cutting Board Set",56.99),
+    ("KI00","Cutting Board Thick Stainless Steel Heavy Duty Non Slip",70.62),
+    ("KI00","Prestige Cutting Board White",18.75),
+    ("KI00","Large Kitchen Cutting Board",55.0),
+    ("KI00","LocjnLock Rubber Wood Cutting Board Medium Brown",33.0),
+    ("KI00","Wheat Straw Life Unbreakable Plates Reusable Plate Set",19.0),
+    ("KI00","Hot Pack White Foam Plate 10 inches 25Pc",4.51),
+    ("KI00","Hot Pack Foam Plate 50Pc",8.90),
+    ("KI00","Hot Pack White Foam Plates 9 inches 25Pc",3.93),
+    ("KI00","Hot Pack Disposable Plates 25Pc",4.51),
+    ("KI00","Hot Pack Premium Quality Disposable Plastic Plates 9 inches",8.09),
+    ("KI00","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99),
+    ("KI00","",0);
 
 -- .r
 
