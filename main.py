@@ -10,6 +10,9 @@ listener = sr.Recognizer()
 engine = pyttsx3.init()
 engine.setProperty("rate",160)
 
+mydb = ms.connect(host = "localhost",user = "root",password = "Tejas@035611",database = "shop")
+myc = mydb.cursor()
+
 def talk(text):
     engine.say(text)
     engine.runAndWait()
@@ -87,16 +90,18 @@ class shop():
     def opt_0(self):
         self.timer(1)
         print('\n'+'Thank you for using the program.'+'\n')
+        talk('Thank you for using the program.')
         self.timer(1)
         print('Hope to see you soon in program version 1.2.0'+'\n'+'\n')
+        talk('Hope to see you soon in program version 1.2.0')
         self.timer(1.5)
         print('Program exited with exit code 0'+'\n')
 
     def display(self):
-        mydb = ms.connect(host = "localhost",
-        user = "root",password = "Tejas@035611",
-        database = "shop")
-        myc = mydb.cursor()
+        # mydb = ms.connect(host = "localhost",
+        # user = "root",password = "Tejas@035611",
+        # database = "shop")
+        # myc = mydb.cursor()
         myc.execute("show tables;")
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
@@ -115,10 +120,6 @@ class shop():
             print(self.table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
 
     def search(self):
-        mydb = ms.connect(host = "localhost",
-        user = "root",password = "Tejas@035611",
-        database = "shop")
-        myc = mydb.cursor()
         myc.execute("show tables;")
         tbs,d,table,data = list(myc.fetchall()),{},[],[]
         tbs.remove(("accounts",))
@@ -162,7 +163,7 @@ class shop():
             print("\nItem-Wise:\n")
             print(self.table_display(["ID","Name","Price","Category"],new_data,["Total:",len(new_data),sum(l),"-"]))
         if len(data) == 0 and len(table) == 0:
-            print("Item not found.")
+            print("Item not found.\n")
         return data,table
 
     class cart():
@@ -172,10 +173,10 @@ class shop():
         def add_cart(self):
             PID = input("Product ID of your required item -->").capitalize()
             Qty = int(input("Quantity of required item -->"))
-            mydb = ms.connect(host = "localhost",
-            user = "root",password = "Tejas@035611",
-            database = "shop")
-            myc = mydb.cursor()
+            # mydb = ms.connect(host = "localhost",
+            # user = "root",password = "Tejas@035611",
+            # database = "shop")
+            # myc = mydb.cursor()
             myc.execute("show tables;")
             tbs = list(myc.fetchall())
             tbs.remove(("accounts",))
@@ -194,10 +195,10 @@ class shop():
             mydb.commit()
         
         def display_cart(self):
-            mydb = ms.connect(host = "localhost",
-            user = "root",password = "Tejas@035611",
-            database = "shop")
-            myc = mydb.cursor()
+            # mydb = ms.connect(host = "localhost",
+            # user = "root",password = "Tejas@035611",
+            # database = "shop")
+            # myc = mydb.cursor()
             myc.execute("select * from cart;")
             data,new_data = myc.fetchall(),[]
             for elem in data:
@@ -216,10 +217,10 @@ class shop():
             return [display,data]
 
         def del_cart(self,ID = ""):
-            mydb = ms.connect(host = "localhost",
-            user = "root",password = "Tejas@035611",
-            database = "shop")
-            myc = mydb.cursor()
+            # mydb = ms.connect(host = "localhost",
+            # user = "root",password = "Tejas@035611",
+            # database = "shop")
+            # myc = mydb.cursor()
             if ID == "all":
                 myc.execute(f"delete from cart;")
                 mydb.commit()
@@ -289,7 +290,7 @@ class shop():
                     return True
                 else:
                     print("Returning to the Cart menu....")
-                    shop.timer(shop,1)
+                    shop.timer(shop,0.7)
                     return False
 
             def address(self):
@@ -321,33 +322,47 @@ class shop():
                     else:
                         print("Invalid Payment Method.....")
 
+            def discount(self):
+                pass
+
             def summary(self,ad,pay):
                 cart,total = shop().cart().display_cart()[1],[]
                 for item in cart:
                     total.append(int(item[-1]))
-                print("Summary:\n")
-                print(f"Location: {ad[4]},{ad[5]}")
-                print(f"Address: {ad[0]}")
-                print(f"Payment Method: {pay[0]}")
-                # if pay[1][0] == "null":
-                #     total = sum(total)       #.y   Discount Applying part!!!!!!!!!!!!
-                # else:
-                #     total = sum(total)*pay[1][0]
+                print("\n<<----Summary:---->>\n")
+                print(f"Location: {ad[2]},{ad[3]},{ad[0]}")
+                print(f"Address: {ad[1]}")
+                print(f"Payment Method: {pay[0]}\n")
+                print(f"Card Number: {pay[1]}")
+                print(f"Card Name: {pay[3]}")
+                print(f"CVV Number: {pay[2]}")
                 print("-"*100+"\n")
                 if len(cart) == 0:
                     print("your cart is empty.....")
                 else:
                     print(shop.table_display(shop,["PID","Name","Rate","Quantity","Price"],cart,["Total:","-","-","-",total]))
                 print("-"*100)
+                opt = input("\nDo you want to confirm Checkout ? (y/n)").lower()
+                if opt == "y":
+                    print("\nThank you for shopping from our store. 😀😀😀")
+                elif opt == "n":
+                    print("\nOh. Looks like you need more items.... 😁😁😁")
+                else:
+                    print("Invalid option....  🤔🤔🤔")
                 # print(f"Coupoun Code Applied: {pay[1][1]}")
                 # print(f"Discount Applied: {pay[1][0]}")
 
             def menu(self):
-                if self.confirmation():
-                    address = address()
-                    payment = payment()
-                    self.summary(address,payment)
-                    shop().cart().del_cart(ID="all")
+                # if self.confirmation():
+                if True:
+                    v = account().verify()
+                    if v[0]:
+                        myc.execute(f"select * from accounts where Email_ID = '{v[1]}'")
+                        data = eval(myc.fetchall()[0][-1])
+                        address,payment = data[-2],data[-1]
+                        self.summary(address,payment)
+                    else:
+                        print("Failed to verify your account.")
 
 class account():
     def __init__(self):
@@ -369,51 +384,78 @@ class account():
             return opt
 
     def create(self):
-        database = {}
+        database,flag,password = {},False,""
         print("\n<<---- SIGNUP PAGE ---->>\n")
-        email,first_name,last_name = input("Email-ID : "),input("First Name : "),input("Last Name : ")
-        dob,no,gender = input("Date of Birth (yyyy-mm-dd): "),input("Phone No.: "),input("Gender (M/F): ")
-        password = sm.getpass(prompt= "Password : ")
+        while not flag:
+            email,first_name,last_name = input("Email-ID : ").lower(),input("First Name : "),input("Last Name : ")
+            dob,no,gender = input("Date of Birth (yyyy-mm-dd): "),input("Phone No.: "),input("Gender (M/F): ")
+            password1 = sm.getpass(prompt= "Password : ")
+            password2 = sm.getpass(prompt= "Confirm Password : ")
+            if password1 == password2:
+                password = password2
+            else:
+                print("Password does not match. Please try again 😀")
+            if len(password) >= 8 and len(password) <=15:
+                flag = True
         name = first_name+" "+last_name
-        payment = shop().cart().checkout().payment()
-        address = shop().cart().checkout().address()
-        if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"] and len(password) >= 8 and len(password) <=15 and len(no) == 10:
-            database[email] = [name,password,no,gender,dob,address,payment]
+        address,payment = shop().cart().checkout().address(),shop().cart().checkout().payment()
+        if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]  and len(no) == 10:
+            info = [name,password,no,gender,dob]
+            info.append(address)    #.r   -2
+            info.append(payment)    #.r   -1
+            database[email] = info
         else:
             print("Invalid Email-ID/Password . Please try again.")
-        mydb = ms.connect(host = "localhost",
-        user = "root",password = "Tejas@035611",
-        database = "shop")
-        myc = mydb.cursor()
         for email in database:
-            myc.execute(f'''insert into accounts value
-            ('{database[email][0]}','{email}','{database[email][1]}','{database[email][2]}','{database[email][3]}','{database[email][4]}','{database[email][5]}','{database[email][6]}','{database[email][7]}');''')
+            myc.execute(f'''insert into accounts value("{email}","{database[email]}");''')
         mydb.commit()
     
     def login(self):
         print("\n<<---- LOGIN PAGE ---->>\n")
-        email = input("Email-ID : ")
+        email = input("Email-ID : ").lower()
         password = sm.getpass(prompt= "Password : ")
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
-            mydb = ms.connect(host = "localhost",
-            user = "root",password = "Tejas@035611",
-            database = "shop")
-            myc = mydb.cursor()
             myc.execute("select * from accounts;")
             data,new_data = myc.fetchall(),[]
             for acc in data:
                 new_data.append(list(acc))
             data = new_data
             for acc in data:
-                if [email,password] == acc[1:3]:
+                acc[1] = eval(acc[1])[1]
+                if [email,password] == acc:
                     print("You have logged in succesfully\n")
                     return True
             print("Your account was not found.....")
         else:
             print("Invalid Email-ID. Please try again.")
 
+    def settings(self): #.r   INCOMPLETE....INCOMPLETE.....INCOMPLETE......INCOMPLETE
+        v = self.verify()
+        if v[0]:
+            myc.execute(f"select * from accounts where Email_ID = '{v[1]}';")
+            data = myc.fetchall()
+            for acc in data:
+                l = eval(acc[1])
+                print(l)
+
+    def verify(self):
+        print("Please Verify again...")
+        talk("Please Verify again...")
+        myc.execute(f"select * from accounts;")
+        email=input("Email-ID : ").lower()
+        password = sm.getpass(prompt= "Password : ")
+        data = myc.fetchall()
+        if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
+            for tup in data:
+                if email == tup[0] and password == eval(tup[1])[1]:
+                    return True,email
+                else:
+                    result = False,False
+        return result
+
+
 l_opt = ['d','s','a','c','cls','exit']
-l_func = ["shop().display()","shop().search()","shop().account()","shop().cart().menu()","os.system('cls')","exit()"]
+l_func = ["shop().display()","shop().search()","account().settings()","shop().cart().menu()","os.system('cls')","exit()"]
 d_menu = {
     'd': "To display all the items available                            ",
     's': "To search for any item category wise or using a hint of name  ",
@@ -421,18 +463,18 @@ d_menu = {
     'c': "To open the cart menu                                         ",
     '0': "To stop the main program                                      "
 }
-flag = False
-while not flag:
+jump = False
+while not jump:
     if account().confirm() == "y":
         if account().login():
-            flag = True
+            jump = True
         else:
             print("Please Try again...") 
     else:
         print("create an account.....")
         account().create()
 
-while flag:
+while jump:
     print('<<----  SHOPIFY  ---->>\n')
     for elem in d_menu:
         print('  '+d_menu[elem] + '  --> ' + elem)
@@ -447,3 +489,7 @@ while flag:
         break
     else:
         print('Invalid Option......')
+
+# # account().create()
+# # account().settings()
+# shop().cart().checkout().menu()
