@@ -1,10 +1,7 @@
-import decimal,texttable,time,os
+import decimal,texttable,time,os,pyttsx3,pywhatkit,datetime
 import mysql.connector as ms
 import stdiomask as sm
 import speech_recognition as sr
-import pyttsx3
-import pywhatkit
-import datetime
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -98,10 +95,6 @@ class shop():
         print('Program exited with exit code 0'+'\n')
 
     def display(self):
-        # mydb = ms.connect(host = "localhost",
-        # user = "root",password = "Tejas@035611",
-        # database = "shop")
-        # myc = mydb.cursor()
         myc.execute("show tables;")
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
@@ -173,10 +166,6 @@ class shop():
         def add_cart(self):
             PID = input("Product ID of your required item -->").capitalize()
             Qty = int(input("Quantity of required item -->"))
-            # mydb = ms.connect(host = "localhost",
-            # user = "root",password = "Tejas@035611",
-            # database = "shop")
-            # myc = mydb.cursor()
             myc.execute("show tables;")
             tbs = list(myc.fetchall())
             tbs.remove(("accounts",))
@@ -195,10 +184,6 @@ class shop():
             mydb.commit()
         
         def display_cart(self):
-            # mydb = ms.connect(host = "localhost",
-            # user = "root",password = "Tejas@035611",
-            # database = "shop")
-            # myc = mydb.cursor()
             myc.execute("select * from cart;")
             data,new_data = myc.fetchall(),[]
             for elem in data:
@@ -217,10 +202,6 @@ class shop():
             return [display,data]
 
         def del_cart(self,ID = ""):
-            # mydb = ms.connect(host = "localhost",
-            # user = "root",password = "Tejas@035611",
-            # database = "shop")
-            # myc = mydb.cursor()
             if ID == "all":
                 myc.execute(f"delete from cart;")
                 mydb.commit()
@@ -228,8 +209,6 @@ class shop():
                 display = ""
                 ID = input("Product ID of the item to be deleted from the cart --> ").upper()
                 data = self.display_cart()[1]
-                # print(data)  #.y[['UT01', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]
-                #.y,['UT03', 'Insulated Plastic Flask', Decimal('6.50'), 2, Decimal('13.00')]]
                 for item in data:
                     for elem in item:
                         print(elem)
@@ -302,7 +281,7 @@ class shop():
                 return ad
 
             def payment(self):
-                print("\n       <<-- PAYMENT DETAILS -->>\n\nCredit Card         --> cc\nDebit Card          --> dc\nCash On Delivaery   --> cash")
+                print("\n       <<-- PAYMENT DETAILS -->>\n\nCredit Card         --> cc\nDebit Card          --> dc\nCash On Delivaery   --> cash\n")
                 while True:
                     opt = input("Your Option: ").lower()
                     if opt == "cc":
@@ -318,12 +297,9 @@ class shop():
                         exp = input("Expiration date (mm-yyyy): ")
                         return ["Debit Card",card_no,cvv,name,exp]
                     elif opt == "cash":
-                        return ["Cash On Delivery"]
+                        return ["Cash On Delivery",None,None,None,None]
                     else:
                         print("Invalid Payment Method.....")
-
-            def discount(self):
-                pass
 
             def summary(self,ad,pay):
                 cart,total = shop().cart().display_cart()[1],[]
@@ -349,12 +325,9 @@ class shop():
                     print("\nOh. Looks like you need more items.... 😁😁😁")
                 else:
                     print("Invalid option....  🤔🤔🤔")
-                # print(f"Coupoun Code Applied: {pay[1][1]}")
-                # print(f"Discount Applied: {pay[1][0]}")
 
             def menu(self):
-                # if self.confirmation():
-                if True:
+                if self.confirmation():
                     v = account().verify()
                     if v[0]:
                         myc.execute(f"select * from accounts where Email_ID = '{v[1]}'")
@@ -401,8 +374,8 @@ class account():
         address,payment = shop().cart().checkout().address(),shop().cart().checkout().payment()
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]  and len(no) == 10:
             info = [name,password,no,gender,dob]
-            info.append(address)    #.r   -2
-            info.append(payment)    #.r   -1
+            info.append(address)
+            info.append(payment)
             database[email] = info
         else:
             print("Invalid Email-ID/Password . Please try again.")
@@ -428,16 +401,7 @@ class account():
             print("Your account was not found.....")
         else:
             print("Invalid Email-ID. Please try again.")
-
-    def settings(self): #.r   INCOMPLETE....INCOMPLETE.....INCOMPLETE......INCOMPLETE
-        v = self.verify()
-        if v[0]:
-            myc.execute(f"select * from accounts where Email_ID = '{v[1]}';")
-            data = myc.fetchall()
-            for acc in data:
-                l = eval(acc[1])
-                print(l)
-
+    
     def verify(self):
         print("Please Verify again...")
         talk("Please Verify again...")
@@ -453,9 +417,93 @@ class account():
                     result = False,False
         return result
 
+    class settings():
+        def __init__(self):
+            self.dummy = 0
+        
+        def display_info(self,email):
+            myc.execute(f"select * from accounts where Email_ID = '{email}';")
+            data = myc.fetchall()
+            address,payment = eval(data[0][1])[-2],eval(data[0][1])[-1]
+            ad = ["Street name : ","Building name/ floor no., Apt or Villa No. : ","City: ","Area: "]
+            pay = ["Payment Method : ","Card Number : ","CVV Number : ","Name of the card : ","Expiry Date : "]
+            print("\n<-- Address Info -->\n")
+            for i in range(len(address)):
+                print(f"{i+1}.) ",ad[i],address[i],sep = "")
+            print("\n<-- Payment Info -->\n")
+            for i in range(len(payment)):
+                print(f"{i+5}.) ",pay[i],payment[i],sep = "")
+            return ad+pay,address+payment
+            
+        def edit_info1(self,email):
+            info,information = self.display_info(email)
+            print("\nWhich Option Would you like to edit ? (type 0 to exit) : ")
+            index = int(input("Provide the Index Number : "))
+            if index == 0:
+                print("No Edits made.")
+            elif index in range(1,len(information)+1):
+                new = input("\n"+info[index-1])
+                information[index-1] = new
+                address,payment = information[:4],information[4:]
+                myc.execute(f"select * from accounts where Email_ID = '{email}';")
+                data = myc.fetchall()
+                old_info = eval(list(data[0])[-1])
+                old_info[-1],old_info[-2] = payment,address
+                myc.execute(f'''update accounts set Info = "{old_info}" where Email_ID = "{email}";''')
+                mydb.commit()
+                print("Changes Saved. Please select the display option to view the changes.")
+            else:
+                print("Invalid Index. Please try again....")
+        
+        def edit_info2(self,email):  #.r   INCOMPLETE....INCOMPLETE.....INCOMPLETE......INCOMPLETE
+            pass
+
+        def del_acc(self,email):
+            opt = input("\nAre you sure you want to delete your account ? (y/n)").lower()
+            if opt == "y":
+                myc.execute(f"delete from accounts where Email_ID = '{email}';")
+                mydb.commit()
+                print("Your account has been deleted.")
+            elif opt == "n":
+                print("Your account has not been deleted.")
+            else:
+                print("Invalid Option. Try again...")
+
+        def menu_info(self):
+            v = account().verify()
+            if v[0]:
+                l_opt = ['d','e1','e2','del','cls','exit']
+                l_func = ['account().settings().display_info(v[1])','account().settings().edit_info1(v[1])',
+                'account().settings().edit_info2(v[1])','account().settings().del_acc(v[1])',"os.system('cls')","exit()"]
+                d_menu = {     
+                    'd': 'To display your Address and Payment Details               ',
+                   'e1': 'To edit Address and Payment related Details               ',
+                   'e2': 'To change Password and Phone No.                          ',
+                  'del': 'To delete your Account forever   (DANGER AREA!!!!)        ',
+                    '0': 'To exit the settings                                      '
+                }
+                
+                while True:
+                    print('\n<<----  SETTINGS_MENU  ---->>\n')
+                    for elem in d_menu:
+                        print('  '+d_menu[elem] + '  --> ' + elem)
+                    opt = input('\nYour Option -->').lower()
+                    print()
+                    if opt in l_opt:
+                        for elem in l_opt:
+                            if opt == elem:
+                                eval(l_func[l_opt.index(elem)])
+                    elif opt == '0':
+                        shop().cart().menu_opt_0()
+                        break
+                    else:
+                        print('Invalid Option......')
+
+            else:
+                print("Account Verification failed. Please try again.")
 
 l_opt = ['d','s','a','c','cls','exit']
-l_func = ["shop().display()","shop().search()","account().settings()","shop().cart().menu()","os.system('cls')","exit()"]
+l_func = ["shop().display()","shop().search()","account().settings().menu_info()","shop().cart().menu()","os.system('cls')","exit()"]
 d_menu = {
     'd': "To display all the items available                            ",
     's': "To search for any item category wise or using a hint of name  ",
@@ -475,7 +523,7 @@ while not jump:
         account().create()
 
 while jump:
-    print('<<----  SHOPIFY  ---->>\n')
+    print('\n<<----  SHOPIFY  ---->>\n')
     for elem in d_menu:
         print('  '+d_menu[elem] + '  --> ' + elem)
     opt = input('\nYour Option --> ').lower()
@@ -489,7 +537,3 @@ while jump:
         break
     else:
         print('Invalid Option......')
-
-# # account().create()
-# # account().settings()
-# shop().cart().checkout().menu()
