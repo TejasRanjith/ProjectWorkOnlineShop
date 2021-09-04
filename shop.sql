@@ -2,13 +2,7 @@ drop database shop;
 create database shop;
 use shop;
 
-delimiter //
-create procedure cats ()
-begin
-    show tables;
-end//
-delimiter ;
--- snacks --------------------------------------------------------;
+-- snacks ---------------------------------------------------------;
 
     create table snacks(
         ID char(5) primary key,
@@ -239,11 +233,7 @@ delimiter ;
     ("UT12","Melon Slicer",18.15),
     ("UT13","Prestige Cookware Set 7 pc",199.0);
 
-
-
 -- computers ------------------------------------------------------;
-
-
 
     create table computers(
         ID char(5) primary key,
@@ -268,7 +258,7 @@ delimiter ;
     ("CO14","Acer Notebook Nitro 5",3999.0),
     ("CO15","Lenovo Notebook Legion 5",4799.0);
 
--- phones --------------------------------------------------------;
+-- phones ---------------------------------------------------------;
 
     create table phones(
         ID char(5) primary key,
@@ -338,7 +328,7 @@ delimiter ;
     ("PH59","Motorola G20",646.66),
     ("PH60","Google Pixel 5",2709.0);
 
--- electronic_accessories ----------------------------------------;
+-- electronic_accessories -----------------------------------------;
 
     create table electronic_accessories(
         ID char(5) primary key,
@@ -400,7 +390,7 @@ delimiter ;
     ("EA51","S-TEK 4K HDMI Cable Ulta Slim 4K",26.99),
     ("EA52","Samsung S Pen",116.0);
 
--- tvs -----------------------------------------------------------;
+-- tvs ------------------------------------------------------------;
 
     create table tvs(
         ID char(5) primary key,
@@ -467,6 +457,7 @@ delimiter ;
     ("TO12","Monopoly Electronic Banking",150.0);
 
 -- milk -----------------------------------------------------------;
+
     create table milk(
         ID char(5) primary key,
         Name varchar(75),
@@ -677,7 +668,7 @@ delimiter ;
     ("SA16","Aashirvaad Iodised Salt 1Kg",3.12),
     ("SA17","Uncle Js Black Salt 1Kg",7.28);
 
--- bathroom_items ------------------------------------------------;
+-- bathroom_items -------------------------------------------------;
 
     create table bathroom_items(
         ID char(5) primary key,
@@ -812,7 +803,7 @@ delimiter ;
     ("BI126","Sunsilk Coconut Moisture Shampoo 400ml",20.11),
     ("BI127","Vatika Shampoo Repair & Restore 400ml",7.70);
 
--- chocolate -----------------------------------------------------;
+-- chocolate ------------------------------------------------------;
 
     create table chcolate(
         ID char(5) primary key,
@@ -862,7 +853,7 @@ delimiter ;
     ("CH39","Al Alali Chcoclate Syrup 675g",15.16),
     ("CH40","Hersheys Caramel Syrup 623g",15.70);
 
--- stationaries ---------------------------------------------;
+-- stationaries ---------------------------------------------------;
 
     create table stationaries(
         ID char(5) primary key,
@@ -977,7 +968,7 @@ delimiter ;
     ("ST104","12 Pockets Expanding File A4 organizer",18.90),
     ("ST105","10-Piece FIS Rado Box File 8cm",48.25);
 
--- story_book -----------------------------------------------;
+-- story_book -----------------------------------------------------;
 
     create table story_book(
         ID char(5) primary key,
@@ -1050,7 +1041,7 @@ delimiter ;
     ("SB62","Dork Diaries: Spectacular Superstar",31.93),
     ("SB63","Dork Diaries: I Love Paris!",32.56);
     
--- gaming_console -------------------------------------------;
+-- gaming_console -------------------------------------------------;
 
     create table gaming_console(
         ID char(5) primary key,
@@ -1067,7 +1058,7 @@ delimiter ;
     ("GS06","Nintendo Switch",1201.47),
     ("GS07","Nintendo Switch Lite",715.0);
     
--- game_cds -------------------------------------------------;
+-- game_cds -------------------------------------------------------;
 
     create table game_cds(
         ID char(5) primary key,
@@ -1152,7 +1143,7 @@ delimiter ;
     ("GC74","Nintendo Switch-Minecraft Dungeons",98.0),
     ("GC75","Nintendo Switch-Just Dance 2021",126.0);
 
--- sports ---------------------------------------;
+-- sports ---------------------------------------------------------;
 
     create table sports(
         ID char(5) primary key,
@@ -1222,7 +1213,7 @@ delimiter ;
     ("SP59","Wilson Super Soft Play Volleyball",76.90),
     ("SP60","Volleyball Net Portable 9.5x1m",99.75);
 
--- indoor_games ---------------------------------------;
+-- indoor_games ---------------------------------------------------;
 
     create table indoor_games(
         ID char(5) primary key,
@@ -1288,7 +1279,7 @@ delimiter ;
     ("IG55","Viper Blitz 95% Tungsten Steel Tip",231.60),
     ("IG56","Dart Set Magnetic Dart Board Hanging Roll Up",24.27);
 
--- camera ----------------------------------------------;
+-- camera ---------------------------------------------------------;
 
     create table camera(
         ID char(5) primary key,
@@ -1328,7 +1319,7 @@ delimiter ;
     ("CA29","Nikon D850 45.7 MP  Body Only Digital Camera",9199.0),
     ("CA30","Nikon D5600 AF-P 18-55mm VR Lens 24.4MP DSLR Camera",2299.0);
 
--- kitchen_items ------------------------------------------;
+-- kitchen_items --------------------------------------------------;
 
     create table kitchen_items(
         ID char(5) primary key,
@@ -1375,7 +1366,7 @@ delimiter ;
     ("KI36","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99),
     ("KI37","",0);
 
--- tabs -------------------------------------------;
+-- tabs -----------------------------------------------------------;
 
     create table tabs(
         ID char(5) primary key,
@@ -1410,13 +1401,17 @@ delimiter ;
 
 -- .r 
 -- accounts-------------------------------------------------------;
+
     create table accounts(
+        Accno varchar(5) 
         Email_ID varchar(50) primary key,
-        Info varchar(7999)
+        Info varchar(7999),
+        Cart varchar(7999)    -- "[[ID01,n],[ID02].......]"
     );
 
 
 -- cart-----------------------------------------------------------;
+
     create table cart(
         Product_ID char(5),
         Product_Name varchar(75),

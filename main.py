@@ -380,7 +380,7 @@ class account():
         else:
             print("Invalid Email-ID/Password . Please try again.")
         for email in database:
-            myc.execute(f'''insert into accounts value("{email}","{database[email]}");''')
+            myc.execute(f'''insert into accounts value("{accno}","{email}","{database[email]}");''')
         mydb.commit()
     
     def login(self):
@@ -403,6 +403,7 @@ class account():
             print("Invalid Email-ID. Please try again.")
     
     def verify(self):
+        result = (False,False)
         print("Please Verify again...")
         talk("Please Verify again...")
         myc.execute(f"select * from accounts;")
@@ -455,8 +456,24 @@ class account():
             else:
                 print("Invalid Index. Please try again....")
         
-        def edit_info2(self,email):  #.r   INCOMPLETE....INCOMPLETE.....INCOMPLETE......INCOMPLETE
-            pass
+        def edit_info2(self,email):
+            myc.execute(f"select * from accounts where Email_ID = '{email}';")
+            data = myc.fetchall()
+            info = eval(data[0][1])
+            print("\nDo you want to change your \n1.) Password\n2.) Phone No.")
+            index = int(input("Mention the index provided --> "))
+            if index == 0:
+                print("No Edits made.")
+            elif index == 1:
+                info[1] = input("New Password : ")
+                myc.execute(f'''update accounts set Info = "{info}" where Email_ID = "{email}";''')
+                mydb.commit()
+            elif index == 2:
+                info[2] = input("New Phone No. : ")
+                myc.execute(f'''update accounts set Info = "{info}" where Email_ID = "{email}";''')
+                mydb.commit()
+            else:
+                print("Invalid Index. Please try again....")
 
         def del_acc(self,email):
             opt = input("\nAre you sure you want to delete your account ? (y/n)").lower()
@@ -512,6 +529,7 @@ d_menu = {
     '0': "To stop the main program                                      "
 }
 jump = False
+
 while not jump:
     if account().confirm() == "y":
         if account().login():
