@@ -380,7 +380,7 @@ class account():
         else:
             print("Invalid Email-ID/Password . Please try again.")
         for email in database:
-            myc.execute(f'''insert into accounts value("{accno}","{email}","{database[email]}");''')
+            myc.execute(f'''insert into accounts value("{email}","{database[email]}");''')
         mydb.commit()
     
     def login(self):
