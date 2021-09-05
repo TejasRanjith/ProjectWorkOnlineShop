@@ -5,7 +5,7 @@ use shop;
 -- snacks ---------------------------------------------------------;
 
     create table snacks(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -52,7 +52,7 @@ use shop;
 -- fruits ---------------------------------------------------------;
 
     create table fruits(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -86,7 +86,7 @@ use shop;
 -- veg ------------------------------------------------------------;
 
     create table veg(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -126,7 +126,7 @@ use shop;
 -- fish -----------------------------------------------------------;
 
     create table fish(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -142,7 +142,7 @@ use shop;
 -- bakery ---------------------------------------------------------;
 
     create table bakery(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -173,7 +173,7 @@ use shop;
 -- drinks ---------------------------------------------------------;
 
     create table drinks(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -199,7 +199,7 @@ use shop;
 -- medicine -------------------------------------------------------;
 
     create table medicine(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -212,7 +212,7 @@ use shop;
 -- utensils -------------------------------------------------------;
 
     create table utensils(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -236,7 +236,7 @@ use shop;
 -- computers ------------------------------------------------------;
 
     create table computers(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -261,7 +261,7 @@ use shop;
 -- phones ---------------------------------------------------------;
 
     create table phones(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -331,7 +331,7 @@ use shop;
 -- electronic_accessories -----------------------------------------;
 
     create table electronic_accessories(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -393,7 +393,7 @@ use shop;
 -- tvs ------------------------------------------------------------;
 
     create table tvs(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -412,7 +412,7 @@ use shop;
     ("TV11","TCl UHD Android TV 50P618",1749.0),
     ("TV12","Samsung UHD TV",3099.0),
     ("TV13","LG UHD TV",2999.0),
-    ("TV14","LG OLED TV",8499.0)
+    ("TV14","LG OLED TV",8499.0),
     ("TV15","Samsung 65 inch AU7000 Crystal UHD 4K Smat TV",2708.40),
     ("TV16","Samsung 58 inch AU7000 Crystal UHD 4K Smat TV",2344.08),
     ("TV17","Samsung 43 inch AU7000 UHD 4K Flat Smat TV",1570.0),
@@ -437,7 +437,7 @@ use shop;
 -- toys -----------------------------------------------------------;
 
     create table toys(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -459,7 +459,7 @@ use shop;
 -- milk -----------------------------------------------------------;
 
     create table milk(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -535,7 +535,7 @@ use shop;
 -- rice -----------------------------------------------------------;
 
     create table rice(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -562,7 +562,7 @@ use shop;
 -- oil ------------------------------------------------------------;
     
     create table oil(
-        Id char(5) primary key,
+        Id varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -606,7 +606,7 @@ use shop;
 -- sugar ----------------------------------------------------------;
     
     create table sugar(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -644,7 +644,7 @@ use shop;
 -- salt -----------------------------------------------------------;
 
     create table salt(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -671,7 +671,7 @@ use shop;
 -- bathroom_items -------------------------------------------------;
 
     create table bathroom_items(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -806,7 +806,7 @@ use shop;
 -- chocolate ------------------------------------------------------;
 
     create table chcolate(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -856,7 +856,7 @@ use shop;
 -- stationaries ---------------------------------------------------;
 
     create table stationaries(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -971,7 +971,7 @@ use shop;
 -- story_book -----------------------------------------------------;
 
     create table story_book(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1044,7 +1044,7 @@ use shop;
 -- gaming_console -------------------------------------------------;
 
     create table gaming_console(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1061,7 +1061,7 @@ use shop;
 -- game_cds -------------------------------------------------------;
 
     create table game_cds(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1146,7 +1146,7 @@ use shop;
 -- sports ---------------------------------------------------------;
 
     create table sports(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1216,7 +1216,7 @@ use shop;
 -- indoor_games ---------------------------------------------------;
 
     create table indoor_games(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1282,7 +1282,7 @@ use shop;
 -- camera ---------------------------------------------------------;
 
     create table camera(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1322,7 +1322,7 @@ use shop;
 -- kitchen_items --------------------------------------------------;
 
     create table kitchen_items(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1369,7 +1369,7 @@ use shop;
 -- tabs -----------------------------------------------------------;
 
     create table tabs(
-        ID char(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1403,20 +1403,10 @@ use shop;
 -- accounts-------------------------------------------------------;
 
     create table accounts(
-        Accno varchar(5) 
+        Accno varchar(5),
         Email_ID varchar(50) primary key,
-        Info varchar(7999),
-        Cart varchar(7999)    -- "[[ID01,n],[ID02].......]"
-    );
-
-
--- cart-----------------------------------------------------------;
-
-    create table cart(
-        Product_ID char(5),
-        Product_Name varchar(75),
-        Price decimal(10,2),
-        Quantity int
+        Info varchar(7999)
     );
 
 -- .y
+

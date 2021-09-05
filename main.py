@@ -98,8 +98,9 @@ class shop():
         myc.execute("show tables;")
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
-        tbs.remove(("cart",))
         for tb in tbs:
+            if "cart" in tb:
+                tbs.remove(tb)
             myc.execute(f"select * from {tb[0]};")
             items,l = myc.fetchall(),[]
             for item in items:
@@ -116,7 +117,9 @@ class shop():
         myc.execute("show tables;")
         tbs,d,table,data = list(myc.fetchall()),{},[],[]
         tbs.remove(("accounts",))
-        tbs.remove(("cart",))
+        for tb in tbs:
+            if "cart_ac" == tb[0][:7]:
+                tbs.remove(tb)
         print(self.table_display(headings=["Categories"],rows=tbs,footers=["-"]))
         search = input("your item to search --> ").title()
         for tb in tbs:
@@ -131,7 +134,7 @@ class shop():
                 if search.lower() in elem:
                     myc.execute(f"select * from {elem}")
                     table,catg_table = myc.fetchall(),elem
-                if search in item:
+                if search.lower() in item:
                     myc.execute(f"select * from {elem} where name = '{item}'")
                     data.append(myc.fetchall())
                     catg_data.append(elem)
@@ -163,14 +166,18 @@ class shop():
         def __init__(self):
             self.dummy = 0
         
-        def add_cart(self):
+        def create_cart(self,accno):
+            myc.execute(f"create table cart_{accno}(Product_ID char(5),Product_Name varchar(75),Price decimal(10,2),Quantity int);")
+
+        def add_cart(self,accno):
             PID = input("Product ID of your required item -->").capitalize()
             Qty = int(input("Quantity of required item -->"))
             myc.execute("show tables;")
             tbs = list(myc.fetchall())
-            tbs.remove(("accounts",))
-            tbs.remove(("cart",))
+            tbs.remove(("accounts",))                      #.b -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<
             for tb in tbs:
+                if "cart" in tb:
+                    tbs.remove(tb)
                 myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
                 tup = myc.fetchall()
                 for elem in tup:
@@ -180,11 +187,11 @@ class shop():
             item[2] = str(item[2])
             item.append(str(Qty))
             item = tuple(item)
-            myc.execute(f'''insert into cart values {item};''')
+            myc.execute(f'''insert into cart_{accno} values {item};''')
             mydb.commit()
         
-        def display_cart(self):
-            myc.execute("select * from cart;")
+        def display_cart(self,accno):
+            myc.execute(f"select * from cart_{accno};")
             data,new_data = myc.fetchall(),[]
             for elem in data:
                 new_data.append(list(elem))
@@ -201,21 +208,21 @@ class shop():
                 display =  "Your cart is empty"
             return [display,data]
 
-        def del_cart(self,ID = ""):
+        def del_cart(self,accno,ID = ""):
             if ID == "all":
-                myc.execute(f"delete from cart;")
+                myc.execute(f"delete from cart_{accno};")
                 mydb.commit()
             else:
                 display = ""
                 ID = input("Product ID of the item to be deleted from the cart --> ").upper()
-                data = self.display_cart()[1]
+                data = self.display_cart(accno=accno)[1]
                 for item in data:
                     for elem in item:
                         print(elem)
                         if ID == elem:
-                            myc.execute(f"delete from cart where Product_ID = '{ID}'")
+                            myc.execute(f"delete from cart_{accno} where Product_ID = '{ID}'")
                             mydb.commit()
-                            display = f"Your item with the ID : {ID} had been deleted. Please select the display option to see the changes."
+                            display = f"Your item with the ID : {ID} has been deleted. Please select the display option to see the changes."
                             return display
                         else:
                             display = "item not found.... pls try again"
@@ -226,9 +233,10 @@ class shop():
             shop.timer(shop,1.5)
 
         def menu(self):
+            v = account().verify()
             l_opt = ['a','d','c','cls','del','exit']
-            l_func = ["shop().cart().add_cart()","print(shop().cart().display_cart()[0])",
-            "shop().cart().checkout().menu()","os.system('cls')","print(shop().cart().del_cart())","exit()"]
+            l_func = ["shop().cart().add_cart(v[1])","print(shop().cart().display_cart(v[1])[0])",
+            "shop().cart().checkout().menu()","os.system('cls')","print(shop().cart().del_cart(v[1]))","exit()"]
             d_menu = {
                 'a': 'To add an item to the cart with their product ID          ',
                 'd': 'To display the cart in the form of a table                ',
@@ -237,28 +245,29 @@ class shop():
                 '0': 'To return to the main menu                                '
             }
 
-            while True:
-                print('\n<<----  CART_MENU  ---->>\n')
-                for elem in d_menu:
-                    print('  '+d_menu[elem] + '  --> ' + elem)
-                opt = input('\nYour Option -->').lower()
-                print()
-                if opt in l_opt:
-                    for elem in l_opt:
-                        if opt == elem:
-                            eval(l_func[l_opt.index(elem)])
-                elif opt == '0':
-                    self.menu_opt_0()
-                    break
-                else:
-                    print('Invalid Option......')
+            if v[0]:
+                while True:
+                    print('\n<<----  CART_MENU  ---->>\n')
+                    for elem in d_menu:
+                        print('  '+d_menu[elem] + '  --> ' + elem)
+                    opt = input('\nYour Option -->').lower()
+                    print()
+                    if opt in l_opt:
+                        for elem in l_opt:
+                            if opt == elem:
+                                eval(l_func[l_opt.index(elem)])
+                    elif opt == '0':
+                        self.menu_opt_0()
+                        break
+                    else:
+                        print('Invalid Option......')
 
         class checkout():
             def __init__(self):
                 self.dummy = 0
 
-            def confirmation(self):
-                data = shop().cart().display_cart()[1]
+            def confirmation(self,accno):
+                data = shop().cart().display_cart(accno=accno)[1]
                 opt = input("Proceed To checkout (y/n) ?").lower()
                 if opt == 'y':
                     if len(data) == 0:
@@ -301,8 +310,8 @@ class shop():
                     else:
                         print("Invalid Payment Method.....")
 
-            def summary(self,ad,pay):
-                cart,total = shop().cart().display_cart()[1],[]
+            def summary(self,ad,pay,accno):
+                cart,total = shop().cart().display_cart(accno=accno)[1],[]
                 for item in cart:
                     total.append(int(item[-1]))
                 print("\n<<----Summary:---->>\n")
@@ -327,13 +336,13 @@ class shop():
                     print("Invalid option....  🤔🤔🤔")
 
             def menu(self):
-                if self.confirmation():
-                    v = account().verify()
+                v = account().verify()
+                if self.confirmation(v[1]):
                     if v[0]:
-                        myc.execute(f"select * from accounts where Email_ID = '{v[1]}'")
+                        myc.execute(f"select * from accounts where Accno = '{v[1]}'")
                         data = eval(myc.fetchall()[0][-1])
                         address,payment = data[-2],data[-1]
-                        self.summary(address,payment)
+                        self.summary(address,payment,v[1])
                     else:
                         print("Failed to verify your account.")
 
@@ -356,6 +365,23 @@ class account():
         else:
             return opt
 
+    def accno(self):
+        import random
+        l,main_l = [12,37,29,42,57,63,95,84,79],[]
+        for i in range(random.randint(30,51)):
+            num1,num2 = l[random.randint(0,8)],l[random.randint(0,8)]
+            n1,n2 = random.randint(1,99),random.randint(1,99)
+            result = num1+num2+n1+n2
+            main_l.append(result)
+        result = main_l[random.randint(1,len(main_l)-1)]
+        if len(str(result)) < 3:
+            result = f"AC0{str(result)}"
+        elif len(str(result)) == 3:
+            result = f"AC{str(result)}"
+        else:
+            pass
+        return result
+
     def create(self):
         database,flag,password = {},False,""
         print("\n<<---- SIGNUP PAGE ---->>\n")
@@ -377,10 +403,12 @@ class account():
             info.append(address)
             info.append(payment)
             database[email] = info
+            accno = self.accno()
+            shop().cart().create_cart(accno)
         else:
             print("Invalid Email-ID/Password . Please try again.")
         for email in database:
-            myc.execute(f'''insert into accounts value("{email}","{database[email]}");''')
+            myc.execute(f'''insert into accounts value("{accno}","{email}","{database[email]}");''')
         mydb.commit()
     
     def login(self):
@@ -394,8 +422,8 @@ class account():
                 new_data.append(list(acc))
             data = new_data
             for acc in data:
-                acc[1] = eval(acc[1])[1]
-                if [email,password] == acc:
+                acc[2] = eval(acc[2])[1]
+                if [email,password] == acc[1:]:
                     print("You have logged in succesfully\n")
                     return True
             print("Your account was not found.....")
@@ -412,10 +440,10 @@ class account():
         data = myc.fetchall()
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
             for tup in data:
-                if email == tup[0] and password == eval(tup[1])[1]:
-                    return True,email
+                if email == tup[1] and password == eval(tup[2])[1]:
+                    return True,tup[0],email
                 else:
-                    result = False,False
+                    result = False,False,False
         return result
 
     class settings():
@@ -425,7 +453,7 @@ class account():
         def display_info(self,email):
             myc.execute(f"select * from accounts where Email_ID = '{email}';")
             data = myc.fetchall()
-            address,payment = eval(data[0][1])[-2],eval(data[0][1])[-1]
+            address,payment = eval(data[0][2])[-2],eval(data[0][2])[-1]
             ad = ["Street name : ","Building name/ floor no., Apt or Villa No. : ","City: ","Area: "]
             pay = ["Payment Method : ","Card Number : ","CVV Number : ","Name of the card : ","Expiry Date : "]
             print("\n<-- Address Info -->\n")
@@ -459,7 +487,7 @@ class account():
         def edit_info2(self,email):
             myc.execute(f"select * from accounts where Email_ID = '{email}';")
             data = myc.fetchall()
-            info = eval(data[0][1])
+            info = eval(data[0][2])
             print("\nDo you want to change your \n1.) Password\n2.) Phone No.")
             index = int(input("Mention the index provided --> "))
             if index == 0:
@@ -488,17 +516,18 @@ class account():
 
         def menu_info(self):
             v = account().verify()
+            l_opt = ['d','e1','e2','del','cls','exit']
+            l_func = ['account().settings().display_info(v[2])','account().settings().edit_info1(v[2])',
+            'account().settings().edit_info2(v[2])','account().settings().del_acc(v[2])',"os.system('cls')","exit()"]
+            d_menu = {     
+                'd': 'To display your Address and Payment Details               ',
+                'e1': 'To edit Address and Payment related Details               ',
+                'e2': 'To change Password and Phone No.                          ',
+                'del': 'To delete your Account forever   (DANGER AREA!!!!)        ',
+                '0': 'To exit the settings                                      '
+            }
             if v[0]:
-                l_opt = ['d','e1','e2','del','cls','exit']
-                l_func = ['account().settings().display_info(v[1])','account().settings().edit_info1(v[1])',
-                'account().settings().edit_info2(v[1])','account().settings().del_acc(v[1])',"os.system('cls')","exit()"]
-                d_menu = {     
-                    'd': 'To display your Address and Payment Details               ',
-                   'e1': 'To edit Address and Payment related Details               ',
-                   'e2': 'To change Password and Phone No.                          ',
-                  'del': 'To delete your Account forever   (DANGER AREA!!!!)        ',
-                    '0': 'To exit the settings                                      '
-                }
+                
                 
                 while True:
                     print('\n<<----  SETTINGS_MENU  ---->>\n')
@@ -556,5 +585,3 @@ while jump:
     else:
         print('Invalid Option......')
 
-
-cart!!!
