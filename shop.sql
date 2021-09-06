@@ -452,9 +452,8 @@ use shop;
     ("TO07","Lego Prison Building Set",225.0),
     ("TO08","Axis Gyro Quadcopter Small",110.0),
     ("TO09","UNO Game Card",35.0),
-    ("TO10","Volley Ball",30.0),
-    ("TO11","Marvel Action Figures Set",20.0),
-    ("TO12","Monopoly Electronic Banking",150.0);
+    ("TO10","Marvel Action Figures Set",20.0),
+    ("TO11","Monopoly Electronic Banking",150.0);
 
 -- milk -----------------------------------------------------------;
 
@@ -549,7 +548,7 @@ use shop;
     ("RI06","GAutam Basmati Rice 20Kg",154.0),
     ("RI07","India Gate Sona Masoori 5Kg",28.96),
     ("RI08","Gold Sella Basmati Rice 10Kg",40.95),
-    ("RI09","Sinnara White Long Grain BAsmati Rice 5Kg",29.95),
+    ("RI09","Sinnara White Long Grain Basmati Rice 5Kg",29.95),
     ("RI10","Silver Swan Fragnant Jasmine Rice 10Kg",61.45),
     ("RI11","India Gate Brown Basmati Rice 2Kg",22.75),
     ("RI12","India Gate Sella Basmati Rice 5Kg",44.75),
@@ -562,7 +561,7 @@ use shop;
 -- oil ------------------------------------------------------------;
     
     create table oil(
-        Id varchar(5) primary key,
+        ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
@@ -1050,10 +1049,10 @@ use shop;
     );
 
     insert into gaming_console values
-    ("GS01","Sony Playstation 5 Console Standard Edition White",3030.00),
-    ("GS02","Sony Playstation 5 Console Standard Edition Black",3030.00),
-    ("GS03","Sony Playstation 4 Slim 500GB",1476.0),
-    ("GS04","Sony Playstation 4 1TB",1805.0),
+    ("GS01","Sony Playstation 5 Console (PS5) Standard Edition White",3030.00),
+    ("GS02","Sony Playstation 5 Console (PS5) Standard Edition Black",3030.00),
+    ("GS03","Sony Playstation 4 (PS4) Slim 500GB",1476.0),
+    ("GS04","Sony Playstation 4 (PS4) 1TB",1805.0),
     ("GS05","Xbox Series X",2478.0),
     ("GS06","Nintendo Switch",1201.47),
     ("GS07","Nintendo Switch Lite",715.0);
