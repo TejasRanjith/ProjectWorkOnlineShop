@@ -1,4 +1,6 @@
-import decimal,texttable,time,os,pyttsx3,pywhatkit,datetime
+import os
+os.system("pip install -r req.txt")
+import decimal,texttable,time,pyttsx3,pywhatkit,datetime
 import mysql.connector as ms
 import stdiomask as sm
 import speech_recognition as sr
@@ -99,8 +101,9 @@ class shop():
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
         for tb in tbs:
-            if "cart" in tb:
+            if "cart_ac" == tb[0][:7]:
                 tbs.remove(tb)
+                continue
             myc.execute(f"select * from {tb[0]};")
             items,l = myc.fetchall(),[]
             for item in items:
@@ -120,6 +123,7 @@ class shop():
         for tb in tbs:
             if "cart_ac" == tb[0][:7]:
                 tbs.remove(tb)
+                continue
         print(self.table_display(headings=["Categories"],rows=tbs,footers=["-"]))
         search = input("your item to search --> ").title()
         for tb in tbs:
@@ -131,10 +135,10 @@ class shop():
         catg_data = []
         for elem in d:
             for item in d[elem]:
-                if search.lower() in elem:
+                if search.lower() in elem.lower():
                     myc.execute(f"select * from {elem}")
                     table,catg_table = myc.fetchall(),elem
-                if search.lower() in item:
+                if search.lower() in item.lower():
                     myc.execute(f"select * from {elem} where name = '{item}'")
                     data.append(myc.fetchall())
                     catg_data.append(elem)
@@ -167,7 +171,7 @@ class shop():
             self.dummy = 0
         
         def create_cart(self,accno):
-            myc.execute(f"create table cart_{accno}(Product_ID char(5),Product_Name varchar(75),Price decimal(10,2),Quantity int);")
+            myc.execute(f"create table cart_{accno}(ID char(5),Name varchar(75),Price decimal(10,2),Quantity int);")
 
         def add_cart(self,accno):
             PID = input("Product ID of your required item -->").capitalize()
@@ -176,8 +180,9 @@ class shop():
             tbs = list(myc.fetchall())
             tbs.remove(("accounts",))                      #.b -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<
             for tb in tbs:
-                if "cart" in tb:
+                if "cart_ac" in tb[0][:7]:
                     tbs.remove(tb)
+                    continue
                 myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
                 tup = myc.fetchall()
                 for elem in tup:
@@ -369,15 +374,15 @@ class account():
         import random
         l,main_l = [12,37,29,42,57,63,95,84,79],[]
         for i in range(random.randint(30,51)):
-            num1,num2 = l[random.randint(0,8)],l[random.randint(0,8)]
+            num1,num2,i = l[random.randint(0,8)],l[random.randint(0,8)],i
             n1,n2 = random.randint(1,99),random.randint(1,99)
             result = num1+num2+n1+n2
             main_l.append(result)
         result = main_l[random.randint(1,len(main_l)-1)]
         if len(str(result)) < 3:
-            result = f"AC0{str(result)}"
+            result = f"ac0{str(result)}"
         elif len(str(result)) == 3:
-            result = f"AC{str(result)}"
+            result = f"ac{str(result)}"
         else:
             pass
         return result
