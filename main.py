@@ -1,5 +1,5 @@
 import os
-os.system("pip install -r req.txt")
+# os.system("pip install -r req.txt")
 import decimal,texttable,time,pyttsx3,pywhatkit,datetime
 import mysql.connector as ms
 import stdiomask as sm
@@ -90,11 +90,13 @@ class shop():
         self.timer(1)
         print('\n'+'Thank you for using the program.'+'\n')
         talk('Thank you for using the program.')
-        self.timer(1)
-        print('Hope to see you soon in program version 1.2.0'+'\n'+'\n')
+    
+    def extra_opt_0(self):
+        print('\nHope to see you soon in program version 1.2.0'+'\n'+'\n')
         talk('Hope to see you soon in program version 1.2.0')
-        self.timer(1.5)
+        shop().timer(1.5)
         print('Program exited with exit code 0'+'\n')
+        exit()
 
     def display(self):
         myc.execute("show tables;")
@@ -174,26 +176,36 @@ class shop():
             myc.execute(f"create table cart_{accno}(ID char(5),Name varchar(75),Price decimal(10,2),Quantity int);")
 
         def add_cart(self,accno):
-            PID = input("Product ID of your required item -->").capitalize()
-            Qty = int(input("Quantity of required item -->"))
-            myc.execute("show tables;")
-            tbs = list(myc.fetchall())
-            tbs.remove(("accounts",))                      #.b -----------------------------<<<<<<<<<<<<<<<<<<<<<<<<<<<
-            for tb in tbs:
-                if "cart_ac" in tb[0][:7]:
-                    tbs.remove(tb)
-                    continue
-                myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
-                tup = myc.fetchall()
-                for elem in tup:
-                    if len(elem) != 0:
-                        item = elem
-            item = list(item)
-            item[2] = str(item[2])
-            item.append(str(Qty))
-            item = tuple(item)
-            myc.execute(f'''insert into cart_{accno} values {item};''')
-            mydb.commit()
+            jump = False
+            while not jump:
+                PID = input("Product ID of your required item (0 to exit)--> ").capitalize()
+                if PID == "0":
+                    jump = True
+                else:
+                    Qty = int(input("Quantity of required item --> "))
+                    if Qty == 100:
+                        print("To avoid hordings, the quantity of items must be less than 100.")
+                    elif Qty < 100:                
+                        myc.execute("show tables;")
+                        tbs = list(myc.fetchall())
+                        tbs.remove(("accounts",))
+                        for tb in tbs:
+                            if "cart_ac" in tb[0][:7]:
+                                tbs.remove(tb)
+                                continue
+                            myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
+                            tup = myc.fetchall()
+                            for elem in tup:
+                                if len(elem) != 0:
+                                    item = elem
+                        item = list(item)
+                        item[2] = str(item[2])
+                        item.append(str(Qty))
+                        item = tuple(item)
+                        myc.execute(f'''insert into cart_{accno} values {item};''')
+                        mydb.commit()
+                    else:
+                        pass
         
         def display_cart(self,accno):
             myc.execute(f"select * from cart_{accno};")
@@ -221,17 +233,19 @@ class shop():
                 display = ""
                 ID = input("Product ID of the item to be deleted from the cart --> ").upper()
                 data = self.display_cart(accno=accno)[1]
-                for item in data:
-                    for elem in item:
-                        print(elem)
-                        if ID == elem:
-                            myc.execute(f"delete from cart_{accno} where Product_ID = '{ID}'")
-                            mydb.commit()
-                            display = f"Your item with the ID : {ID} has been deleted. Please select the display option to see the changes."
-                            return display
-                        else:
-                            display = "item not found.... pls try again"
-                return display
+                if len(data) != 0:
+                    for item in data:
+                        for elem in item:
+                            if ID == elem:
+                                myc.execute(f"delete from cart_{accno} where ID = '{ID}'")
+                                mydb.commit()
+                                display = f"Your item with the ID : {ID} has been deleted. Please select the display option to see the changes."
+                                return display
+                            else:
+                                display = "item not found.... pls try again"
+                    return display
+                else:
+                    print("Your cart is empty")
 
         def menu_opt_0(self):
             print("Returning to the main program....")
@@ -323,18 +337,16 @@ class shop():
                 print(f"Location: {ad[2]},{ad[3]},{ad[0]}")
                 print(f"Address: {ad[1]}")
                 print(f"Payment Method: {pay[0]}\n")
-                print(f"Card Number: {pay[1]}")
-                print(f"Card Name: {pay[3]}")
-                print(f"CVV Number: {pay[2]}")
-                print("-"*100+"\n")
+                print("-"*100)
                 if len(cart) == 0:
                     print("your cart is empty.....")
                 else:
-                    print(shop.table_display(shop,["PID","Name","Rate","Quantity","Price"],cart,["Total:","-","-","-",total]))
+                    print(shop.table_display(shop,["PID","Name","Rate","Quantity","Price"],cart,["Total:","-","-","-",sum(total)]))
                 print("-"*100)
                 opt = input("\nDo you want to confirm Checkout ? (y/n)").lower()
                 if opt == "y":
                     print("\nThank you for shopping from our store. 😀😀😀")
+                    shop().cart().del_cart(accno=accno,ID="all")
                 elif opt == "n":
                     print("\nOh. Looks like you need more items.... 😁😁😁")
                 else:
@@ -366,7 +378,7 @@ class account():
         talk("Do you have an account ?")
         opt = input("Do you have an account ? (y/n) : ").lower()
         if opt == "0":
-            exit()
+            shop().extra_opt_0()
         else:
             return opt
 
@@ -511,7 +523,11 @@ class account():
         def del_acc(self,email):
             opt = input("\nAre you sure you want to delete your account ? (y/n)").lower()
             if opt == "y":
+                myc.execute(f"select Accno from accounts where Email_ID = '{email}';")
+                data = myc.fetchall()
+                no = data[0][0]
                 myc.execute(f"delete from accounts where Email_ID = '{email}';")
+                myc.execute(f"drop table cart_{no};")
                 mydb.commit()
                 print("Your account has been deleted.")
             elif opt == "n":
@@ -563,30 +579,31 @@ d_menu = {
     '0': "To stop the main program                                      "
 }
 jump = False
-
 while not jump:
-    if account().confirm() == "y":
-        if account().login():
-            jump = True
+    while not jump:
+        if account().confirm() == "y":
+            if account().login():
+                jump = True
+            else:
+                print("Please Try again...") 
         else:
-            print("Please Try again...") 
-    else:
-        print("create an account.....")
-        account().create()
+            print("create an account.....")
+            account().create()
 
-while jump:
-    print('\n<<----  SHOPIFY  ---->>\n')
-    for elem in d_menu:
-        print('  '+d_menu[elem] + '  --> ' + elem)
-    opt = input('\nYour Option --> ').lower()
-    print()
-    if opt in l_opt:
-        for elem in l_opt:
-            if opt == elem:
-                eval(l_func[l_opt.index(elem)])
-    elif opt == '0':
-        shop().opt_0()
-        break
-    else:
-        print('Invalid Option......')
+    while jump:
+        print('\n<<----  SHOPIFY  ---->>\n')
+        for elem in d_menu:
+            print('  '+d_menu[elem] + '  --> ' + elem)
+        opt = input('\nYour Option --> ').lower()
+        print()
+        if opt in l_opt:
+            for elem in l_opt:
+                if opt == elem:
+                    eval(l_func[l_opt.index(elem)])
+        elif opt == '0':
+            shop().opt_0()
+            jump = False
+            break
+        else:
+            print('Invalid Option......')
 
