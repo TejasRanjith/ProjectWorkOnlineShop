@@ -332,51 +332,55 @@ class shop():
             def email_billing(self,accno):
                 cart = shop().cart().display_cart(accno=accno)[1]
                 t = str(shop().table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
-                with open("bill.txt","w") as f:
+                with open(f"bill_{accno}.txt","w") as f:
                     f.write(t)
 
-            def sent_email(self,email,name):
+            def sent_email(self,email,name,accno):
                 import smtplib
+                from email.mime.multipart import MIMEMultipart
+                from email.mime.text import MIMEText
+                from email.mime.image import MIMEImage
+                from email.mime.message import MIMEMessage
 
-                filename = "bill.txt"
-                f = open(filename, "r")
-                filecontent = f.read()
-                f.close()
-                sender,receiver,marker = 'shopify.noreply.000@gmail.com',email,"AUNIQUEMARKER"
-                body ="""Please find the attached bill below .\n"""
-                part1 = f"""From: Shopify <{sender}>
-To: {name} <{email}>
-Subject: Sending Attachement
-MIME-Version: 1.0
-Content-Type: multipart/mixed; boundary={marker}
---{marker}
-"""
-                part2 = """Content-Type: text/html
-Content-Transfer-Encoding:8bit
+                with open("email.html","r") as f:
+                    htmlstr = f.read()
 
-%s
-<html>
-    <body>
-        <img src = "logo.jpeg",alt = "logo">
---%s
-""" % (body,marker)
-                part3 = """Content-Type: text/plain; name=\"%s\"
-Content-Transfer-Encoding:8bit
-Content-Disposition: attachment; filename=%s
+                strFrom = "Shopify <shopify.noreply.000@gmail.com>"
+                strTo = f"{name} <{email}>"
 
-%s
---%s--
-""" % (filename, filename,filecontent, marker)
-                message = part1 + part2 + part3
-                try:
-                    smtpObj = smtplib.SMTP('smtp.gmail.com',587)
-                    smtpObj.ehlo()
-                    smtpObj.starttls()
-                    smtpObj.login("shopify.noreply.000@gmail.com","Tejas@035611")
-                    smtpObj.sendmail(sender, receiver, message)
-                    print("Successfully sent email")
-                except Exception:
-                    print("Error: unable to send email")
+                msgRoot = MIMEMultipart('related')
+                msgRoot['Subject'] = f'Shopify:Bill_{accno}'
+                msgRoot['From'] = strFrom
+                msgRoot['To'] = strTo
+
+                msgRoot.preamble = '====================================================='
+
+                msgAlternative = MIMEMultipart('alternative')
+                msgRoot.attach(msgAlternative)
+
+                msgText = MIMEText(htmlstr, 'html')
+                msgAlternative.attach(msgText)
+
+                fp = open('images/logo.jpeg', 'rb')
+                msgImage = MIMEImage(fp.read())
+                fp.close()
+                msgImage.add_header('Content-ID', '<logo>')
+                msgImage.add_header('Content-Disposition','attachement',filename = 'logo.png')
+                msgRoot.attach(msgImage)
+
+                ft = open(f"bill_{accno}.txt","r")
+                msgTextBill = MIMEText(ft.read(),'text')
+                ft.close()
+                msgTextBill.add_header('Content-Disposition','attachment',filename = 'bill.txt')
+                msgAlternative.attach(msgTextBill)
+
+                smtp = smtplib.SMTP('smtp.gmail.com',587)
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.login('shopify.noreply.000@gmail.com', 'Tejas@035611')
+                smtp.sendmail(strFrom, strTo, msgRoot.as_string())
+                print("Succesfully send email")
+                smtp.close()
 
             def summary(self,ad,pay,accno,email,name):
                 cart,total = shop().cart().display_cart(accno=accno)[1],[]
@@ -395,7 +399,7 @@ Content-Disposition: attachment; filename=%s
                 opt = input("\nDo you want to confirm Checkout ? (y/n)").lower()
                 if opt == "y":
                     self.email_billing(accno)
-                    self.sent_email(email,name)
+                    self.sent_email(email,name,accno)
                     print("\nThank you for shopping from our store. You will receive an email regarding the purchase")
                     shop().cart().del_cart(accno=accno,ID="all")
                 elif opt == "n":
@@ -599,8 +603,6 @@ class account():
                 '0': 'To exit the settings                                      '
             }
             if v[0]:
-                
-                
                 while True:
                     print('\n<<----  SETTINGS_MENU  ---->>\n')
                     for elem in d_menu:
@@ -616,7 +618,6 @@ class account():
                         break
                     else:
                         print('Invalid Option......')
-
             else:
                 print("Account Verification failed. Please try again.")
 
@@ -657,5 +658,3 @@ while not jump:
             break
         else:
             print('Invalid Option......')
-
-# shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder")
