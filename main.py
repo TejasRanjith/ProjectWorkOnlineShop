@@ -328,8 +328,57 @@ class shop():
                         return ["Cash On Delivery",None,None,None,None]
                     else:
                         print("Invalid Payment Method.....")
+            
+            def email_billing(self,accno):
+                cart = shop().cart().display_cart(accno=accno)[1]
+                t = str(shop().table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
+                with open("bill.txt","w") as f:
+                    f.write(t)
 
-            def summary(self,ad,pay,accno):
+            def sent_email(self,email,name):
+                import smtplib
+
+                filename = "bill.txt"
+                f = open(filename, "r")
+                filecontent = f.read()
+                f.close()
+                sender,receiver,marker = 'shopify.noreply.000@gmail.com',email,"AUNIQUEMARKER"
+                body ="""Please find the attached bill below .\n"""
+                part1 = f"""From: Shopify <{sender}>
+To: {name} <{email}>
+Subject: Sending Attachement
+MIME-Version: 1.0
+Content-Type: multipart/mixed; boundary={marker}
+--{marker}
+"""
+                part2 = """Content-Type: text/html
+Content-Transfer-Encoding:8bit
+
+%s
+<html>
+    <body>
+        <img src = "logo.jpeg",alt = "logo">
+--%s
+""" % (body,marker)
+                part3 = """Content-Type: text/plain; name=\"%s\"
+Content-Transfer-Encoding:8bit
+Content-Disposition: attachment; filename=%s
+
+%s
+--%s--
+""" % (filename, filename,filecontent, marker)
+                message = part1 + part2 + part3
+                try:
+                    smtpObj = smtplib.SMTP('smtp.gmail.com',587)
+                    smtpObj.ehlo()
+                    smtpObj.starttls()
+                    smtpObj.login("shopify.noreply.000@gmail.com","Tejas@035611")
+                    smtpObj.sendmail(sender, receiver, message)
+                    print("Successfully sent email")
+                except Exception:
+                    print("Error: unable to send email")
+
+            def summary(self,ad,pay,accno,email,name):
                 cart,total = shop().cart().display_cart(accno=accno)[1],[]
                 for item in cart:
                     total.append(int(item[-1]))
@@ -345,12 +394,14 @@ class shop():
                 print("-"*100)
                 opt = input("\nDo you want to confirm Checkout ? (y/n)").lower()
                 if opt == "y":
-                    print("\nThank you for shopping from our store. 😀😀😀")
+                    self.email_billing(accno)
+                    self.sent_email(email,name)
+                    print("\nThank you for shopping from our store. You will receive an email regarding the purchase")
                     shop().cart().del_cart(accno=accno,ID="all")
                 elif opt == "n":
-                    print("\nOh. Looks like you need more items.... 😁😁😁")
+                    print("\nOh. Looks like you need more items....")
                 else:
-                    print("Invalid option....  🤔🤔🤔")
+                    print("Invalid option....")
 
             def menu(self):
                 v = account().verify()
@@ -359,7 +410,7 @@ class shop():
                         myc.execute(f"select * from accounts where Accno = '{v[1]}'")
                         data = eval(myc.fetchall()[0][-1])
                         address,payment = data[-2],data[-1]
-                        self.summary(address,payment,v[1])
+                        self.summary(address,payment,v[1],v[2],v[3])
                     else:
                         print("Failed to verify your account.")
 
@@ -458,7 +509,7 @@ class account():
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
             for tup in data:
                 if email == tup[1] and password == eval(tup[2])[1]:
-                    return True,tup[0],email
+                    return True,tup[0],email,eval(tup[2])[0]
                 else:
                     result = False,False,False
         return result
@@ -607,3 +658,4 @@ while not jump:
         else:
             print('Invalid Option......')
 
+# shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder")
