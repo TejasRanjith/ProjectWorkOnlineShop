@@ -1,9 +1,13 @@
-import os
 # os.system("pip install -r req.txt")
-import decimal,texttable,time,pyttsx3,pywhatkit,datetime
+import decimal,texttable,time,pyttsx3,pywhatkit,smtplib,os
 import mysql.connector as ms
 import stdiomask as sm
 import speech_recognition as sr
+from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.message import MIMEMessage
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -103,7 +107,7 @@ class shop():
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
         for tb in tbs:
-            if "cart_ac" == tb[0][:7]:
+            if tb[0][:7] == "cart_ac":
                 tbs.remove(tb)
                 continue
             myc.execute(f"select * from {tb[0]};")
@@ -123,7 +127,7 @@ class shop():
         tbs,d,table,data = list(myc.fetchall()),{},[],[]
         tbs.remove(("accounts",))
         for tb in tbs:
-            if "cart_ac" == tb[0][:7]:
+            if tb[0][:7] == "cart_ac":
                 tbs.remove(tb)
                 continue
         print(self.table_display(headings=["Categories"],rows=tbs,footers=["-"]))
@@ -176,9 +180,9 @@ class shop():
             myc.execute(f"create table cart_{accno}(ID char(5),Name varchar(75),Price decimal(10,2),Quantity int);")
 
         def add_cart(self,accno):
-            jump = False
+            jump,item = False,""
             while not jump:
-                PID = input("Product ID of your required item (0 to exit)--> ").capitalize()
+                PID = input("Product ID of your required item (0 to exit)--> ").upper()
                 if PID == "0":
                     jump = True
                 else:
@@ -190,14 +194,15 @@ class shop():
                         tbs = list(myc.fetchall())
                         tbs.remove(("accounts",))
                         for tb in tbs:
-                            if "cart_ac" in tb[0][:7]:
+                            if tb[0][:7] == "cart_ac":
+                                tbs.insert(tbs.index(tb),"chocolate")
                                 tbs.remove(tb)
-                                continue
-                            myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
-                            tup = myc.fetchall()
-                            for elem in tup:
-                                if len(elem) != 0:
-                                    item = elem
+                            else:
+                                myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
+                                tup = myc.fetchall()
+                                for elem in tup:
+                                    if len(elem) != 0:
+                                        item = elem
                         item = list(item)
                         item[2] = str(item[2])
                         item.append(str(Qty))
@@ -330,18 +335,16 @@ class shop():
                         print("Invalid Payment Method.....")
             
             def email_billing(self,accno):
-                cart = shop().cart().display_cart(accno=accno)[1]
-                t = str(shop().table_display(["PID","Name","Rate","Quantity","Price"],cart,["-","-","-","-","-"]))
+                cart = shop().cart().display_cart(accno=accno)[0]
+                t = cart
+                date = datetime.now().strftime("%d/%m/%Y | %H:%M:%S")
                 with open(f"bill_{accno}.txt","w") as f:
+                    f.write("Company Name : Shopify\n")
+                    f.write(f"Bill No. : Bill_{accno}\n")
+                    f.write(f"Date : {date}\n")
                     f.write(t)
 
             def sent_email(self,email,name,accno):
-                import smtplib
-                from email.mime.multipart import MIMEMultipart
-                from email.mime.text import MIMEText
-                from email.mime.image import MIMEImage
-                from email.mime.message import MIMEMessage
-
                 with open("email.html","r") as f:
                     htmlstr = f.read()
 
@@ -630,7 +633,7 @@ d_menu = {
     'c': "To open the cart menu                                         ",
     '0': "To stop the main program                                      "
 }
-jump = False
+jump = True
 while not jump:
     while not jump:
         if account().confirm() == "y":
@@ -658,3 +661,6 @@ while not jump:
             break
         else:
             print('Invalid Option......')
+
+shop().cart().checkout().email_billing("ac282")
+shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder","ac282")
