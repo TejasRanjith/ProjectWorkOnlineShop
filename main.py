@@ -633,7 +633,7 @@ d_menu = {
     'c': "To open the cart menu                                         ",
     '0': "To stop the main program                                      "
 }
-jump = True
+jump = False
 while not jump:
     while not jump:
         if account().confirm() == "y":
@@ -662,5 +662,5 @@ while not jump:
         else:
             print('Invalid Option......')
 
-shop().cart().checkout().email_billing("ac282")
-shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder","ac282")
+# shop().cart().checkout().email_billing("ac282")
+# shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder","ac282")
