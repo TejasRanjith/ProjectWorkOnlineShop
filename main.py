@@ -122,6 +122,9 @@ class shop():
                 l.append(float(d[key][i][2]))
             print(self.table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
 
+    def open_notepad(self):
+        os.system("notepad.exe")
+
     def search(self):
         myc.execute("show tables;")
         tbs,d,table,data = list(myc.fetchall()),{},[],[]
@@ -159,6 +162,7 @@ class shop():
                 l.append(tup[2])
             print("\nCategory-Wise:\n")
             print(self.table_display(["ID","Name","Price","Category"],new_table,["Total:",len(new_table),sum(l),"-"]))
+            self.open_notepad()
         if len(data) != 0:
             for i in range(0,len(data)):
                 data[i][0] += tuple([catg_data[i]])
@@ -168,6 +172,7 @@ class shop():
                 l.append(tup[2])
             print("\nItem-Wise:\n")
             print(self.table_display(["ID","Name","Price","Category"],new_data,["Total:",len(new_data),sum(l),"-"]))
+            self.open_notepad()
         if len(data) == 0 and len(table) == 0:
             print("Item not found.\n")
         return data,table
