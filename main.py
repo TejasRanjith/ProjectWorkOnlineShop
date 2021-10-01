@@ -1,8 +1,8 @@
-# os.system("pip install -r req.txt")
 import decimal,texttable,time,pyttsx3,pywhatkit,smtplib,os
 import mysql.connector as ms
 import stdiomask as sm
 import speech_recognition as sr
+import subprocess as sp
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -123,7 +123,8 @@ class shop():
             print(self.table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
 
     def open_notepad(self):
-        os.system("notepad.exe")
+        programName,fileName = "notepad.exe","file.txt"
+        sp.Popen([programName, fileName])
 
     def search(self):
         myc.execute("show tables;")
@@ -476,6 +477,8 @@ class account():
                 print("Password does not match. Please try again 😀")
             if len(password) >= 8 and len(password) <=15:
                 flag = True
+            else:
+                print("Minimum 8 Maximum 15 characters are required for the password.")
         name = first_name+" "+last_name
         address,payment = shop().cart().checkout().address(),shop().cart().checkout().payment()
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]  and len(no) == 10:
