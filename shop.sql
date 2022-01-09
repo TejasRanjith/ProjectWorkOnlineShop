@@ -66,7 +66,7 @@ use shop;
     ("FR06","Pineapple",6.95),
     ("FR07","Banana per Kg",4.55),
     ("FR08","Kiwi per Kg",3.25),
-    ("FR09","Dates",0.0),
+    ("FR09","Dates per box",10.25),
     ("FR10","Litchi per Kg",3.25),
     ("FR11","Pomegranate per Kg",4.55),
     ("FR12","Avocado per Kg",5.55),
