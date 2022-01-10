@@ -1,7 +1,7 @@
 import decimal,texttable,time,pyttsx3,pywhatkit,smtplib,os
 import mysql.connector as ms
 import stdiomask as sm
-import speech_recognition as sr
+# import speech_recognition as sr
 import subprocess as sp
 from datetime import datetime
 from email.mime.multipart import MIMEMultipart
@@ -9,30 +9,30 @@ from email.mime.text import MIMEText
 from email.mime.image import MIMEImage
 from email.mime.message import MIMEMessage
 
-listener = sr.Recognizer()
-engine = pyttsx3.init()
-engine.setProperty("rate",160)
+# listener = sr.Recognizer()
+# engine = pyttsx3.init()
+# engine.setProperty("rate",160)
 
 mydb = ms.connect(host = "localhost",user = "root",password = "Tejas@035611",database = "shop")
 myc = mydb.cursor()
 
-def talk(text):
-    engine.say(text)
-    engine.runAndWait()
+# def talk(text):
+#     engine.say(text)
+#     engine.runAndWait()
 
-def take_command():
-    try:
-        with sr.Microphone() as source:
-            print('listening...')
-            voice = listener.listen(source)
-            command = listener.recognize_google(voice)
-            command = command.lower()
-            if 'alexa' in command:
-                command = command.replace('alexa', '')
-                print(command)
-    except:
-        exit()
-    return command
+# def take_command():
+#     try:
+#         with sr.Microphone() as source:
+#             print('listening...')
+#             voice = listener.listen(source)
+#             command = listener.recognize_google(voice)
+#             command = command.lower()
+#             if 'alexa' in command:
+#                 command = command.replace('alexa', '')
+#                 print(command)
+#     except:
+#         exit()
+#     return command
 
 class shop():
     def __init__(self):
@@ -93,11 +93,11 @@ class shop():
     def opt_0(self):
         self.timer(1)
         print('\n'+'Thank you for using the program.'+'\n')
-        talk('Thank you for using the program.')
+        # talk('Thank you for using the program.')
     
     def extra_opt_0(self):
         print('\nHope to see you soon in program version 1.2.0'+'\n'+'\n')
-        talk('Hope to see you soon in program version 1.2.0')
+        # talk('Hope to see you soon in program version 1.2.0')
         shop().timer(1.5)
         print('Program exited with exit code 0'+'\n')
         exit()
@@ -434,12 +434,12 @@ class account():
     def confirm(self):
         print("\n<<---- STARTUP PAGE(  www.shopify.ae  ) ---->>\n")
         print("Hi there,\n")
-        talk("Hi there,")
+        # talk("Hi there,")
         print("Welcome to shopify\n")
-        talk("Welcome to shopify")
+        # talk("Welcome to shopify")
         print("If you want to exit the shop at anytime, you can type '0' where ever specified.")
-        talk("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
-        talk("Do you have an account ?")
+        # talk("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
+        # talk("Do you have an account ?")
         opt = input("Do you have an account ? (y/n) : ").lower()
         if opt == "0":
             shop().extra_opt_0()
@@ -516,7 +516,7 @@ class account():
     def verify(self):
         result = (False,False)
         print("Please Verify again...")
-        talk("Please Verify again...")
+        # talk("Please Verify again...")
         myc.execute(f"select * from accounts;")
         email=input("Email-ID : ").lower()
         password = sm.getpass(prompt= "Password : ")
@@ -670,5 +670,8 @@ while not jump:
         else:
             print('Invalid Option......')
 
+
+
 # shop().cart().checkout().email_billing("ac282")
-# shop().cart().checkout().sent_email("tejascoder035611@gmail.com","Tejas Coder","ac282")
+# shop().cart().checkout().sent_email("tejasranjith035611@gmail.com","Tejas Coder","ac192")
+
