@@ -804,13 +804,13 @@ use shop;
 
 -- chocolate ------------------------------------------------------;
 
-    create table chcolate(
+    create table chocolate(
         ID varchar(5) primary key,
         Name varchar(75),
         Price decimal(10,2)
     );
 
-    insert into chcolate values
+    insert into chocolate values
     ("CH01","Hersheys Semi Sweet Chocolate Chips 425g",26.64),
     ("CH02","Hersheys Cookies n Creme Chocolate Bar 40g",2.45),
     ("CH03","Hersheys Dark Chocolate Pearls 50g",8.65),

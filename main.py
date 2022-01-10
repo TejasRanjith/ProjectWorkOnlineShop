@@ -1,34 +1,38 @@
-import os
-# os.system("pip install -r req.txt")
-import decimal,texttable,time,pyttsx3,pywhatkit,datetime
+import decimal,texttable,time,pyttsx3,pywhatkit,smtplib,os
 import mysql.connector as ms
 import stdiomask as sm
-import speech_recognition as sr
+# import speech_recognition as sr
+import subprocess as sp
+from datetime import datetime
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+from email.mime.image import MIMEImage
+from email.mime.message import MIMEMessage
 
-listener = sr.Recognizer()
-engine = pyttsx3.init()
-engine.setProperty("rate",160)
+# listener = sr.Recognizer()
+# engine = pyttsx3.init()
+# engine.setProperty("rate",160)
 
 mydb = ms.connect(host = "localhost",user = "root",password = "Tejas@035611",database = "shop")
 myc = mydb.cursor()
 
-def talk(text):
-    engine.say(text)
-    engine.runAndWait()
+# def talk(text):
+#     engine.say(text)
+#     engine.runAndWait()
 
-def take_command():
-    try:
-        with sr.Microphone() as source:
-            print('listening...')
-            voice = listener.listen(source)
-            command = listener.recognize_google(voice)
-            command = command.lower()
-            if 'alexa' in command:
-                command = command.replace('alexa', '')
-                print(command)
-    except:
-        exit()
-    return command
+# def take_command():
+#     try:
+#         with sr.Microphone() as source:
+#             print('listening...')
+#             voice = listener.listen(source)
+#             command = listener.recognize_google(voice)
+#             command = command.lower()
+#             if 'alexa' in command:
+#                 command = command.replace('alexa', '')
+#                 print(command)
+#     except:
+#         exit()
+#     return command
 
 class shop():
     def __init__(self):
@@ -89,11 +93,11 @@ class shop():
     def opt_0(self):
         self.timer(1)
         print('\n'+'Thank you for using the program.'+'\n')
-        talk('Thank you for using the program.')
+        # talk('Thank you for using the program.')
     
     def extra_opt_0(self):
         print('\nHope to see you soon in program version 1.2.0'+'\n'+'\n')
-        talk('Hope to see you soon in program version 1.2.0')
+        # talk('Hope to see you soon in program version 1.2.0')
         shop().timer(1.5)
         print('Program exited with exit code 0'+'\n')
         exit()
@@ -103,7 +107,7 @@ class shop():
         tbs,d= list(myc.fetchall()),{}
         tbs.remove(("accounts",))
         for tb in tbs:
-            if "cart_ac" == tb[0][:7]:
+            if tb[0][:7] == "cart_ac":
                 tbs.remove(tb)
                 continue
             myc.execute(f"select * from {tb[0]};")
@@ -118,12 +122,16 @@ class shop():
                 l.append(float(d[key][i][2]))
             print(self.table_display(["ID","Name","Price","Category"],d[key],["-","-",sum(l),"-"]))
 
+    def open_notepad(self):
+        programName,fileName = "notepad.exe","file.txt"
+        sp.Popen([programName, fileName])
+
     def search(self):
         myc.execute("show tables;")
         tbs,d,table,data = list(myc.fetchall()),{},[],[]
         tbs.remove(("accounts",))
         for tb in tbs:
-            if "cart_ac" == tb[0][:7]:
+            if tb[0][:7] == "cart_ac":
                 tbs.remove(tb)
                 continue
         print(self.table_display(headings=["Categories"],rows=tbs,footers=["-"]))
@@ -155,6 +163,7 @@ class shop():
                 l.append(tup[2])
             print("\nCategory-Wise:\n")
             print(self.table_display(["ID","Name","Price","Category"],new_table,["Total:",len(new_table),sum(l),"-"]))
+            self.open_notepad()
         if len(data) != 0:
             for i in range(0,len(data)):
                 data[i][0] += tuple([catg_data[i]])
@@ -164,6 +173,7 @@ class shop():
                 l.append(tup[2])
             print("\nItem-Wise:\n")
             print(self.table_display(["ID","Name","Price","Category"],new_data,["Total:",len(new_data),sum(l),"-"]))
+            self.open_notepad()
         if len(data) == 0 and len(table) == 0:
             print("Item not found.\n")
         return data,table
@@ -176,9 +186,9 @@ class shop():
             myc.execute(f"create table cart_{accno}(ID char(5),Name varchar(75),Price decimal(10,2),Quantity int);")
 
         def add_cart(self,accno):
-            jump = False
+            jump,item = False,""
             while not jump:
-                PID = input("Product ID of your required item (0 to exit)--> ").capitalize()
+                PID = input("Product ID of your required item (0 to exit)--> ").upper()
                 if PID == "0":
                     jump = True
                 else:
@@ -190,14 +200,15 @@ class shop():
                         tbs = list(myc.fetchall())
                         tbs.remove(("accounts",))
                         for tb in tbs:
-                            if "cart_ac" in tb[0][:7]:
+                            if tb[0][:7] == "cart_ac":
+                                tbs.insert(tbs.index(tb),"chocolate")
                                 tbs.remove(tb)
-                                continue
-                            myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
-                            tup = myc.fetchall()
-                            for elem in tup:
-                                if len(elem) != 0:
-                                    item = elem
+                            else:
+                                myc.execute(f"select * from {tb[0]} where ID = '{PID}';")
+                                tup = myc.fetchall()
+                                for elem in tup:
+                                    if len(elem) != 0:
+                                        item = elem
                         item = list(item)
                         item[2] = str(item[2])
                         item.append(str(Qty))
@@ -328,8 +339,59 @@ class shop():
                         return ["Cash On Delivery",None,None,None,None]
                     else:
                         print("Invalid Payment Method.....")
+            
+            def email_billing(self,accno):
+                cart = shop().cart().display_cart(accno=accno)[0]
+                t = cart
+                date = datetime.now().strftime("%d/%m/%Y | %H:%M:%S")
+                with open(f"bill_{accno}.txt","w") as f:
+                    f.write("Company Name : Shopify\n")
+                    f.write(f"Bill No. : Bill_{accno}\n")
+                    f.write(f"Date : {date}\n")
+                    f.write(t)
 
-            def summary(self,ad,pay,accno):
+            def sent_email(self,email,name,accno):
+                with open("email.html","r") as f:
+                    htmlstr = f.read()
+
+                strFrom = "Shopify <shopify.noreply.000@gmail.com>"
+                strTo = f"{name} <{email}>"
+
+                msgRoot = MIMEMultipart('related')
+                msgRoot['Subject'] = f'Shopify:Bill_{accno}'
+                msgRoot['From'] = strFrom
+                msgRoot['To'] = strTo
+
+                msgRoot.preamble = '====================================================='
+
+                msgAlternative = MIMEMultipart('alternative')
+                msgRoot.attach(msgAlternative)
+
+                msgText = MIMEText(htmlstr, 'html')
+                msgAlternative.attach(msgText)
+
+                fp = open('images/logo.jpeg', 'rb')
+                msgImage = MIMEImage(fp.read())
+                fp.close()
+                msgImage.add_header('Content-ID', '<logo>')
+                msgImage.add_header('Content-Disposition','attachement',filename = 'logo.png')
+                msgRoot.attach(msgImage)
+
+                ft = open(f"bill_{accno}.txt","r")
+                msgTextBill = MIMEText(ft.read(),'text')
+                ft.close()
+                msgTextBill.add_header('Content-Disposition','attachment',filename = 'bill.txt')
+                msgAlternative.attach(msgTextBill)
+
+                smtp = smtplib.SMTP('smtp.gmail.com',587)
+                smtp.ehlo()
+                smtp.starttls()
+                smtp.login('shopify.noreply.000@gmail.com', 'Tejas@035611')
+                smtp.sendmail(strFrom, strTo, msgRoot.as_string())
+                print("Succesfully send email")
+                smtp.close()
+
+            def summary(self,ad,pay,accno,email,name):
                 cart,total = shop().cart().display_cart(accno=accno)[1],[]
                 for item in cart:
                     total.append(int(item[-1]))
@@ -345,12 +407,14 @@ class shop():
                 print("-"*100)
                 opt = input("\nDo you want to confirm Checkout ? (y/n)").lower()
                 if opt == "y":
-                    print("\nThank you for shopping from our store. 😀😀😀")
+                    self.email_billing(accno)
+                    self.sent_email(email,name,accno)
+                    print("\nThank you for shopping from our store. You will receive an email regarding the purchase")
                     shop().cart().del_cart(accno=accno,ID="all")
                 elif opt == "n":
-                    print("\nOh. Looks like you need more items.... 😁😁😁")
+                    print("\nOh. Looks like you need more items....")
                 else:
-                    print("Invalid option....  🤔🤔🤔")
+                    print("Invalid option....")
 
             def menu(self):
                 v = account().verify()
@@ -359,7 +423,7 @@ class shop():
                         myc.execute(f"select * from accounts where Accno = '{v[1]}'")
                         data = eval(myc.fetchall()[0][-1])
                         address,payment = data[-2],data[-1]
-                        self.summary(address,payment,v[1])
+                        self.summary(address,payment,v[1],v[2],v[3])
                     else:
                         print("Failed to verify your account.")
 
@@ -370,12 +434,12 @@ class account():
     def confirm(self):
         print("\n<<---- STARTUP PAGE(  www.shopify.ae  ) ---->>\n")
         print("Hi there,\n")
-        talk("Hi there,")
+        # talk("Hi there,")
         print("Welcome to shopify\n")
-        talk("Welcome to shopify")
+        # talk("Welcome to shopify")
         print("If you want to exit the shop at anytime, you can type '0' where ever specified.")
-        talk("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
-        talk("Do you have an account ?")
+        # talk("If you want to exit the shop at anytime, you can type '0' where ever specified.\n")
+        # talk("Do you have an account ?")
         opt = input("Do you have an account ? (y/n) : ").lower()
         if opt == "0":
             shop().extra_opt_0()
@@ -413,6 +477,8 @@ class account():
                 print("Password does not match. Please try again 😀")
             if len(password) >= 8 and len(password) <=15:
                 flag = True
+            else:
+                print("Minimum 8 Maximum 15 characters are required for the password.")
         name = first_name+" "+last_name
         address,payment = shop().cart().checkout().address(),shop().cart().checkout().payment()
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]  and len(no) == 10:
@@ -450,7 +516,7 @@ class account():
     def verify(self):
         result = (False,False)
         print("Please Verify again...")
-        talk("Please Verify again...")
+        # talk("Please Verify again...")
         myc.execute(f"select * from accounts;")
         email=input("Email-ID : ").lower()
         password = sm.getpass(prompt= "Password : ")
@@ -458,7 +524,7 @@ class account():
         if email.partition("@")[-1].partition(".")[0].lower() in ["gmail","yahoo"]:
             for tup in data:
                 if email == tup[1] and password == eval(tup[2])[1]:
-                    return True,tup[0],email
+                    return True,tup[0],email,eval(tup[2])[0]
                 else:
                     result = False,False,False
         return result
@@ -548,8 +614,6 @@ class account():
                 '0': 'To exit the settings                                      '
             }
             if v[0]:
-                
-                
                 while True:
                     print('\n<<----  SETTINGS_MENU  ---->>\n')
                     for elem in d_menu:
@@ -565,7 +629,6 @@ class account():
                         break
                     else:
                         print('Invalid Option......')
-
             else:
                 print("Account Verification failed. Please try again.")
 
@@ -606,4 +669,9 @@ while not jump:
             break
         else:
             print('Invalid Option......')
+
+
+
+# shop().cart().checkout().email_billing("ac282")
+# shop().cart().checkout().sent_email("tejasranjith035611@gmail.com","Tejas Coder","ac192")
 
