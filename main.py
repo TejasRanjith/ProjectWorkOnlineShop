@@ -672,6 +672,4 @@ while not jump:
 
 
 
-# shop().cart().checkout().email_billing("ac282")
-# shop().cart().checkout().sent_email("tejasranjith035611@gmail.com","Tejas Coder","ac192")
 

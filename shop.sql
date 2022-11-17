@@ -1362,8 +1362,7 @@ use shop;
     ("KI33","Hot Pack White Foam Plates 9 inches 25Pc",3.93),
     ("KI34","Hot Pack Disposable Plates 25Pc",4.51),
     ("KI35","Hot Pack Premium Quality Disposable Plastic Plates 9 inches",8.09),
-    ("KI36","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99),
-    ("KI37","",0);
+    ("KI36","Fun Everyday Disposable Plastic Plate Set 25Pc",11.99);
 
 -- tabs -----------------------------------------------------------;
 

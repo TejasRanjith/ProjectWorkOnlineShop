@@ -347,5 +347,18 @@
 #         print('Invalid Option......')
 
 
-with open("email.html",'r') as f:
-    print(f.read())
+# with open("email.html",'r') as f:
+#     print(f.read())
+
+import mysql.connector as ms
+mydb = ms.connect(host = "localhost",user = "root",password = "Tejas@035611",database = "shop")
+myc = mydb.cursor()
+# myc.execute("select * from fruits")
+# data1 = myc.fetchmany(10)
+# print(data1)
+# data2 = myc.fetchmany(4)
+# print(data2)
+# to use <> operator on prices
+myc.execute("select * from fruits where price <> 5.95;")
+data = myc.fetchmany(25)
+print(data)
